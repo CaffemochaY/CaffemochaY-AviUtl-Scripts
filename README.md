@@ -1,3 +1,3 @@
 # CaffemochaY's AviUtl Scripts
 
-CaffemochaY's AviUtl Scripts
+自作のscriptたちです
