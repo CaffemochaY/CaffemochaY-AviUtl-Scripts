@@ -12,6 +12,7 @@
 	- フォントに合わせた背景にするために、obj.loadしたテキストのサイズを取得し、背景サイズを決める / 固定にも出来るようにしたい > 71
 	- アンカーをつけて、そこの色の平均値をとる
 		- 範囲選択 / 範囲指定
+		- 色の平均値
 ]]
 
 --dialog:文字色/col,local dp1=0xffffff;背景色/col,local dp2=0x000000;font_size,local dp3=34;font,local dp4="MS UI Gothic";
