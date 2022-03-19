@@ -6,6 +6,13 @@ luac.out
 *.zip
 *.tar.gz
 
+# Object files
+*.o
+*.os
+*.ko
+*.obj
+*.elf
+
 # Precompiled Headers
 *.gch
 *.pch
@@ -31,3 +38,4 @@ luac.out
 *.i*86
 *.x86_64
 *.hex
+
