@@ -1,0 +1,64 @@
+--[[
+	コントラスト比自動計算.anm / ver.1
+	Copyright (c) 2022 CaffemochaY
+
+	アンカーで2色を取得して、その2つのコントラスト比を自動で計算するスクリプト
+	[WCAG 2.0](https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-procedure)基準で色のコントラスト比を計算する
+
+	- parameter
+		- 文字色 / 文字装飾色 : 色
+		- 文字サイズ, フォント名, 文字装飾 : テキストのパラメータ
+		- 文字不透明度 : 文字の不透明度
+		- 背景margin : 文字の範囲から、どれだけ余白をとるかの指定
+]]
+
+--[[
+	<ideas / 追加予定機能>
+
+	- アンカーをつけて、そこの色の平均値をとる (.anmの方が良いかも)
+		- 範囲選択 / 範囲指定
+	- 基準を満たしているかどうかを目で見て分かるようにする <https://lab.syncer.jp/Tool/Color-Contrast-Checker/#Web-Content-Accessibility-Guidelines>
+]]
+
+--track0:a_size,0,1000,10
+--track1:a_alpha,0,100,50
+--track2:文字_X,-4000,4000,0
+--track3:文字_Y,-4000,4000,0
+--check0:info,1
+--dialog:アンカー,dA={-100,0,100,0};font_size,local dp3=34;font_name,local dp4="MS UI Gothic";文字装飾(0-4),local dp5=0;文字色/col,local dp6=0xffffff;文字装飾色/col,local dp7=0x000000;文字不透明度,local dp8=100;
+
+local crc_anchor_size, crc_anchor_alpha = obj.track0, obj.track1 / 100
+local text_size, font_name, text_deco, text_col, text_deco_col, text_alpha = dp3 or 34, dp4 or "MS UI Gothic", dp5 or 0, dp6 or 0xffffff, dp7 or 0x000000, dp8 / 100 or 1
+
+if text_alpha > 1 then text_alpha = 1
+elseif text_alpha < 0 then text_alpha = 0
+end
+
+dA = dA or {-100, 0, 100, 0}
+
+obj.setanchor("dA", 2)
+local crc_ct_col1 = obj.getpixel(dA[1] + obj.w / 2, dA[2] + obj.h / 2, "col")
+local crc_ct_col2 = obj.getpixel(dA[3] + obj.w / 2, dA[4] + obj.h / 2, "col")
+
+-- コントラスト比自動計算
+package.path = package.path:gsub("(.-)(%?.-);.+", "%0;%1script\\%2")
+local CRC = require("contrast_raito_cal")
+local contrast_raito = CRC.contrast_raito_cal(crc_ct_col1, crc_ct_col2)
+
+debug_print(contrast_raito)
+debug_print(string.format("%06x", crc_ct_col1))
+debug_print(string.format("%06x", crc_ct_col2))
+
+if obj.check0 then
+	obj.setoption("drawtarget", "tempbuffer", obj.getpixel())
+	obj.draw()
+	obj.load("figure", "円", 0xffffff, crc_anchor_size)
+	obj.draw((dA[1] + 0.5) * obj.zoom, (dA[2] + 0.5) * obj.zoom, 0, 1, crc_anchor_alpha)
+	obj.draw((dA[3] + 0.5) * obj.zoom, (dA[4] + 0.5) * obj.zoom, 0, 1, crc_anchor_alpha)
+
+	obj.setfont(font_name, text_size, text_deco, text_col, text_deco_col)
+	obj.load("text", contrast_raito)
+	obj.draw(obj.track2, obj.track3, 0, 1, text_alpha)
+
+	obj.copybuffer("obj", "tmp")
+end

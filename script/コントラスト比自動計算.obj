@@ -1,0 +1,40 @@
+--[[
+	コントラスト比自動計算.obj / ver.1
+	Copyright (c) 2022 CaffemochaY
+
+	ダイアログで2色を指定して、その2つのコントラスト比を自動で計算するスクリプト
+	[WCAG 2.0](https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-procedure)基準で色のコントラスト比を計算する
+
+	- parameter
+		- 文字色 / 背景色 : 色
+		- 文字サイズ, フォント名, 文字装飾 : テキストのパラメータ
+		- 背景margin : 文字の範囲から、どれだけ余白をとるかの指定
+]]
+
+--dialog:文字色/col,local dp1=0x000000;背景色/col,local dp2=0xffffff;文字サイズ,local dp3=34;フォント名,local dp4="MS UI Gothic";文字装飾(0-4),local dp5=0;背景margin,local dp6=20;
+
+local crc_ct_col1, crc_ct_col2 = dp1 or 0x000000, dp2 or 0xffffff
+local text_size, font_name, text_deco = dp3 or 34, dp4 or "MS UI Gothic", dp5 or 0
+local bg_margin = dp6 or 20
+
+-- コントラスト比自動計算
+package.path = package.path:gsub("(.-)(%?.-);.+", "%0;%1script\\%2")
+local CRC = require("contrast_raito_cal")
+local contrast_raito = CRC.contrast_raito_cal(crc_ct_col1, crc_ct_col2)
+
+-- 文字描画後のサイズを取得
+obj.setfont(font_name, text_size, text_deco, crc_ct_col1)
+obj.load("text", contrast_raito)
+obj.draw()
+local w, h = obj.getpixel()
+
+-- tempbufferに文字を移動
+obj.copybuffer("tmp", "obj")
+
+-- 背景描画
+obj.load("figure", "四角形", crc_ct_col2, 1)
+obj.drawpoly(-w / 2 - bg_margin, -h / 2 - bg_margin, 0, w / 2 + bg_margin, -h / 2 - bg_margin, 0, w / 2 + bg_margin, h / 2 + bg_margin, 0, -w / 2 - bg_margin, h / 2 + bg_margin, 0)
+
+-- 文字を描画
+obj.copybuffer("obj", "tmp")
+obj.draw()
