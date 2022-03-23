@@ -42,10 +42,10 @@ local crc_ct_col2 = obj.getpixel(dA[3] + obj.w / 2, dA[4] + obj.h / 2, "col")
 
 -- コントラスト比自動計算
 package.path = package.path:gsub("(.-)(%?.-);.+", "%0;%1script\\%2")
-local CRC = require("contrast_raito_cal")
-local contrast_raito = CRC.contrast_raito_cal(crc_ct_col1, crc_ct_col2)
+local CRC = require("contrast_ratio_cal")
+local contrast_ratio = CRC.contrast_ratio_cal(crc_ct_col1, crc_ct_col2)
 
-debug_print(contrast_raito)
+debug_print(contrast_ratio)
 debug_print(string.format("%06x", crc_ct_col1))
 debug_print(string.format("%06x", crc_ct_col2))
 
@@ -57,7 +57,7 @@ if obj.check0 then
 	obj.draw((dA[3] + 0.5) * obj.zoom, (dA[4] + 0.5) * obj.zoom, 0, 1, crc_anchor_alpha)
 
 	obj.setfont(font_name, text_size, text_deco, text_col, text_deco_col)
-	obj.load("text", contrast_raito)
+	obj.load("text", contrast_ratio)
 	obj.draw(obj.track2, obj.track3, 0, 1, text_alpha)
 
 	obj.copybuffer("obj", "tmp")

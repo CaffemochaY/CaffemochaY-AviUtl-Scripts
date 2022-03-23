@@ -1,5 +1,5 @@
 --[[
-	contrast_raito_cal.lua
+	contrast_ratio_cal.lua
 	Copyright (c) 2022 CaffemochaY
 
 	sourse : [WCAG 2.0](https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-procedure)
@@ -7,7 +7,7 @@
 
 local CRC = {}
 
-local function contrast_raito_cal(crc_col1, crc_col2)
+local function contrast_ratio_cal(crc_col1, crc_col2)
 	local ct = {}
 	ct.col1, ct.col2, ct.colset, ct.coltype = {}, {}, {"col1", "col2"}, {"r", "g", "b"}
 	ct.col1.ori, ct.col2.ori = crc_col1, crc_col2
@@ -32,12 +32,12 @@ local function contrast_raito_cal(crc_col1, crc_col2)
 	end
 
 	-- Calculate contrast ratio & When less than 1, convert to reciprocal
-	ct.raito = (ct.col1.l + 0.05) / (ct.col2.l + 0.05)
-	if ct.raito < 1 then ct.raito = 1 / ct.raito end
+	ct.ratio = (ct.col1.l + 0.05) / (ct.col2.l + 0.05)
+	if ct.ratio < 1 then ct.ratio = 1 / ct.ratio end
 
-	return ct.raito
+	return ct.ratio
 end
 
-CRC.contrast_raito_cal = contrast_raito_cal
+CRC.contrast_ratio_cal = contrast_ratio_cal
 
 return CRC

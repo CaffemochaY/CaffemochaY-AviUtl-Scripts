@@ -19,12 +19,12 @@ local bg_margin = dp6 or 20
 
 -- コントラスト比自動計算
 package.path = package.path:gsub("(.-)(%?.-);.+", "%0;%1script\\%2")
-local CRC = require("contrast_raito_cal")
-local contrast_raito = CRC.contrast_raito_cal(crc_ct_col1, crc_ct_col2)
+local CRC = require("contrast_ratio_cal")
+local contrast_ratio = CRC.contrast_ratio_cal(crc_ct_col1, crc_ct_col2)
 
 -- 文字描画後のサイズを取得
 obj.setfont(font_name, text_size, text_deco, crc_ct_col1)
-obj.load("text", contrast_raito)
+obj.load("text", contrast_ratio)
 obj.draw()
 local w, h = obj.getpixel()
 
