@@ -1,0 +1,75 @@
+--[[
+	ソフトフォーカス.anm
+	Copyright (c) 2022 CaffemochaY
+
+	- 立ち絵等の画像を柔らかい雰囲気にします
+	- ついでに立体っぽさを演出出来るかもしれません
+	- 影の雰囲気や線の固さが主に変化します
+
+	**画像データのキャッシュ数を2以上にしてください！！！**
+	していない場合、条件次第では想定通りの動作をしなくなります
+
+	"ぼかし", "拡散光", "単色化", "色調補正" の順番でエフェクトをかけます
+
+	- parameter
+		- alpha : エフェクトをかけたものの透明度(適応する強さに相当)
+		- その他 : "ぼかし", "拡散光", "単色化", "色調補正" のパラメータ各種
+
+	- 注意
+		- `X,Y調整` は、絶対値が `"最大画像サイズ" - w(or h) - ((blur_range + diffusion)*2 )`より小さくなるようにしないと元画像がクリッピングされます
+		- `合成モード(0-12)` のうち、`10`,`11`,`12`はうまくいかない場合があります
+			- 詳細は `lua.txt` を見て下さい
+]]
+
+--track0:alpha,0,100,40
+--track1:ぼかし範囲,0,300,10,1
+--track2:拡散光強さ,0,100,50
+--track3:拡散,0,100,6,1
+--dialog:X調整,local dp1=0;Y調整,local dp2=0;ぼかし縦横比,local dp3=0;ぼかし光の強さ,local dp4=0;ぼかしサイズ固定/chk,local dp5=0;拡散光サイズ固定/chk,local dp6=0;単色化強さ,local dp7=0;輝度保持/chk,local dp8=1;単色化_色/col,local dp9=0xffffff;明るさ,local dp10=100;コントラスト,local dp11=100;色相,local dp12=0;輝度,local dp13=100;彩度,local dp14=100;飽和する/chk,local dp15=0;合成モード(0-12),local dp16=0;
+
+local alpha = obj.track0 / 100
+local blur_range = obj.track1
+local difl_str = obj.track2
+local diffusion = obj.track3
+
+local X_tuning = dp1 or 0
+local Y_tuning = dp2 or 0
+local blur_aspect = dp3 or 0
+local blur_light = dp4 or 0
+local sincolaf = dp7 or 0
+local sincolcol = dp9 or 0xffffff
+local s_brightness = dp10 or 100
+local s_contrast = dp11 or 100
+local s_hue = dp12 or 0
+local s_luminance = dp13 or 100
+local s_chroma = dp14 or 100
+local blmode = dp16 or 0
+
+local w, h = obj.getpixel()
+local bd_range = (diffusion + blur_range) * 2
+local X_t, Y_t = X_tuning * 0.5, Y_tuning * 0.5
+local bdw = bd_range + w + math.abs(X_tuning)
+local bdh = bd_range + h + math.abs(Y_tuning)
+
+obj.setoption("drawtarget", "tempbuffer", bdw, bdh)
+obj.copybuffer("cache:ori", "obj")
+
+-- ソフトフォーカス加工
+obj.effect("ぼかし", "範囲", blur_range, "縦横比", blur_aspect, "光の強さ", blur_light, "サイズ固定", dp5)
+obj.effect("拡散光", "強さ", difl_str, "拡散", diffusion, "サイズ固定", dp6)
+obj.effect("単色化", "強さ", sincolaf, "輝度を保持する", dp8, "color", sincolcol)
+obj.effect("色調補正", "明るさ", s_brightness, "ｺﾝﾄﾗｽﾄ", s_contrast, "色相", s_hue, "輝度", s_luminance, "彩度", s_chroma, "飽和する", dp15)
+obj.copybuffer("cache:ebd", "obj")
+
+obj.copybuffer("obj", "cache:ori")
+obj.draw(-X_t, -Y_t)
+
+obj.copybuffer("obj", "cache:ebd")
+obj.setoption("blend", blmode)
+obj.draw(X_t, Y_t, 0, 1, alpha)
+
+obj.setoption("blend", 0)
+obj.copybuffer("obj", "tmp")
+
+obj.cx = obj.cx - X_t
+obj.cy = obj.cy - Y_t
