@@ -9,6 +9,8 @@
 		- 文字色 / 文字装飾色 : 色
 		- 文字サイズ, フォント名, 文字装飾 : テキストのパラメータ
 		- 文字不透明度 : 文字の不透明度
+		- info : アンカー, コントラスト比の表示を設定
+		- debug_print : debug_printに値を返すかの指定
 ]]
 
 --[[
@@ -24,7 +26,7 @@
 --track2:文字_X,-4000,4000,0
 --track3:文字_Y,-4000,4000,0
 --check0:info,1
---dialog:アンカー,dA={-100,0,100,0};font_size,local dp3=34;font_name,local dp4="MS UI Gothic";文字装飾(0-4),local dp5=0;文字色/col,local dp6=0xffffff;文字装飾色/col,local dp7=0x000000;文字不透明度,local dp8=100;
+--dialog:アンカー,dA={-100,0,100,0};font_size,local dp3=34;font_name,local dp4="MS UI Gothic";文字装飾(0-4),local dp5=0;文字色/col,local dp6=0xffffff;文字装飾色/col,local dp7=0x000000;文字不透明度,local dp8=100;debug_print/chk,local dp16=0;
 
 local crc_anchor_size, crc_anchor_alpha = obj.track0, obj.track1 / 100
 local text_size, font_name, text_deco, text_col, text_deco_col, text_alpha = dp3 or 34, dp4 or "MS UI Gothic", dp5 or 0, dp6 or 0xffffff, dp7 or 0x000000, dp8 / 100 or 1
@@ -42,11 +44,7 @@ local crc_ct_col2 = obj.getpixel(dA[3] + obj.w / 2, dA[4] + obj.h / 2, "col")
 -- コントラスト比自動計算
 package.path = package.path:gsub("(.-)(%?.-);.+", "%0;%1script\\%2")
 local CRC = require("contrast_ratio_cal")
-local contrast_ratio = CRC.contrast_ratio_cal(crc_ct_col1, crc_ct_col2)
-
-debug_print(contrast_ratio)
-debug_print(string.format("%06x", crc_ct_col1))
-debug_print(string.format("%06x", crc_ct_col2))
+local contrast = CRC.contrast_ratio_cal(crc_ct_col1, crc_ct_col2)
 
 if obj.check0 then
 	obj.setoption("drawtarget", "tempbuffer", obj.getpixel())
@@ -56,8 +54,17 @@ if obj.check0 then
 	obj.draw((dA[3] + 0.5) * obj.zoom, (dA[4] + 0.5) * obj.zoom, 0, 1, crc_anchor_alpha)
 
 	obj.setfont(font_name, text_size, text_deco, text_col, text_deco_col)
-	obj.load("text", contrast_ratio)
+	obj.load("text", contrast.ratio)
 	obj.draw(obj.track2, obj.track3, 0, 1, text_alpha)
 
 	obj.copybuffer("obj", "tmp")
+end
+
+--debug_print
+if dp16 == 1 then
+	debug_print("col1           : 0x" .. string.format("%06x", crc_ct_col1))
+	debug_print("col2           : 0x" .. string.format("%06x", crc_ct_col2))
+	debug_print("col1_luminance : " .. contrast.col1.l)
+	debug_print("col2_luminance : " .. contrast.col2.l)
+	debug_print("contrast_ratio : " .. contrast.ratio)
 end
