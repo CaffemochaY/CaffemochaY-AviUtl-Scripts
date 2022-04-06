@@ -34,7 +34,7 @@ local lowlumin, highlumin, blur_range, alpha = obj.track0, obj.track1, _dp13 or 
 
 _dp1, _dp2, _dp3, _dp4, _dp5, _dp6, _dp7, _dp8, _dp9, _dp13, _dp14, _dp15, _dp16 = nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil
 
-if not (jit) then -- LuaJIT‚ð“±“ü‚µ‚Ä‚¢‚é‚©‚Ì”»’è
+if (type(jit) ~= "table") then -- LuaJIT‚ð“±“ü‚µ‚Ä‚¢‚é‚©‚Ì”»’è
 	obj.setfont("MS UI Gothic", 34, 2)
 	obj.load("text", "LuaJIT‚ð“±“ü‚µ‚Ä‚­‚¾‚³‚¢")
 	obj.draw()
