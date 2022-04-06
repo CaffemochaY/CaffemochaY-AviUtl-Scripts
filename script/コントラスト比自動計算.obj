@@ -12,16 +12,19 @@
 		- debug_print : debug_printに値を返すかの指定
 ]]
 
---dialog:文字色/col,local dp1=0x000000;背景色/col,local dp2=0xffffff;文字サイズ,local dp3=34;フォント名,local dp4="MS UI Gothic";文字装飾(0-4),local dp5=0;背景margin,local dp6=20;debug_print/chk,local dp16=0;
+--track0:文字サイズ,1,512,50,1
+--track1:文字装飾,0,4,0,1
+--track2:margin,0,1000,20
+--check0:debug_print,0
+--dialog:文字色/col,local dp1=0x000000;背景色/col,local dp2=0xffffff;フォント名,local dp3="MS UI Gothic";
 
 local crc_ct_col1, crc_ct_col2 = dp1 or 0x000000, dp2 or 0xffffff
-local text_size, font_name, text_deco = dp3 or 34, dp4 or "MS UI Gothic", dp5 or 0
-local bg_margin = dp6 or 20
+local text_size, font_name, text_deco = math.floor(obj.track0), dp3 or "MS UI Gothic", math.floor(obj.track1)
+local bg_margin = obj.track2
 
 -- コントラスト比自動計算
 package.path = package.path:gsub("(.-)(%?.-);.+", "%0;%1script\\%2")
-local CRC = require("contrast_ratio_cal")
-local contrast = CRC.contrast_ratio_cal(crc_ct_col1, crc_ct_col2)
+local contrast = require("contrast_ratio_cal").contrast_ratio_cal(crc_ct_col1, crc_ct_col2)
 
 -- 文字描画後のサイズを取得
 obj.setfont(font_name, text_size, text_deco, crc_ct_col1)
@@ -29,8 +32,7 @@ obj.load("text", contrast.ratio)
 obj.draw()
 local w, h = obj.getpixel()
 
--- tempbufferに文字を移動
-obj.copybuffer("tmp", "obj")
+obj.copybuffer("tmp", "obj") -- tempbufferに文字を移動
 
 -- 背景描画
 obj.load("figure", "四角形", crc_ct_col2, 1)
@@ -41,10 +43,10 @@ obj.copybuffer("obj", "tmp")
 obj.draw()
 
 --debug_print
-if dp16 == 1 then
+if (obj.check0) then
 	debug_print("col1           : 0x" .. string.format("%06x", crc_ct_col1))
 	debug_print("col2           : 0x" .. string.format("%06x", crc_ct_col2))
-	debug_print("col1_luminance : " .. contrast.col1.l)
-	debug_print("col2_luminance : " .. contrast.col2.l)
+	debug_print("col1_luminance : " .. contrast[1].l)
+	debug_print("col2_luminance : " .. contrast[2].l)
 	debug_print("contrast_ratio : " .. contrast.ratio)
 end

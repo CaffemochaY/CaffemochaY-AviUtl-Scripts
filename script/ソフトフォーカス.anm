@@ -49,16 +49,16 @@ if alpha ~= 0 then
 			cache[dst] = {obj.getpixeldata("alloc")}
 		else
 			local function resize(tw, th)
-				local w, h = obj.getpixel()
-				if tw < w then
-					obj.effect("クリッピング", "右", w - tw)
+				local cw, ch = obj.getpixel()
+				if tw < cw then
+					obj.effect("クリッピング", "右", cw - tw)
 				else
-					obj.effect("領域拡張", "右", tw - w)
+					obj.effect("領域拡張", "右", tw - cw)
 				end
-				if th < h then
-					obj.effect("クリッピング", "下", h - th)
+				if th < ch then
+					obj.effect("クリッピング", "下", ch - th)
 				else
-					obj.effect("領域拡張", "下", th - h)
+					obj.effect("領域拡張", "下", th - ch)
 				end
 			end
 			local c = cache[src]

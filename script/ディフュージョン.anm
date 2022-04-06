@@ -1,0 +1,109 @@
+--[[
+	ディフュージョン.anm / ver.1
+	Copyright (c) 2022 CaffemochaY
+
+	LuaJITが必須 （LuaJIT 2.1.0-beta3 推奨）
+
+	- 閾値を指定し、その指定した数値以上の輝度の光を拡散させる
+	- 元の色味を保ったまま絵の空気を柔らかくできる
+
+	- parameter
+		- 輝度最低 / 最高 : 拡散させたいハイライト部分の輝度の最低、最高を指定する
+			- 輝度最低より下の輝度は `0` , 輝度最高より上の輝度は `1` に補正する
+		- alpha : ハイライト部分の透明度倍率(%)
+			- alpha_Insert : `obj.track3` よりも自由に指定できる透明度倍率
+				- `100` 以上を指定すると、通常よりも濃くできる
+		- without_original : 元画像を表示するかどうか （`1` で表示しない）
+		- ぼかし, 色調補正 各種パラメータ
+
+	- 注意
+		- `合成モード(0-12)` のうち、`10` , `11` , `12` はうまくいかない場合があります
+			- 詳細は `lua.txt` を見て下さい
+		- `_dp1~9,13~16` をglobal変数で使用しています
+]]
+
+--track0:輝度最低,0,255,200,1
+--track1:輝度最高,0,255,240,1
+--track2:ぼかし,0,100,33,1
+--track3:alpha,0,100,100
+--dialog:ぼかし縦横比,_dp1=0;ぼかし光の強さ,_dp2=0;ぼかしサイズ固定/chk,_dp3=0;明るさ,_dp4=100;コントラスト,_dp5=100;色相,_dp6=0;輝度,_dp7=100;彩度,_dp8=100;飽和する/chk,_dp9=0;blur_range_insert,_dp13=nil;alpha_insert,_dp14=nil;without_original/chk,_dp15=0;合成モード(0-12),_dp16=6;
+
+local blur_aspect, blur_light, blur_fsize, orionf, blmode = _dp1 or 0, _dp2 or 0, _dp3, _dp15, _dp16 or 6
+local s_brightness, s_contrast, s_hue, s_luminance, s_chroma, s_saturation = _dp4 or 100, _dp5 or 100, _dp6 or 0, _dp7 or 100, _dp8 or 100, _dp9
+local lowlumin, highlumin, blur_range, alpha = obj.track0, obj.track1, _dp13 or obj.track2, (_dp14 or obj.track3) / 100
+
+_dp1, _dp2, _dp3, _dp4, _dp5, _dp6, _dp7, _dp8, _dp9, _dp13, _dp14, _dp15, _dp16 = nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil
+
+if not (jit) then -- LuaJITを導入しているかの判定
+	obj.setfont("MS UI Gothic", 34, 2)
+	obj.load("text", "LuaJITを導入してください")
+	obj.draw()
+else
+	if (alpha ~= 0 and blur_range ~= 0) then
+		local ffi = require("ffi")
+		pcall(ffi.cdef, "typedef struct PixelBGRA_ {uint8_t b,g,r,a;} PixelBGRA;")
+		local data, w, h = obj.getpixeldata()
+		local cdata = ffi.cast("PixelBGRA*", data)
+		local dw, dh = w + blur_range * 2, h + blur_range * 2
+		obj.setoption("drawtarget", "tempbuffer", dw, dh)
+
+		local cache = {}
+		local function copybuffer(dst, src)
+			if (src == "obj") then
+				cache[dst] = {obj.getpixeldata("alloc")}
+			else
+				local function resize(tw, th)
+					local cw, ch = obj.getpixel()
+					if (tw < cw) then
+						obj.effect("クリッピング", "右", cw - tw)
+					else
+						obj.effect("領域拡張", "右", tw - cw)
+					end
+					if (th < ch) then
+						obj.effect("クリッピング", "下", ch - th)
+					else
+						obj.effect("領域拡張", "下", th - ch)
+					end
+				end
+				local c = cache[src]
+				resize(c[2], c[3])
+				obj.putpixeldata(c[1])
+			end
+		end
+
+		copybuffer("cache:ori", "obj")
+
+		-- 正規化、輝度を透明度に変換
+		for y = 0, h - 1 do
+			for x = 0, w - 1 do
+				local p = x + y * w
+				local lumin = cdata[p].r * 0.2126 + cdata[p].g * 0.7152 + cdata[p].b * 0.0722
+				local arate = (lumin - lowlumin) / (highlumin - lowlumin)
+
+				if (lumin < lowlumin) then
+					cdata[p].a = 0
+				elseif (lumin < highlumin) then
+					cdata[p].a = cdata[p].a * arate
+				end
+			end
+		end
+
+		obj.putpixeldata(data)
+		obj.effect("ぼかし", "範囲", blur_range, "縦横比", blur_aspect, "光の強さ", blur_light, "サイズ固定", blur_fsize)
+		obj.effect("色調補正", "明るさ", s_brightness, "ｺﾝﾄﾗｽﾄ", s_contrast, "色相", s_hue, "輝度", s_luminance, "彩度", s_chroma, "飽和する", s_saturation)
+
+		if (orionf == 0) then
+			copybuffer("cache:dif", "obj")
+			copybuffer("obj", "cache:ori")
+			obj.draw()
+
+			copybuffer("obj", "cache:dif")
+			obj.setoption("blend", blmode)
+		end
+
+		obj.draw(0, 0, 0, 1, alpha)
+
+		obj.setoption("blend", 0)
+		obj.copybuffer("obj", "tmp")
+	end
+end

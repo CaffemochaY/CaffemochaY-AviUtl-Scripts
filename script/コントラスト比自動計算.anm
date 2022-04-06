@@ -64,7 +64,7 @@ end
 if dp16 == 1 then
 	debug_print("col1           : 0x" .. string.format("%06x", crc_ct_col1))
 	debug_print("col2           : 0x" .. string.format("%06x", crc_ct_col2))
-	debug_print("col1_luminance : " .. contrast.col1.l)
-	debug_print("col2_luminance : " .. contrast.col2.l)
+	debug_print("col1_luminance : " .. contrast[1].l)
+	debug_print("col2_luminance : " .. contrast[2].l)
 	debug_print("contrast_ratio : " .. contrast.ratio)
 end
