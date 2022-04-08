@@ -162,7 +162,7 @@ markdownみたいな書き方をしているので、コピペしてmarkdownに�
 
     ---
 
-    ディフュージョン.anm / ver.1  
+    ディフュージョン.anm / ver.1.1  
     Copyright (c) 2022 CaffemochaY
 
     LuaJITが必須 （LuaJIT 2.1.0-beta3 推奨）
@@ -186,6 +186,10 @@ markdownみたいな書き方をしているので、コピペしてmarkdownに�
         - 変えるとしたら、`0` , `1` , `4` , `5` , `6` , `8` 辺り
         - デフォルトは `6`
       - `_dp1~9,13~16` をglobal変数で使用しています
+
+    - changelog
+      - ver.1.1
+        - 0除算のパターンを考慮していなかったため該当部分の修正
 
     </details>
 
