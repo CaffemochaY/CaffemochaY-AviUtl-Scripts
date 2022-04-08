@@ -1,5 +1,5 @@
 --[[
-	ディフュージョン.anm / ver.1
+	ディフュージョン.anm / ver.1.1
 	Copyright (c) 2022 CaffemochaY
 
 	LuaJITが必須 （LuaJIT 2.1.0-beta3 推奨）
@@ -23,6 +23,10 @@
 			- 変えるとしたら、`0` , `1` , `4` , `5` , `6` , `8` 辺り
 			- デフォルトは `6`
 		- `_dp1~9,13~16` をglobal変数で使用しています
+
+	- changelog
+		- ver.1.1
+			- 0除算のパターンを考慮していなかったため該当部分の修正
 ]]
 
 --track0:輝度最低,0,255,200,1
@@ -76,17 +80,16 @@ else
 
 		copybuffer("cache:ori", "obj")
 
-		-- 正規化、輝度を透明度に変換
+		-- 輝度を透明度に変換
 		for y = 0, h - 1 do
 			for x = 0, w - 1 do
 				local p = x + y * w
 				local lumin = cdata[p].r * 0.2126 + cdata[p].g * 0.7152 + cdata[p].b * 0.0722
-				local arate = (lumin - lowlumin) / (highlumin - lowlumin)
 
 				if (lumin < lowlumin) then
 					cdata[p].a = 0
 				elseif (lumin < highlumin) then
-					cdata[p].a = cdata[p].a * arate
+					cdata[p].a = cdata[p].a * (lumin - lowlumin) / (highlumin - lowlumin)
 				end
 			end
 		end
