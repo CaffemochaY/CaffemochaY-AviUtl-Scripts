@@ -1,0 +1,80 @@
+--[==[
+	任意番号個別エフェクト.anm / ver.1
+	Copyright (c) 2022 CaffemochaY
+
+	- parameter
+		- 開始番号 / 終了番号 : エフェクトをかけたい `index` を指定する
+			- index_table : "table" でエフェクトをかけたい `index` を複数範囲指定する
+				- `index` は `0` スタート
+
+		- 関数版
+			- Effect_insert : `obj.effect` でエフェクトを指定する
+		- テンプレート版
+			- _name : エフェクトの名前
+			- track0~7 : トラックバー (3~7は "table" で指定)
+			- color1,2 : 色
+			- check0~5 : チェックの値を "table" で指定
+			- mode : 合成モードなどの `.exo` で `mode` の値を指定
+			- type : 図形の種類などの `.exo` で `type` の値を指定
+			- name/file : アニメーション効果の名称やファイルのパスなどを指定
+			- color_yc1,2 : YCbCr の各種値を "table" でエフェクトを指定 (数値でも可)
+			- seed/変形方法 : ノイズの `seed` を指定 / ディスプレイスメントマップの変形方法を指定
+			- param : アニメーション効果のダイアログパラメータを指定
+
+	- 注意
+		- `Effect_insert()` の初めの `]]` は消さないように
+		- "table" の欄は "table" で値を指定すること
+]==]
+
+@関数版
+
+--track0:開始番号,0,10000,0,1
+--track1:終了番号,0,10000,0,1
+--dialog:Effect_insert,function Effect_insert()--[[=]]obj.effect("縁取り","サイズ",5,"ぼかし",10,"color",0xff0000);index_table,end _Dp0={};
+
+local sae_table = _Dp0 or {}
+sae_table[1], sae_table[2] = math.floor(sae_table[1] or obj.track0), math.floor(sae_table[2] or obj.track1)
+for i = 3 , #sae_table do sae_table[i] = math.floor(sae_table[i]) end
+
+for i = 1, math.floor(#sae_table / 2) do
+	if obj.index >= sae_table[2 * i - 1] and obj.index <= sae_table[2 * i] then
+		Effect_insert()
+	end
+end
+
+_Dp0, Effect_insert = nil, nil
+
+@テンプレート版
+
+--track0:開始番号,0,10000,0,1
+--track1:終了番号,0,10000,0,1
+--dialog:index_table,_Dp0={};_name,_Dp1="";track0,_Dp2=nil;track1,_Dp3=nil;track2,_Dp4=nil;track3~7,_Dp5={};color1/col,_Dp6=0x000000;color2/col,_Dp7=0xffffff;check0/chk,_Dp8=0;check1~4,_Dp9={};mode,_Dpa=nil;type,_Dpb=nil;name/file,_Dpc="";color_yc,_Dpd={};seed/変形方法,_Dpe=nil;param,_Dpf="";
+
+local _name = _Dp1 or ""
+local track0, track1, track2 = _Dp2 or 0, _Dp3 or 0, _Dp4 or 0
+local track3, track4, track5, track6, track7 = _Dp5[1] or 0, _Dp5[2] or 0, _Dp5[3] or 0, _Dp5[4] or 0, _Dp5[5] or 0
+local color1, color2 = _Dp6 or 0, _Dp7 or 0
+local check0, check1, check2, check3, check4 = _Dp8, _Dp9[2] or 0, _Dp9[3] or 0, _Dp9[4] or 0, _Dp9[5] or 0
+local mode = _Dpa or 0
+local etype = _Dpb or 0
+local name = _Dpc or ""
+local color_yc1, color_yc2 = _Dpd[1] or 0, _Dpd[2] or 0
+local seed = _Dpe or 0
+local calc = _Dpe or 0
+local param = _Dpf or ""
+
+package.path = package.path:gsub("(.-)(%?.-);.+", "%0;%1script\\%2")
+package.cpath = package.cpath:gsub("(.-)(%?.-);.+", "%0;%1script\\%2")
+if pcall(require, "rikky_module") then rikky_module.file(12, "name/file") end
+
+local sae_table = _Dp0 or {}
+sae_table[1], sae_table[2] = math.floor(sae_table[1] or obj.track0), math.floor(sae_table[2] or obj.track1)
+for i = 3 , #sae_table do sae_table[i] = math.floor(sae_table[i]) end
+
+for i = 1, math.floor(#sae_table / 2) do
+	if (obj.index >= sae_table[2 * i - 1] and obj.index <= sae_table[2 * i]) then
+		require("aviutl_effect_list").auleffectlist(_name, track0, track1, track2, track3, track4, track5, track6, track7, color1, color2, check0, check1, check2, check3, check4, mode, etype, name, color_yc1, color_yc2, seed, calc, param)
+	end
+end
+
+_Dp0, _Dp1, _Dp2, _Dp3, _Dp4, _Dp5, _Dp6, _Dp7, _Dp8, _Dp9, _Dpa, _Dpb, _Dpc, _Dpd, _Dpe, _Dpf = nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil

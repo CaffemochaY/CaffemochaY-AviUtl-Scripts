@@ -25,6 +25,7 @@ markdownみたいな書き方をしているので、コピペしてmarkdownに�
 - [グラデーション縁取り＋](#グラデーション縁取り)
 - [コントラスト比自動計算](#コントラスト比自動計算)
 - [ディフュージョン](#ディフュージョン)
+- [任意番号個別エフェクト](#任意番号個別エフェクト)
 
 ---
 
@@ -205,12 +206,52 @@ markdownみたいな書き方をしているので、コピペしてmarkdownに�
 
     </details>
 
+### 任意番号個別エフェクト
+
+- `@任意番号個別エフェクト.anm` / `aviutl_effect_list.lua`
+
+  - 個別オブジェクトにおいて、番号を指定してそれのみにエフェクトを適応する
+    - 使用例
+      - ある文字からグラデーションの色を変える
+
+  - <details><summary>スクリプト内説明</summary>
+
+    ---
+
+    任意番号個別エフェクト.anm / ver.1  
+    Copyright (c) 2022 CaffemochaY
+
+    - parameter
+      - 開始番号 / 終了番号 : エフェクトをかけたい `index` を指定する
+        - index_table : "table" でエフェクトをかけたい `index` を複数範囲指定する
+          - `index` は `0` スタート
+
+      - 関数版
+        - Effect_insert : `obj.effect` でエフェクトを指定する
+      - テンプレート版
+        - _name : エフェクトの名前
+        - track0~7 : トラックバー (3~7は "table" で指定)
+        - color1,2 : 色
+        - check0~5 : チェックの値を "table" で指定
+        - mode : 合成モードなどの `.exo` で `mode` の値を指定
+        - type : 図形の種類などの `.exo` で `type` の値を指定
+        - name/file : アニメーション効果の名称やファイルのパスなどを指定
+        - color_yc1,2 : YCbCr の各種値を "table" でエフェクトを指定 (数値でも可)
+        - seed/変形方法 : ノイズの `seed` を指定 / ディスプレイスメントマップの変形方法を指定
+        - param : アニメーション効果のダイアログパラメータを指定
+
+    - 注意
+      - `Effect_insert()` の初めの `]]` は消さないように
+      - "table" の欄は "table" で値を指定すること
+
+    </details>
+
 ---
 
 ## License
 
 MIT ライセンス  
-詳細は [LICENSE](LICENSE) をご覧ください
+[LICENSE](LICENSE)
 
 ## 謝辞
 
