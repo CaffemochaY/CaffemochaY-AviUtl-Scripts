@@ -1,5 +1,6 @@
 --[[
 	aviutl_effect_list.lua / ver.1.0
+	Copyright (c) 2022 CaffemochaY
 
 	_name       : "string"
 

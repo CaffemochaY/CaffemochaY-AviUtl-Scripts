@@ -218,7 +218,7 @@ markdownみたいな書き方をしているので、コピペしてmarkdownに�
 
     ---
 
-    任意番号個別エフェクト.anm / ver.1  
+    任意番号個別エフェクト.anm / ver.1.0  
     Copyright (c) 2022 CaffemochaY
 
     - parameter
@@ -230,7 +230,7 @@ markdownみたいな書き方をしているので、コピペしてmarkdownに�
         - Effect_insert : `obj.effect` でエフェクトを指定する
       - テンプレート版
         - _name : エフェクトの名前
-        - track0~7 : トラックバー (3~7は "table" で指定)
+        - track0~7 : トラックバー (3,4,5,6,7 は "table" で指定)
         - color1,2 : 色
         - check0~5 : チェックの値を "table" で指定
         - mode : 合成モードなどの `.exo` で `mode` の値を指定
