@@ -8,12 +8,12 @@
 				- `index` は `0` スタート
 
 		- 関数版
-			- Effect_insert : `obj.effect` でエフェクトを指定する
+			- Effect_insert : 関数などでエフェクトを指定する ( `obj.effect` , `function` など)
 		- テンプレート版
 			- _name : エフェクトの名前
-			- track0~7 : トラックバー (3~7は "table" で指定)
+			- track0~7 : トラックバー (3,4,5,6,7 は "table" で指定)
 			- color1,2 : 色
-			- check0~5 : チェックの値を "table" で指定
+			- check0~4 : チェックの値を 0,1 で指定 (1,2,3,4 は "table" で指定)
 			- mode : 合成モードなどの `.exo` で `mode` の値を指定
 			- type : 図形の種類などの `.exo` で `type` の値を指定
 			- name/file : アニメーション効果の名称やファイルのパスなどを指定

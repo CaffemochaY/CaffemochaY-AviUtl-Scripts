@@ -31,6 +31,8 @@ markdownみたいな書き方をしているので、コピペしてmarkdownに�
 
 ### ソフトフォーカス
 
+紹介動画 : <https://www.nicovideo.jp/watch/sm40105334>
+
 - `ソフトフォーカス.anm`
 
   - いわゆる**ソフトフォーカス加工**ができる
@@ -72,6 +74,8 @@ markdownみたいな書き方をしているので、コピペしてmarkdownに�
 
 ### グラデーション縁取り＋
 
+紹介動画 : <https://www.nicovideo.jp/watch/sm40105334>
+
 - `グラデーション縁取り＋.anm`
 
   - **グラデーションが付いた縁取り**ができる
@@ -105,6 +109,8 @@ markdownみたいな書き方をしているので、コピペしてmarkdownに�
     </details>
 
 ### コントラスト比自動計算
+
+紹介動画 : <https://www.nicovideo.jp/watch/sm40317056>
 
 - `コントラスト比自動計算.anm` / `コントラスト比自動計算.obj` / `contrast_ratio_cal.lua`
 
@@ -151,6 +157,8 @@ markdownみたいな書き方をしているので、コピペしてmarkdownに�
     </details>
 
 ### ディフュージョン
+
+紹介動画 : <https://www.nicovideo.jp/watch/sm40317056>
 
 - `ディフュージョン.anm`
 
@@ -213,6 +221,7 @@ markdownみたいな書き方をしているので、コピペしてmarkdownに�
   - 個別オブジェクトにおいて、番号を指定してそれのみにエフェクトを適応する
     - 使用例
       - ある文字からグラデーションの色を変える
+      - 一部のオブジェクトだけ縁取りをする
 
   - <details><summary>スクリプト内説明</summary>
 
@@ -227,12 +236,12 @@ markdownみたいな書き方をしているので、コピペしてmarkdownに�
           - `index` は `0` スタート
 
       - 関数版
-        - Effect_insert : `obj.effect` でエフェクトを指定する
+        - Effect_insert : 関数などでエフェクトを指定する ( `obj.effect` , `function` など)
       - テンプレート版
         - _name : エフェクトの名前
         - track0~7 : トラックバー (3,4,5,6,7 は "table" で指定)
         - color1,2 : 色
-        - check0~5 : チェックの値を "table" で指定
+        - check0~4 : チェックの値を 0,1 で指定 (1,2,3,4 は "table" で指定)
         - mode : 合成モードなどの `.exo` で `mode` の値を指定
         - type : 図形の種類などの `.exo` で `type` の値を指定
         - name/file : アニメーション効果の名称やファイルのパスなどを指定
