@@ -227,7 +227,7 @@ markdownみたいな書き方をしているので、コピペしてmarkdownに�
 
     ---
 
-    任意番号個別エフェクト.anm / ver.1.0  
+    任意番号個別エフェクト.anm / ver.1.1  
     Copyright (c) 2022 CaffemochaY
 
     - parameter
@@ -251,6 +251,7 @@ markdownみたいな書き方をしているので、コピペしてmarkdownに�
 
     - 注意
       - `Effect_insert()` の初めの `]]` は消さないように
+      - `Effect_insert` は、 スクリプト制御で `Effect_insert` で関数を定義して代入すると、stack overflow になる
       - "table" の欄は "table" で値を指定すること
 
     </details>
