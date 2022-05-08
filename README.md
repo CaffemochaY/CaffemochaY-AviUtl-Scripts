@@ -22,13 +22,16 @@ markdownみたいな書き方をしているので、コピペしてmarkdownに�
 ## リスト
 
 - [ソフトフォーカス](#ソフトフォーカス)
-- [グラデーション縁取り＋](#グラデーション縁取り＋)
+- [グラデーション縁取り＋](#グラデーション縁取り)
 - [コントラスト比自動計算](#コントラスト比自動計算)
 - [ディフュージョン](#ディフュージョン)
+- [任意番号個別エフェクト](#任意番号個別エフェクト)
 
 ---
 
 ### ソフトフォーカス
+
+紹介動画 : <https://www.nicovideo.jp/watch/sm40105334>
 
 - `ソフトフォーカス.anm`
 
@@ -71,6 +74,8 @@ markdownみたいな書き方をしているので、コピペしてmarkdownに�
 
 ### グラデーション縁取り＋
 
+紹介動画 : <https://www.nicovideo.jp/watch/sm40105334>
+
 - `グラデーション縁取り＋.anm`
 
   - **グラデーションが付いた縁取り**ができる
@@ -104,6 +109,8 @@ markdownみたいな書き方をしているので、コピペしてmarkdownに�
     </details>
 
 ### コントラスト比自動計算
+
+紹介動画 : <https://www.nicovideo.jp/watch/sm40317056>
 
 - `コントラスト比自動計算.anm` / `コントラスト比自動計算.obj` / `contrast_ratio_cal.lua`
 
@@ -150,6 +157,8 @@ markdownみたいな書き方をしているので、コピペしてmarkdownに�
     </details>
 
 ### ディフュージョン
+
+紹介動画 : <https://www.nicovideo.jp/watch/sm40317056>
 
 - `ディフュージョン.anm`
 
@@ -205,12 +214,54 @@ markdownみたいな書き方をしているので、コピペしてmarkdownに�
 
     </details>
 
+### 任意番号個別エフェクト
+
+- `@任意番号個別エフェクト.anm` / `aviutl_effect_list.lua`
+
+  - 個別オブジェクトにおいて、番号を指定してそれのみにエフェクトを適応する
+    - 使用例
+      - ある文字からグラデーションの色を変える
+      - 一部のオブジェクトだけ縁取りをする
+
+  - <details><summary>スクリプト内説明</summary>
+
+    ---
+
+    任意番号個別エフェクト.anm / ver.1.1  
+    Copyright (c) 2022 CaffemochaY
+
+    - parameter
+      - 開始番号 / 終了番号 : エフェクトをかけたい `index` を指定する
+        - index_table : "table" でエフェクトをかけたい `index` を複数範囲指定する
+          - `index` は `0` スタート
+
+      - 関数版
+        - Effect_insert : 関数などでエフェクトを指定する ( `obj.effect` , `function` など)
+      - テンプレート版
+        - _name : エフェクトの名前
+        - track0~7 : トラックバー (3,4,5,6,7 は "table" で指定)
+        - color1,2 : 色
+        - check0~4 : チェックの値を 0,1 で指定 (1,2,3,4 は "table" で指定)
+        - mode : 合成モードなどの `.exo` で `mode` の値を指定
+        - type : 図形の種類などの `.exo` で `type` の値を指定
+        - name/file : アニメーション効果の名称やファイルのパスなどを指定
+        - color_yc1,2 : YCbCr の各種値を "table" でエフェクトを指定 (数値でも可)
+        - seed/変形方法 : ノイズの `seed` を指定 / ディスプレイスメントマップの変形方法を指定
+        - param : アニメーション効果のダイアログパラメータを指定
+
+    - 注意
+      - `Effect_insert()` の初めの `]]` は消さないように
+      - `Effect_insert` は、 スクリプト制御で `Effect_insert` で関数を定義して代入すると、stack overflow になる
+      - "table" の欄は "table" で値を指定すること
+
+    </details>
+
 ---
 
 ## License
 
 MIT ライセンス  
-詳細は [LICENSE](LICENSE) をご覧ください
+[LICENSE](LICENSE)
 
 ## 謝辞
 
