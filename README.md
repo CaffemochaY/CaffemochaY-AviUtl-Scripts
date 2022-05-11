@@ -227,7 +227,7 @@ markdownみたいな書き方をしているので、コピペしてmarkdownに�
 
     ---
 
-    任意番号個別エフェクト.anm / ver.1.1  
+    任意番号個別エフェクト.anm / ver.1.2  
     Copyright (c) 2022 CaffemochaY
 
     - parameter
