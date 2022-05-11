@@ -1,5 +1,5 @@
 --[==[
-	任意番号個別エフェクト.anm / ver.1.1
+	任意番号個別エフェクト.anm / ver.1.2
 	Copyright (c) 2022 CaffemochaY
 
 	- parameter
@@ -66,7 +66,7 @@ local param = _Dpf or ""
 
 package.path = package.path:gsub("(.-)(%?.-);.+", "%0;%1script\\%2")
 package.cpath = package.cpath:gsub("(.-)(%?.-);.+", "%0;%1script\\%2")
-if pcall(require, "rikky_module") then rikky_module.file(12, "name/file") end
+if pcall(require, "rikky_module") then rikky_module.file(13, "name/file") end
 
 local sae_table = _Dp0 or {}
 sae_table[1], sae_table[2] = math.floor(sae_table[1] or obj.track0), math.floor(sae_table[2] or obj.track1)
