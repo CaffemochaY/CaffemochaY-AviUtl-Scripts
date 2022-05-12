@@ -2,5 +2,8 @@
 	"[lua]": {
 		"files.encoding": "shiftjis"
 	},
+	"[ini]": {
+		"files.encoding": "shiftjis"
+	},
 	"lua.targetVersion": "5.1"
 }
