@@ -6,3 +6,5 @@
 *.scn text diff=sjis eol=crlf linguist-language=Lua
 *.tra text diff=sjis eol=crlf linguist-language=Lua
 *.lua text diff=sjis eol=crlf linguist-language=Lua
+*.exa text diff=sjis eol=crlf linguist-language=ini
+*.exo text diff=sjis eol=crlf linguist-language=ini
