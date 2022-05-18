@@ -1,5 +1,5 @@
 --[==[
-	任意番号個別エフェクト.anm / ver.1.2
+	任意番号個別エフェクト.anm / ver.1.2.1
 	Copyright (c) 2022 CaffemochaY
 
 	- parameter
@@ -25,6 +25,14 @@
 		- `Effect_insert()` の初めの `]]` は消さないように
 		- `Effect_insert` は、 スクリプト制御で `Effect_insert` で関数を定義して代入すると、stack overflow になる
 		- "table" の欄は "table" で値を指定すること
+
+	- changelog
+		- ver.1.1
+			- `stack overflow` について追記
+		- ver.1.2
+			- 設定ダイアログの番号が誤っていたので修正
+		- ver.1.2.1
+			- バージョン表記を3桁に変更
 ]==]
 
 @関数版

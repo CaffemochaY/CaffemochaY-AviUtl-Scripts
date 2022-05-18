@@ -46,7 +46,7 @@ markdownみたいな書き方をしているので、コピペしてmarkdownに�
 
     ---
 
-    ソフトフォーカス.anm / ver.2  
+    ソフトフォーカス.anm / ver.2.0.1  
     Copyright (c) 2022 CaffemochaY
 
     - 立ち絵等の画像を柔らかい雰囲気にします  
@@ -69,6 +69,8 @@ markdownみたいな書き方をしているので、コピペしてmarkdownに�
         - obj.copybufferを使わないようにした
         - 画像データのキャッシュ数を `0` にしても機能するようにした
         - 各種パラメータが `0` の時、パラメータが `0` の一部のエフェクトを無効化し、動作を軽量化した
+      - ver.2.0.1
+        - バージョン表記を3桁に変更
 
     </details>
 
@@ -86,7 +88,7 @@ markdownみたいな書き方をしているので、コピペしてmarkdownに�
 
     ---
 
-    グラデーション縁取り＋.anm / ver.2  
+    グラデーション縁取り＋.anm / ver.2.0.1  
     Copyright (c) 2022 CaffemochaY
 
     グラデーションがかかった縁取りを1オブジェクトで完結させることが出来るようにするスクリプトです  
@@ -105,6 +107,8 @@ markdownみたいな書き方をしているので、コピペしてmarkdownに�
       - ver.2
         - obj.copybufferを使わないようにした
         - 画像データのキャッシュ数を `0` にしても機能するようにした
+      - ver.2.0.1
+        - バージョン表記を3桁に変更
 
     </details>
 
@@ -127,7 +131,7 @@ markdownみたいな書き方をしているので、コピペしてmarkdownに�
 
     ---
 
-    コントラスト比自動計算.anm / ver.1  
+    コントラスト比自動計算.anm / ver.1.0.1  
     Copyright (c) 2022 CaffemochaY
 
     アンカーで2色を取得して、その2つのコントラスト比を自動で計算するスクリプト  
@@ -140,9 +144,13 @@ markdownみたいな書き方をしているので、コピペしてmarkdownに�
       - info : アンカー, コントラスト比の表示を設定
       - debug_print : debug_printに値を返すかの指定
 
+    - changelog
+      - ver.1.0.1
+        - バージョン表記を3桁に変更
+
     ---
 
-    コントラスト比自動計算.obj / ver.1  
+    コントラスト比自動計算.obj / ver.1.0.1  
     Copyright (c) 2022 CaffemochaY
 
     ダイアログで2色を指定して、その2つのコントラスト比を自動で計算するスクリプト  
@@ -153,6 +161,21 @@ markdownみたいな書き方をしているので、コピペしてmarkdownに�
       - 文字サイズ, フォント名, 文字装飾 : テキストのパラメータ
       - 背景margin : 文字の範囲から、どれだけ余白をとるかの指定
       - debug_print : debug_printに値を返すかの指定
+
+    - changelog
+      - ver.1.0.1
+        - バージョン表記を3桁に変更
+
+    ---
+
+    contrast_ratio_cal.lua / ver.1.0.1  
+    Copyright (c) 2022 CaffemochaY
+
+    sourse : [WCAG 2.0](https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-procedure)
+
+    - changelog
+      - ver.1.0.1
+        - バージョン表記を3桁に変更
 
     </details>
 
@@ -178,7 +201,7 @@ markdownみたいな書き方をしているので、コピペしてmarkdownに�
 
     ---
 
-    ディフュージョン.anm / ver.1.2  
+    ディフュージョン.anm / ver.1.2.1  
     Copyright (c) 2022 CaffemochaY
 
     LuaJITが必須 （LuaJIT 2.1.0-beta3 推奨）
@@ -211,6 +234,8 @@ markdownみたいな書き方をしているので、コピペしてmarkdownに�
       - ver.1.2
         - 輝度上限を設定出来るようにした
           - 白飛びしにくくなるように設定出来るようになったはず
+      - ver.1.2.1
+        - バージョン表記を3桁に変更
 
     </details>
 
@@ -227,7 +252,7 @@ markdownみたいな書き方をしているので、コピペしてmarkdownに�
 
     ---
 
-    任意番号個別エフェクト.anm / ver.1.2  
+    任意番号個別エフェクト.anm / ver.1.2.1  
     Copyright (c) 2022 CaffemochaY
 
     - parameter
@@ -253,6 +278,54 @@ markdownみたいな書き方をしているので、コピペしてmarkdownに�
       - `Effect_insert()` の初めの `]]` は消さないように
       - `Effect_insert` は、 スクリプト制御で `Effect_insert` で関数を定義して代入すると、stack overflow になる
       - "table" の欄は "table" で値を指定すること
+
+    - changelog
+      - ver.1.1
+        - `stack overflow` について追記
+      - ver.1.2
+        - 設定ダイアログの番号が誤っていたので修正
+      - ver.1.2.1
+        - バージョン表記を3桁に変更
+
+    ---
+
+    aviutl_effect_list.lua / ver.1.0.1  
+    Copyright (c) 2022 CaffemochaY
+
+    - parameter
+      - _name         : "string"
+      - track
+        - track0      : "number"
+        - track1      : "number"
+        - track2      : "number"
+        - track3      : "number"
+        - track4      : "number"
+        - track5      : "number"
+        - track6      : "number"
+        - track7      : "number"
+      - color
+        - color1/col  : "number"
+        - color2/col  : "number"
+      - check
+        - check0/chk  : "number"
+        - check1/chk  : "number"
+        - check2/chk  : "number"
+        - check3/chk  : "number"
+        - check4/chk  : "number"
+      - mode          : "number"
+      - etype         : "number"
+      - name / file   : "string"
+      - color_yc
+        - color_yc1   : "table" or "number"
+        - color_yc2   : "table" or "number"
+      - seed          : "number"
+      - calc          : "number"
+      - param         : "string"
+
+    - changelog
+      - ver.1.0.1
+        - バージョン表記を3桁に変更
+        - コメントを少し整理
 
     </details>
 

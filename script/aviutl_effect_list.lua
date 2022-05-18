@@ -1,41 +1,41 @@
 --[[
-	aviutl_effect_list.lua / ver.1.0
+	aviutl_effect_list.lua / ver.1.0.1
 	Copyright (c) 2022 CaffemochaY
 
-	_name       : "string"
+	- parameter
+		- _name         : "string"
+		- track
+			- track0      : "number"
+			- track1      : "number"
+			- track2      : "number"
+			- track3      : "number"
+			- track4      : "number"
+			- track5      : "number"
+			- track6      : "number"
+			- track7      : "number"
+		- color
+			- color1/col  : "number"
+			- color2/col  : "number"
+		- check
+			- check0/chk  : "number"
+			- check1/chk  : "number"
+			- check2/chk  : "number"
+			- check3/chk  : "number"
+			- check4/chk  : "number"
+		- mode          : "number"
+		- etype         : "number"
+		- name / file   : "string"
+		- color_yc
+			- color_yc1   : "table" or "number"
+			- color_yc2   : "table" or "number"
+		- seed          : "number"
+		- calc          : "number"
+		- param         : "string"
 
-	track0      : "number"
-	track1      : "number"
-	track2      : "number"
-	track3      : "number"
-	track4      : "number"
-	track5      : "number"
-	track6      : "number"
-	track7      : "number"
-
-	color1/col  : "number"
-	color2/col  : "number"
-
-	check0/chk  : "number"
-	check1/chk  : "number"
-	check2/chk  : "number"
-	check3/chk  : "number"
-	check4/chk  : "number"
-
-	mode        : "number"
-
-	etype       : "number"
-
-	name / file : "string"
-
-	color_yc1   : "table" or "number"
-	color_yc2   : "table" or "number"
-
-	seed        : "number"
-
-	calc        : "number"
-
-	param       : "string"
+	- changelog
+		- ver.1.0.1
+			- バージョン表記を3桁に変更
+			- コメントを少し整理
 ]]
 
 --YCbCrの数値変換
