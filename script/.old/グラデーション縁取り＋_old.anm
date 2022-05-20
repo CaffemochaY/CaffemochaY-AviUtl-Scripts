@@ -1,5 +1,5 @@
 --[[
-	グラデーション縁取り＋.anm
+	グラデーション縁取り＋_old.anm / ver.1.1.0
 	Copyright (c) 2022 CaffemochaY
 
 	グラデーションがかかった縁取りを1オブジェクトで完結させることが出来るようにするスクリプトです
@@ -14,6 +14,11 @@
 	- parameter
 		- 縁取り, グラデーションのパラメータ各種
 		- alpha : 縁取り部分の透明度
+
+	- changelog
+		- ver.1.1.0
+			- 少し修正
+			- バージョン表記を3桁に変更
 ]]
 
 --track0:サイズ,0,500,3,1
@@ -22,42 +27,29 @@
 --track3:幅,0,1000,100,1
 --dialog:開始色/col,local dp1=0xffffff;終了色/col,local dp2=0x000000;中心X,local dp3=0;中心Y,local dp4=0;角度,local dp5=0;合成モード,local dp6=0;グラデーション形状,local dp7=0;縁色/col,local dp8=0x000000;$パターン画像,local dp9="";alpha,local dp10=100;
 
-package.cpath=package.cpath:gsub("(.-)(%?.-);.+","%0;%1script\\%2")
-
-if pcall(require, "rikky_module") then
-	rikky_module.file(9, "パターン画像")
-end
+package.cpath = package.cpath:gsub("(.-)(%?.-);.+", "%0;%1script\\%2")
+if pcall(require, "rikky_module") then rikky_module.file(9, "パターン画像") end
 
 local size = obj.track0
 local blur = obj.track1
 local af = obj.track2
 local width = obj.track3
 
-local color = dp1
-local color2 = dp2
-local centerX = dp3 or 0
-local centerY = dp4 or 0
+local color, color2 = dp1, dp2
+local centerX, centerY = dp3 or 0, dp4 or 0
 local radius = dp5 or 0
 local blend = dp6 or 0
 local shape = dp7 or 0
 local bordercol = dp8 or 0x0
 local pattern = dp9
-local alpha = ( dp10 or 100 ) / 100
+local alpha = dp10 / 100 or 1
 
 local w, h = obj.getpixel()
 local w2 = size * 2 + w
 local h2 = size * 2 + h
 local gradbor_no_color, gradbor_no_color_2 = 0, 0
-
-if not color then
-	color = 0x0
-	gradbor_no_color = 1
-end
-
-if not color2 then
-	color2 = 0x0
-	gradbor_no_color_2 = 1
-end
+if not color then color, gradbor_no_color = 0x0, 1 end
+if not color2 then color2, gradbor_no_color_2 = 0x0, 1 end
 
 if alpha < 0 then
 	alpha = 0

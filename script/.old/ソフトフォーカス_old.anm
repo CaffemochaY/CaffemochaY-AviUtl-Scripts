@@ -1,5 +1,5 @@
 --[[
-	ソフトフォーカス.anm
+	ソフトフォーカス_old.anm / ver.1.0.1
 	Copyright (c) 2022 CaffemochaY
 
 	- 立ち絵等の画像を柔らかい雰囲気にします
@@ -19,6 +19,11 @@
 		- `X,Y調整` は、絶対値が `"最大画像サイズ" - w(or h) - ((blur_range + diffusion)*2 )`より小さくなるようにしないと元画像がクリッピングされます
 		- `合成モード(0-12)` のうち、`10`,`11`,`12`はうまくいかない場合があります
 			- 詳細は `lua.txt` を見て下さい
+
+	- changelog
+		- ver.1.1.0
+			- 少し修正
+			- バージョン表記を3桁に変更
 ]]
 
 --track0:alpha,0,100,40
@@ -29,27 +34,18 @@
 
 local alpha = obj.track0 / 100
 local blur_range = obj.track1
-local difl_str = obj.track2
-local diffusion = obj.track3
+local difl_str, diffusion = obj.track2, obj.track3
 
-local X_tuning = dp1 or 0
-local Y_tuning = dp2 or 0
-local blur_aspect = dp3 or 0
-local blur_light = dp4 or 0
-local sincolaf = dp7 or 0
-local sincolcol = dp9 or 0xffffff
-local s_brightness = dp10 or 100
-local s_contrast = dp11 or 100
-local s_hue = dp12 or 0
-local s_luminance = dp13 or 100
-local s_chroma = dp14 or 100
+local X_tuning, Y_tuning = dp1 or 0, dp2 or 0
+local blur_aspect, blur_light = dp3 or 0, dp4 or 0
+local sincolaf, sincolcol = dp7 or 0, dp9 or 0xffffff
+local s_brightness, s_contrast, s_hue, s_luminance, s_chroma = dp10 or 100, dp11 or 100, dp12 or 0, dp13 or 100, dp14 or 100
 local blmode = dp16 or 0
 
 local w, h = obj.getpixel()
 local bd_range = (diffusion + blur_range) * 2
 local X_t, Y_t = X_tuning * 0.5, Y_tuning * 0.5
-local bdw = bd_range + w + math.abs(X_tuning)
-local bdh = bd_range + h + math.abs(Y_tuning)
+local bdw, bdh = bd_range + w + math.abs(X_tuning), bd_range + h + math.abs(Y_tuning)
 
 obj.setoption("drawtarget", "tempbuffer", bdw, bdh)
 obj.copybuffer("cache:ori", "obj")

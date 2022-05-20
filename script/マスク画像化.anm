@@ -1,0 +1,50 @@
+--[[
+	マスク画像化.anm / ver.1.0.0
+	Copyright (c) 2022 CaffemochaY
+
+	アルファ or RGBの各要素 をグレースケールに変換する
+]]
+
+--track0:mode,0,3,0,1
+--check0:alpha依存,1
+
+local bit, ffi = require("bit"), require("ffi")
+pcall(ffi.cdef, "typedef struct Pixel_ {uint32_t p;} Pixel;")
+
+local mmode, adep = math.floor(obj.track0), obj.check0
+local data, w, h = obj.getpixeldata()
+local cdata = ffi.cast("Pixel*", data)
+
+local function pixelprocess(p)
+	local pci = bit.rshift(p, 24) -- a
+	return bit.lshift(pci, 16) + bit.lshift(pci, 8) + pci + 0xff000000
+end
+
+if mmode == 1 then
+	function pixelprocess(p)
+		local pa, pci = bit.rshift(p, 24), bit.band(bit.rshift(p, 16), 255)
+		if adep then pci = pci * pa / 255 end
+		return bit.lshift(pci, 16) + bit.lshift(pci, 8) + pci + 0xff000000
+	end
+elseif mmode == 2 then
+	function pixelprocess(p)
+		local pa, pci = bit.rshift(p, 24), bit.band(bit.rshift(p, 8), 255)
+		if adep then pci = pci * pa / 255 end
+		return bit.lshift(pci, 16) + bit.lshift(pci, 8) + pci + 0xff000000
+	end
+elseif mmode == 3 then
+	function pixelprocess(p)
+		local pa, pci = bit.rshift(p, 24), bit.band(p, 255)
+		if adep then pci = pci * pa / 255 end
+		return bit.lshift(pci, 16) + bit.lshift(pci, 8) + pci + 0xff000000
+	end
+end
+
+for y = 0, h - 1 do
+	for x = 0, w - 1 do
+		local pn = x + y * w
+		cdata[pn].p = pixelprocess(cdata[pn].p)
+	end
+end
+
+obj.putpixeldata(data)
