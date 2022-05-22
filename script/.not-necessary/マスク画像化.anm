@@ -1,19 +1,22 @@
 --[[
-	マスク画像化.anm / ver.1.0.0
+	マスク画像化.anm / ver.1.1.0
 	Copyright (c) 2022 CaffemochaY
 
 	アルファ or RGBの各要素 をグレースケールに変換する
+
+	- changelog
+		- ver.1.1.0
+			- オブジェクトの生成の方法を変更
 ]]
 
 --track0:mode,0,3,0,1
 --check0:alpha依存,1
 
 local bit, ffi = require("bit"), require("ffi")
-pcall(ffi.cdef, "typedef struct Pixel_ {uint32_t p;} Pixel;")
 
 local mmode, adep = math.floor(obj.track0), obj.check0
 local data, w, h = obj.getpixeldata()
-local cdata = ffi.cast("Pixel*", data)
+local cdata = ffi.cast("uint32_t*", data)
 
 local function pixelprocess(p)
 	local pci = bit.rshift(p, 24) -- a
@@ -43,7 +46,7 @@ end
 for y = 0, h - 1 do
 	for x = 0, w - 1 do
 		local pn = x + y * w
-		cdata[pn].p = pixelprocess(cdata[pn].p)
+		cdata[pn] = pixelprocess(cdata[pn])
 	end
 end
 
