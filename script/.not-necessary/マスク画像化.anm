@@ -1,18 +1,18 @@
 --[[
-	ƒ}ƒXƒN‰æ‘œ‰».anm / ver.1.2.0
+	ãƒã‚¹ã‚¯ç”»åƒåŒ–.anm / ver.1.2.0
 	Copyright (c) 2022 CaffemochaY
 
-	ƒAƒ‹ƒtƒ@ or RGB‚ÌŠe—v‘f ‚ğƒOƒŒ[ƒXƒP[ƒ‹‚É•ÏŠ·‚·‚é
+	ã‚¢ãƒ«ãƒ•ã‚¡ or RGBã®å„è¦ç´  ã‚’ã‚°ãƒ¬ãƒ¼ã‚¹ã‚±ãƒ¼ãƒ«ã«å¤‰æ›ã™ã‚‹
 
 	- changelog
 		- ver.1.1.0
-			- ƒIƒuƒWƒFƒNƒg‚Ì¶¬‚Ì•û–@‚ğ•ÏX
+			- ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ç”Ÿæˆã®æ–¹æ³•ã‚’å¤‰æ›´
 		- ver.1.2.0
-			- pixelˆ—‚Ìƒ‹[ƒv‚ğ‰ü—Ç
+			- pixelå‡¦ç†ã®ãƒ«ãƒ¼ãƒ—ã‚’æ”¹è‰¯
 ]]
 
 --track0:mode,0,3,0,1
---check0:alphaˆË‘¶,1
+--check0:alphaä¾å­˜,1
 
 local bit, ffi = require("bit"), require("ffi")
 local mmode, adep = math.floor(obj.track0), obj.check0

@@ -1,48 +1,48 @@
 --[[
-	ƒRƒ“ƒgƒ‰ƒXƒg”ä©“®ŒvZ.obj / ver.1.0.1
+	ã‚³ãƒ³ãƒˆãƒ©ã‚¹ãƒˆæ¯”è‡ªå‹•è¨ˆç®—.obj / ver.1.0.1
 	Copyright (c) 2022 CaffemochaY
 
-	ƒ_ƒCƒAƒƒO‚Å2F‚ğw’è‚µ‚ÄA‚»‚Ì2‚Â‚ÌƒRƒ“ƒgƒ‰ƒXƒg”ä‚ğ©“®‚ÅŒvZ‚·‚éƒXƒNƒŠƒvƒg
-	[WCAG 2.0](https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-procedure)Šî€‚ÅF‚ÌƒRƒ“ƒgƒ‰ƒXƒg”ä‚ğŒvZ‚·‚é
+	ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã§2è‰²ã‚’æŒ‡å®šã—ã¦ã€ãã®2ã¤ã®ã‚³ãƒ³ãƒˆãƒ©ã‚¹ãƒˆæ¯”ã‚’è‡ªå‹•ã§è¨ˆç®—ã™ã‚‹ã‚¹ã‚¯ãƒªãƒ—ãƒˆ
+	[WCAG 2.0](https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-procedure)åŸºæº–ã§è‰²ã®ã‚³ãƒ³ãƒˆãƒ©ã‚¹ãƒˆæ¯”ã‚’è¨ˆç®—ã™ã‚‹
 
 	- parameter
-		- •¶šF / ”wŒiF : F
-		- •¶šƒTƒCƒY, ƒtƒHƒ“ƒg–¼, •¶š‘•ü : ƒeƒLƒXƒg‚Ìƒpƒ‰ƒ[ƒ^
-		- ”wŒimargin : •¶š‚Ì”ÍˆÍ‚©‚çA‚Ç‚ê‚¾‚¯—]”’‚ğ‚Æ‚é‚©‚Ìw’è
-		- debug_print : debug_print‚É’l‚ğ•Ô‚·‚©‚Ìw’è
+		- æ–‡å­—è‰² / èƒŒæ™¯è‰² : è‰²
+		- æ–‡å­—ã‚µã‚¤ã‚º, ãƒ•ã‚©ãƒ³ãƒˆå, æ–‡å­—è£…é£¾ : ãƒ†ã‚­ã‚¹ãƒˆã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
+		- èƒŒæ™¯margin : æ–‡å­—ã®ç¯„å›²ã‹ã‚‰ã€ã©ã‚Œã ã‘ä½™ç™½ã‚’ã¨ã‚‹ã‹ã®æŒ‡å®š
+		- debug_print : debug_printã«å€¤ã‚’è¿”ã™ã‹ã®æŒ‡å®š
 
 	- changelog
 		- ver.1.0.1
-			- ƒo[ƒWƒ‡ƒ“•\‹L‚ğ3Œ…‚É•ÏX
+			- ãƒãƒ¼ã‚¸ãƒ§ãƒ³è¡¨è¨˜ã‚’3æ¡ã«å¤‰æ›´
 ]]
 
---track0:•¶šƒTƒCƒY,1,512,50,1
---track1:•¶š‘•ü,0,4,0,1
+--track0:æ–‡å­—ã‚µã‚¤ã‚º,1,512,50,1
+--track1:æ–‡å­—è£…é£¾,0,4,0,1
 --track2:margin,0,1000,20
 --check0:debug_print,0
---dialog:•¶šF/col,local dp1=0x000000;”wŒiF/col,local dp2=0xffffff;ƒtƒHƒ“ƒg–¼,local dp3="MS UI Gothic";
+--dialog:æ–‡å­—è‰²/col,local dp1=0x000000;èƒŒæ™¯è‰²/col,local dp2=0xffffff;ãƒ•ã‚©ãƒ³ãƒˆå,local dp3="MS UI Gothic";
 
 local crc_ct_col1, crc_ct_col2 = dp1 or 0x000000, dp2 or 0xffffff
 local text_size, font_name, text_deco = math.floor(obj.track0), dp3 or "MS UI Gothic", math.floor(obj.track1)
 local bg_margin = obj.track2
 
--- ƒRƒ“ƒgƒ‰ƒXƒg”ä©“®ŒvZ
+-- ã‚³ãƒ³ãƒˆãƒ©ã‚¹ãƒˆæ¯”è‡ªå‹•è¨ˆç®—
 package.path = package.path:gsub("(.-)(%?.-);.+", "%0;%1script\\%2")
 local contrast = require("contrast_ratio_cal").contrast_ratio_cal(crc_ct_col1, crc_ct_col2)
 
--- •¶š•`‰æŒã‚ÌƒTƒCƒY‚ğæ“¾
+-- æ–‡å­—æç”»å¾Œã®ã‚µã‚¤ã‚ºã‚’å–å¾—
 obj.setfont(font_name, text_size, text_deco, crc_ct_col1)
 obj.load("text", contrast.ratio)
 obj.draw()
 local w, h = obj.getpixel()
 
-obj.copybuffer("tmp", "obj") -- tempbuffer‚É•¶š‚ğˆÚ“®
+obj.copybuffer("tmp", "obj") -- tempbufferã«æ–‡å­—ã‚’ç§»å‹•
 
--- ”wŒi•`‰æ
-obj.load("figure", "lŠpŒ`", crc_ct_col2, 1)
+-- èƒŒæ™¯æç”»
+obj.load("figure", "å››è§’å½¢", crc_ct_col2, 1)
 obj.drawpoly(-w / 2 - bg_margin, -h / 2 - bg_margin, 0, w / 2 + bg_margin, -h / 2 - bg_margin, 0, w / 2 + bg_margin, h / 2 + bg_margin, 0, -w / 2 - bg_margin, h / 2 + bg_margin, 0)
 
--- •¶š‚ğ•`‰æ
+-- æ–‡å­—ã‚’æç”»
 obj.copybuffer("obj", "tmp")
 obj.draw()
 

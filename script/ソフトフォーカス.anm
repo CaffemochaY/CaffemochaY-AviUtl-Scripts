@@ -1,36 +1,36 @@
 --[[
-	ƒ\ƒtƒgƒtƒH[ƒJƒX.anm / ver.2.0.1
+	ã‚½ãƒ•ãƒˆãƒ•ã‚©ãƒ¼ã‚«ã‚¹.anm / ver.2.0.1
 	Copyright (c) 2022 CaffemochaY
 
-	- —§‚¿ŠG“™‚Ì‰æ‘œ‚ð_‚ç‚©‚¢•µˆÍ‹C‚É‚µ‚Ü‚·
-	- ‚Â‚¢‚Å‚É—§‘Ì‚Á‚Û‚³‚ð‰‰oo—ˆ‚é‚©‚à‚µ‚ê‚Ü‚¹‚ñ
-	- ‰e‚Ì•µˆÍ‹C‚âü‚ÌŒÅ‚³‚ªŽå‚É•Ï‰»‚µ‚Ü‚·
+	- ç«‹ã¡çµµç­‰ã®ç”»åƒã‚’æŸ”ã‚‰ã‹ã„é›°å›²æ°—ã«ã—ã¾ã™
+	- ã¤ã„ã§ã«ç«‹ä½“ã£ã½ã•ã‚’æ¼”å‡ºå‡ºæ¥ã‚‹ã‹ã‚‚ã—ã‚Œã¾ã›ã‚“
+	- å½±ã®é›°å›²æ°—ã‚„ç·šã®å›ºã•ãŒä¸»ã«å¤‰åŒ–ã—ã¾ã™
 
-	"‚Ú‚©‚µ", "ŠgŽUŒõ", "’PF‰»", "F’²•â³" ‚Ì‡”Ô‚ÅƒGƒtƒFƒNƒg‚ð‚©‚¯‚Ü‚·
+	"ã¼ã‹ã—", "æ‹¡æ•£å…‰", "å˜è‰²åŒ–", "è‰²èª¿è£œæ­£" ã®é †ç•ªã§ã‚¨ãƒ•ã‚§ã‚¯ãƒˆã‚’ã‹ã‘ã¾ã™
 
 	- parameter
-		- alpha : ƒGƒtƒFƒNƒg‚ð‚©‚¯‚½‚à‚Ì‚Ì“§–¾“x(“K‰ž‚·‚é‹­‚³‚É‘Š“–)
-		- ‚»‚Ì‘¼ : "‚Ú‚©‚µ", "ŠgŽUŒõ", "’PF‰»", "F’²•â³" ‚Ìƒpƒ‰ƒ[ƒ^ŠeŽí
+		- alpha : ã‚¨ãƒ•ã‚§ã‚¯ãƒˆã‚’ã‹ã‘ãŸã‚‚ã®ã®é€æ˜Žåº¦(é©å¿œã™ã‚‹å¼·ã•ã«ç›¸å½“)
+		- ãã®ä»– : "ã¼ã‹ã—", "æ‹¡æ•£å…‰", "å˜è‰²åŒ–", "è‰²èª¿è£œæ­£" ã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿å„ç¨®
 
-	- ’ˆÓ
-		- `X,Y’²®` ‚ÍAâ‘Î’l‚ª `"Å‘å‰æ‘œƒTƒCƒY" - w(or h) - (blur_range + diffusion) * 2`‚æ‚è¬‚³‚­‚È‚é‚æ‚¤‚É‚µ‚È‚¢‚ÆŒ³‰æ‘œ‚ªƒNƒŠƒbƒsƒ“ƒO‚³‚ê‚Ü‚·
-		- `‡¬ƒ‚[ƒh(0-12)` ‚Ì‚¤‚¿A`10`,`11`,`12`‚Í‚¤‚Ü‚­‚¢‚©‚È‚¢ê‡‚ª‚ ‚è‚Ü‚·
-			- Ú×‚Í `lua.txt` ‚ðŒ©‚Ä‰º‚³‚¢
+	- æ³¨æ„
+		- `X,Yèª¿æ•´` ã¯ã€çµ¶å¯¾å€¤ãŒ `"æœ€å¤§ç”»åƒã‚µã‚¤ã‚º" - w(or h) - (blur_range + diffusion) * 2`ã‚ˆã‚Šå°ã•ããªã‚‹ã‚ˆã†ã«ã—ãªã„ã¨å…ƒç”»åƒãŒã‚¯ãƒªãƒƒãƒ”ãƒ³ã‚°ã•ã‚Œã¾ã™
+		- `åˆæˆãƒ¢ãƒ¼ãƒ‰(0-12)` ã®ã†ã¡ã€`10`,`11`,`12`ã¯ã†ã¾ãã„ã‹ãªã„å ´åˆãŒã‚ã‚Šã¾ã™
+			- è©³ç´°ã¯ `lua.txt` ã‚’è¦‹ã¦ä¸‹ã•ã„
 
 	- changelog
 		- ver.2
-			- obj.copybuffer‚ðŽg‚í‚È‚¢‚æ‚¤‚É‚µ‚½
-			- ‰æ‘œƒf[ƒ^‚ÌƒLƒƒƒbƒVƒ…”‚ð `0` ‚É‚µ‚Ä‚à‹@”\‚·‚é‚æ‚¤‚É‚µ‚½
-			- ŠeŽíƒpƒ‰ƒ[ƒ^‚ª `0` ‚ÌŽžAƒpƒ‰ƒ[ƒ^‚ª `0` ‚Ìˆê•”‚ÌƒGƒtƒFƒNƒg‚ð–³Œø‰»‚µA“®ì‚ðŒy—Ê‰»‚µ‚½
+			- obj.copybufferã‚’ä½¿ã‚ãªã„ã‚ˆã†ã«ã—ãŸ
+			- ç”»åƒãƒ‡ãƒ¼ã‚¿ã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥æ•°ã‚’ `0` ã«ã—ã¦ã‚‚æ©Ÿèƒ½ã™ã‚‹ã‚ˆã†ã«ã—ãŸ
+			- å„ç¨®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãŒ `0` ã®æ™‚ã€ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãŒ `0` ã®ä¸€éƒ¨ã®ã‚¨ãƒ•ã‚§ã‚¯ãƒˆã‚’ç„¡åŠ¹åŒ–ã—ã€å‹•ä½œã‚’è»½é‡åŒ–ã—ãŸ
 		- ver.2.0.1
-			- ƒo[ƒWƒ‡ƒ“•\‹L‚ð3Œ…‚É•ÏX
+			- ãƒãƒ¼ã‚¸ãƒ§ãƒ³è¡¨è¨˜ã‚’3æ¡ã«å¤‰æ›´
 ]]
 
 --track0:alpha,0,100,40
---track1:‚Ú‚©‚µ”ÍˆÍ,0,300,10,1
---track2:ŠgŽUŒõ‹­‚³,0,100,50
---track3:ŠgŽU,0,100,6,1
---dialog:X’²®,local dp1=0;Y’²®,local dp2=0;‚Ú‚©‚µc‰¡”ä,local dp3=0;‚Ú‚©‚µŒõ‚Ì‹­‚³,local dp4=0;‚Ú‚©‚µƒTƒCƒYŒÅ’è/chk,local dp5=0;ŠgŽUŒõƒTƒCƒYŒÅ’è/chk,local dp6=0;’PF‰»‹­‚³,local dp7=0;‹P“x•ÛŽ/chk,local dp8=1;’PF‰»_F/col,local dp9=0xffffff;–¾‚é‚³,local dp10=100;ƒRƒ“ƒgƒ‰ƒXƒg,local dp11=100;F‘Š,local dp12=0;‹P“x,local dp13=100;Ê“x,local dp14=100;–O˜a‚·‚é/chk,local dp15=0;‡¬ƒ‚[ƒh(0-12),local dp16=0;
+--track1:ã¼ã‹ã—ç¯„å›²,0,300,10,1
+--track2:æ‹¡æ•£å…‰å¼·ã•,0,100,50
+--track3:æ‹¡æ•£,0,100,6,1
+--dialog:Xèª¿æ•´,local dp1=0;Yèª¿æ•´,local dp2=0;ã¼ã‹ã—ç¸¦æ¨ªæ¯”,local dp3=0;ã¼ã‹ã—å…‰ã®å¼·ã•,local dp4=0;ã¼ã‹ã—ã‚µã‚¤ã‚ºå›ºå®š/chk,local dp5=0;æ‹¡æ•£å…‰ã‚µã‚¤ã‚ºå›ºå®š/chk,local dp6=0;å˜è‰²åŒ–å¼·ã•,local dp7=0;è¼åº¦ä¿æŒ/chk,local dp8=1;å˜è‰²åŒ–_è‰²/col,local dp9=0xffffff;æ˜Žã‚‹ã•,local dp10=100;ã‚³ãƒ³ãƒˆãƒ©ã‚¹ãƒˆ,local dp11=100;è‰²ç›¸,local dp12=0;è¼åº¦,local dp13=100;å½©åº¦,local dp14=100;é£½å’Œã™ã‚‹/chk,local dp15=0;åˆæˆãƒ¢ãƒ¼ãƒ‰(0-12),local dp16=0;
 
 local alpha = obj.track0 / 100
 
@@ -44,7 +44,7 @@ if alpha ~= 0 then
 	local s_brightness, s_contrast, s_hue, s_luminance, s_chroma = dp10 or 100, dp11 or 100, dp12 or 0, dp13 or 100, dp14 or 100
 	local blmode = dp16 or 0
 
-	-- [sourse](https://scrapbox.io/ePi5131/ƒ\ƒtƒgƒtƒH[ƒJƒX_‚±‚ê‚Å’¼‚éH)
+	-- [sourse](https://scrapbox.io/ePi5131/ã‚½ãƒ•ãƒˆãƒ•ã‚©ãƒ¼ã‚«ã‚¹_ã“ã‚Œã§ç›´ã‚‹ï¼Ÿ)
 	local cache = {}
 	local function copybuffer(dst, src)
 		if src == "obj" then
@@ -53,14 +53,14 @@ if alpha ~= 0 then
 			local function resize(tw, th)
 				local cw, ch = obj.getpixel()
 				if tw < cw then
-					obj.effect("ƒNƒŠƒbƒsƒ“ƒO", "‰E", cw - tw)
+					obj.effect("ã‚¯ãƒªãƒƒãƒ”ãƒ³ã‚°", "å³", cw - tw)
 				else
-					obj.effect("—ÌˆæŠg’£", "‰E", tw - cw)
+					obj.effect("é ˜åŸŸæ‹¡å¼µ", "å³", tw - cw)
 				end
 				if th < ch then
-					obj.effect("ƒNƒŠƒbƒsƒ“ƒO", "‰º", ch - th)
+					obj.effect("ã‚¯ãƒªãƒƒãƒ”ãƒ³ã‚°", "ä¸‹", ch - th)
 				else
-					obj.effect("—ÌˆæŠg’£", "‰º", th - ch)
+					obj.effect("é ˜åŸŸæ‹¡å¼µ", "ä¸‹", th - ch)
 				end
 			end
 			local c = cache[src]
@@ -77,11 +77,11 @@ if alpha ~= 0 then
 	obj.setoption("drawtarget", "tempbuffer", bdw, bdh)
 	copybuffer("cache:ori", "obj")
 
-	-- ƒ\ƒtƒgƒtƒH[ƒJƒX‰ÁH
-	if blur_range ~= 0 then obj.effect("‚Ú‚©‚µ", "”ÍˆÍ", blur_range, "c‰¡”ä", blur_aspect, "Œõ‚Ì‹­‚³", blur_light, "ƒTƒCƒYŒÅ’è", dp5) end
-	if difl_str ~= 0 then obj.effect("ŠgŽUŒõ", "‹­‚³", difl_str, "ŠgŽU", diffusion, "ƒTƒCƒYŒÅ’è", dp6) end
-	if sincolaf ~= 0 then obj.effect("’PF‰»", "‹­‚³", sincolaf, "‹P“x‚ð•ÛŽ‚·‚é", dp8, "color", sincolcol) end
-	obj.effect("F’²•â³", "–¾‚é‚³", s_brightness, "ºÝÄ×½Ä", s_contrast, "F‘Š", s_hue, "‹P“x", s_luminance, "Ê“x", s_chroma, "–O˜a‚·‚é", dp15)
+	-- ã‚½ãƒ•ãƒˆãƒ•ã‚©ãƒ¼ã‚«ã‚¹åŠ å·¥
+	if blur_range ~= 0 then obj.effect("ã¼ã‹ã—", "ç¯„å›²", blur_range, "ç¸¦æ¨ªæ¯”", blur_aspect, "å…‰ã®å¼·ã•", blur_light, "ã‚µã‚¤ã‚ºå›ºå®š", dp5) end
+	if difl_str ~= 0 then obj.effect("æ‹¡æ•£å…‰", "å¼·ã•", difl_str, "æ‹¡æ•£", diffusion, "ã‚µã‚¤ã‚ºå›ºå®š", dp6) end
+	if sincolaf ~= 0 then obj.effect("å˜è‰²åŒ–", "å¼·ã•", sincolaf, "è¼åº¦ã‚’ä¿æŒã™ã‚‹", dp8, "color", sincolcol) end
+	obj.effect("è‰²èª¿è£œæ­£", "æ˜Žã‚‹ã•", s_brightness, "ï½ºï¾ï¾„ï¾—ï½½ï¾„", s_contrast, "è‰²ç›¸", s_hue, "è¼åº¦", s_luminance, "å½©åº¦", s_chroma, "é£½å’Œã™ã‚‹", dp15)
 	copybuffer("cache:ebd", "obj")
 
 	copybuffer("obj", "cache:ori")

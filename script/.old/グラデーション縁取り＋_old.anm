@@ -1,34 +1,34 @@
 --[[
-	ƒOƒ‰ƒf[ƒVƒ‡ƒ“‰Žæ‚è{_old.anm / ver.1.1.0
+	ã‚°ãƒ©ãƒ‡ãƒ¼ã‚·ãƒ§ãƒ³ç¸å–ã‚Šï¼‹_old.anm / ver.1.1.0
 	Copyright (c) 2022 CaffemochaY
 
-	ƒOƒ‰ƒf[ƒVƒ‡ƒ“‚ª‚©‚©‚Á‚½‰Žæ‚è‚ð1ƒIƒuƒWƒFƒNƒg‚ÅŠ®Œ‹‚³‚¹‚é‚±‚Æ‚ªo—ˆ‚é‚æ‚¤‚É‚·‚éƒXƒNƒŠƒvƒg‚Å‚·
-	‰Žæ‚è•”•ª‚Ì“§–¾“x‚àÝ’è‚Å‚«‚Ü‚·
+	ã‚°ãƒ©ãƒ‡ãƒ¼ã‚·ãƒ§ãƒ³ãŒã‹ã‹ã£ãŸç¸å–ã‚Šã‚’1ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã§å®Œçµã•ã›ã‚‹ã“ã¨ãŒå‡ºæ¥ã‚‹ã‚ˆã†ã«ã™ã‚‹ã‚¹ã‚¯ãƒªãƒ—ãƒˆã§ã™
+	ç¸å–ã‚Šéƒ¨åˆ†ã®é€æ˜Žåº¦ã‚‚è¨­å®šã§ãã¾ã™
 
-	ƒOƒ‰ƒf[ƒVƒ‡ƒ“‚Ì‹­‚³‚ð `0` ‚É‚·‚ê‚ÎA‚½‚¾‚Ì“§‰ß‰Žæ‚è‚Æ‚µ‚Ä‚àŽg‚¦‚Ü‚·
-	ŠJŽnF, I—¹F‚ð‹ó—“‚É‚·‚é‚ÆA**F‘I‘ð–³‚µ**‚Ìó‘Ô‚É‚È‚è‚Ü‚·
+	ã‚°ãƒ©ãƒ‡ãƒ¼ã‚·ãƒ§ãƒ³ã®å¼·ã•ã‚’ `0` ã«ã™ã‚Œã°ã€ãŸã ã®é€éŽç¸å–ã‚Šã¨ã—ã¦ã‚‚ä½¿ãˆã¾ã™
+	é–‹å§‹è‰², çµ‚äº†è‰²ã‚’ç©ºæ¬„ã«ã™ã‚‹ã¨ã€**è‰²é¸æŠžç„¡ã—**ã®çŠ¶æ…‹ã«ãªã‚Šã¾ã™
 
-	`rikky_module.dll` ‚ª‚±‚ÌƒXƒNƒŠƒvƒg‚Å“Ç‚ß‚éêŠ‚É‚ ‚ê‚ÎAƒtƒ@ƒCƒ‹‘I‘ðƒ_ƒCƒAƒƒO‚ªo‚¹‚Ü‚·
-	`rikkymodule&memory` ‚ð“±“ü‚µ‚Ä‚¢‚È‚¢ê‡‚ÍA`\` ‚ðƒGƒXƒP[ƒv‚µ‚Ä‚­‚¾‚³‚¢
+	`rikky_module.dll` ãŒã“ã®ã‚¹ã‚¯ãƒªãƒ—ãƒˆã§èª­ã‚ã‚‹å ´æ‰€ã«ã‚ã‚Œã°ã€ãƒ•ã‚¡ã‚¤ãƒ«é¸æŠžãƒ€ã‚¤ã‚¢ãƒ­ã‚°ãŒå‡ºã›ã¾ã™
+	`rikkymodule&memory` ã‚’å°Žå…¥ã—ã¦ã„ãªã„å ´åˆã¯ã€`\` ã‚’ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã—ã¦ãã ã•ã„
 
 	- parameter
-		- ‰Žæ‚è, ƒOƒ‰ƒf[ƒVƒ‡ƒ“‚Ìƒpƒ‰ƒ[ƒ^ŠeŽí
-		- alpha : ‰Žæ‚è•”•ª‚Ì“§–¾“x
+		- ç¸å–ã‚Š, ã‚°ãƒ©ãƒ‡ãƒ¼ã‚·ãƒ§ãƒ³ã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿å„ç¨®
+		- alpha : ç¸å–ã‚Šéƒ¨åˆ†ã®é€æ˜Žåº¦
 
 	- changelog
 		- ver.1.1.0
-			- ­‚µC³
-			- ƒo[ƒWƒ‡ƒ“•\‹L‚ð3Œ…‚É•ÏX
+			- å°‘ã—ä¿®æ­£
+			- ãƒãƒ¼ã‚¸ãƒ§ãƒ³è¡¨è¨˜ã‚’3æ¡ã«å¤‰æ›´
 ]]
 
---track0:ƒTƒCƒY,0,500,3,1
---track1:‚Ú‚©‚µ,0,100,10,1
---track2:‹­‚³,0,100,100
---track3:•,0,1000,100,1
---dialog:ŠJŽnF/col,local dp1=0xffffff;I—¹F/col,local dp2=0x000000;’†SX,local dp3=0;’†SY,local dp4=0;Šp“x,local dp5=0;‡¬ƒ‚[ƒh,local dp6=0;ƒOƒ‰ƒf[ƒVƒ‡ƒ“Œ`ó,local dp7=0;‰F/col,local dp8=0x000000;$ƒpƒ^[ƒ“‰æ‘œ,local dp9="";alpha,local dp10=100;
+--track0:ã‚µã‚¤ã‚º,0,500,3,1
+--track1:ã¼ã‹ã—,0,100,10,1
+--track2:å¼·ã•,0,100,100
+--track3:å¹…,0,1000,100,1
+--dialog:é–‹å§‹è‰²/col,local dp1=0xffffff;çµ‚äº†è‰²/col,local dp2=0x000000;ä¸­å¿ƒX,local dp3=0;ä¸­å¿ƒY,local dp4=0;è§’åº¦,local dp5=0;åˆæˆãƒ¢ãƒ¼ãƒ‰,local dp6=0;ã‚°ãƒ©ãƒ‡ãƒ¼ã‚·ãƒ§ãƒ³å½¢çŠ¶,local dp7=0;ç¸è‰²/col,local dp8=0x000000;$ãƒ‘ã‚¿ãƒ¼ãƒ³ç”»åƒ,local dp9="";alpha,local dp10=100;
 
 package.cpath = package.cpath:gsub("(.-)(%?.-);.+", "%0;%1script\\%2")
-if pcall(require, "rikky_module") then rikky_module.file(9, "ƒpƒ^[ƒ“‰æ‘œ") end
+if pcall(require, "rikky_module") then rikky_module.file(9, "ãƒ‘ã‚¿ãƒ¼ãƒ³ç”»åƒ") end
 
 local size = obj.track0
 local blur = obj.track1
@@ -60,8 +60,8 @@ end
 obj.setoption("drawtarget", "tempbuffer", w2, h2)
 obj.copybuffer("cache:ori", "obj")
 
-obj.effect("‰Žæ‚è", "ƒTƒCƒY", size, "‚Ú‚©‚µ", blur, "color", bordercol, "file", pattern)
-obj.effect("ƒOƒ‰ƒf[ƒVƒ‡ƒ“", "‹­‚³", af, "’†SX", centerX, "’†SY", centerY, "Šp“x", radius, "•", width, "blend", blend, "color", color, "no_color", gradbor_no_color, "color2", color2, "no_color2", gradbor_no_color_2, "type", shape)
+obj.effect("ç¸å–ã‚Š", "ã‚µã‚¤ã‚º", size, "ã¼ã‹ã—", blur, "color", bordercol, "file", pattern)
+obj.effect("ã‚°ãƒ©ãƒ‡ãƒ¼ã‚·ãƒ§ãƒ³", "å¼·ã•", af, "ä¸­å¿ƒX", centerX, "ä¸­å¿ƒY", centerY, "è§’åº¦", radius, "å¹…", width, "blend", blend, "color", color, "no_color", gradbor_no_color, "color2", color2, "no_color2", gradbor_no_color_2, "type", shape)
 obj.draw(0, 0, 0, 1, alpha)
 
 obj.copybuffer("obj", "cache:ori")

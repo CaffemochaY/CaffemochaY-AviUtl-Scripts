@@ -1,36 +1,36 @@
 --[[
-	ƒRƒ“ƒgƒ‰ƒXƒg”ä©“®ŒvZ.anm / ver.1.0.1
+	ã‚³ãƒ³ãƒˆãƒ©ã‚¹ãƒˆæ¯”è‡ªå‹•è¨ˆç®—.anm / ver.1.0.1
 	Copyright (c) 2022 CaffemochaY
 
-	ƒAƒ“ƒJ[‚Å2F‚ğæ“¾‚µ‚ÄA‚»‚Ì2‚Â‚ÌƒRƒ“ƒgƒ‰ƒXƒg”ä‚ğ©“®‚ÅŒvZ‚·‚éƒXƒNƒŠƒvƒg
-	[WCAG 2.0](https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-procedure)Šî€‚ÅF‚ÌƒRƒ“ƒgƒ‰ƒXƒg”ä‚ğŒvZ‚·‚é
+	ã‚¢ãƒ³ã‚«ãƒ¼ã§2è‰²ã‚’å–å¾—ã—ã¦ã€ãã®2ã¤ã®ã‚³ãƒ³ãƒˆãƒ©ã‚¹ãƒˆæ¯”ã‚’è‡ªå‹•ã§è¨ˆç®—ã™ã‚‹ã‚¹ã‚¯ãƒªãƒ—ãƒˆ
+	[WCAG 2.0](https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-procedure)åŸºæº–ã§è‰²ã®ã‚³ãƒ³ãƒˆãƒ©ã‚¹ãƒˆæ¯”ã‚’è¨ˆç®—ã™ã‚‹
 
 	- parameter
-		- •¶šF / •¶š‘•üF : F
-		- •¶šƒTƒCƒY, ƒtƒHƒ“ƒg–¼, •¶š‘•ü : ƒeƒLƒXƒg‚Ìƒpƒ‰ƒ[ƒ^
-		- •¶š•s“§–¾“x : •¶š‚Ì•s“§–¾“x
-		- info : ƒAƒ“ƒJ[, ƒRƒ“ƒgƒ‰ƒXƒg”ä‚Ì•\¦‚ğİ’è
-		- debug_print : debug_print‚É’l‚ğ•Ô‚·‚©‚Ìw’è
+		- æ–‡å­—è‰² / æ–‡å­—è£…é£¾è‰² : è‰²
+		- æ–‡å­—ã‚µã‚¤ã‚º, ãƒ•ã‚©ãƒ³ãƒˆå, æ–‡å­—è£…é£¾ : ãƒ†ã‚­ã‚¹ãƒˆã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
+		- æ–‡å­—ä¸é€æ˜åº¦ : æ–‡å­—ã®ä¸é€æ˜åº¦
+		- info : ã‚¢ãƒ³ã‚«ãƒ¼, ã‚³ãƒ³ãƒˆãƒ©ã‚¹ãƒˆæ¯”ã®è¡¨ç¤ºã‚’è¨­å®š
+		- debug_print : debug_printã«å€¤ã‚’è¿”ã™ã‹ã®æŒ‡å®š
 
 	- changelog
 		- ver.1.0.1
-			- ƒo[ƒWƒ‡ƒ“•\‹L‚ğ3Œ…‚É•ÏX
+			- ãƒãƒ¼ã‚¸ãƒ§ãƒ³è¡¨è¨˜ã‚’3æ¡ã«å¤‰æ›´
 ]]
 
 --[[
-	<ideas / ’Ç‰Á—\’è‹@”\>
+	<ideas / è¿½åŠ äºˆå®šæ©Ÿèƒ½>
 
-	- ƒAƒ“ƒJ[‚ğ‚Â‚¯‚ÄA‚»‚±‚ÌF‚Ì•½‹Ï’l‚ğ‚Æ‚é (.anm‚Ì•û‚ª—Ç‚¢‚©‚à)
-		- ”ÍˆÍ‘I‘ğ / ”ÍˆÍw’è
-	- Šî€‚ğ–‚½‚µ‚Ä‚¢‚é‚©‚Ç‚¤‚©‚ğ–Ú‚ÅŒ©‚Ä•ª‚©‚é‚æ‚¤‚É‚·‚é <https://lab.syncer.jp/Tool/Color-Contrast-Checker/#Web-Content-Accessibility-Guidelines>
+	- ã‚¢ãƒ³ã‚«ãƒ¼ã‚’ã¤ã‘ã¦ã€ãã“ã®è‰²ã®å¹³å‡å€¤ã‚’ã¨ã‚‹ (.anmã®æ–¹ãŒè‰¯ã„ã‹ã‚‚)
+		- ç¯„å›²é¸æŠ / ç¯„å›²æŒ‡å®š
+	- åŸºæº–ã‚’æº€ãŸã—ã¦ã„ã‚‹ã‹ã©ã†ã‹ã‚’ç›®ã§è¦‹ã¦åˆ†ã‹ã‚‹ã‚ˆã†ã«ã™ã‚‹ <https://lab.syncer.jp/Tool/Color-Contrast-Checker/#Web-Content-Accessibility-Guidelines>
 ]]
 
 --track0:a_size,0,1000,10
 --track1:a_alpha,0,100,50
---track2:•¶š_X,-4000,4000,0
---track3:•¶š_Y,-4000,4000,0
+--track2:æ–‡å­—_X,-4000,4000,0
+--track3:æ–‡å­—_Y,-4000,4000,0
 --check0:info,1
---dialog:ƒAƒ“ƒJ[,dA={-100,0,100,0};font_size,local dp3=34;font_name,local dp4="MS UI Gothic";•¶š‘•ü(0-4),local dp5=0;•¶šF/col,local dp6=0xffffff;•¶š‘•üF/col,local dp7=0x000000;•¶š•s“§–¾“x,local dp8=100;debug_print/chk,local dp16=0;
+--dialog:ã‚¢ãƒ³ã‚«ãƒ¼,dA={-100,0,100,0};font_size,local dp3=34;font_name,local dp4="MS UI Gothic";æ–‡å­—è£…é£¾(0-4),local dp5=0;æ–‡å­—è‰²/col,local dp6=0xffffff;æ–‡å­—è£…é£¾è‰²/col,local dp7=0x000000;æ–‡å­—ä¸é€æ˜åº¦,local dp8=100;debug_print/chk,local dp16=0;
 
 local crc_anchor_size, crc_anchor_alpha = obj.track0, obj.track1 / 100
 local text_size, font_name, text_deco, text_col, text_deco_col, text_alpha = dp3 or 34, dp4 or "MS UI Gothic", dp5 or 0, dp6 or 0xffffff, dp7 or 0x000000, dp8 / 100 or 1
@@ -45,7 +45,7 @@ obj.setanchor("dA", 2)
 local crc_ct_col1 = obj.getpixel(dA[1] + obj.w / 2, dA[2] + obj.h / 2, "col")
 local crc_ct_col2 = obj.getpixel(dA[3] + obj.w / 2, dA[4] + obj.h / 2, "col")
 
--- ƒRƒ“ƒgƒ‰ƒXƒg”ä©“®ŒvZ
+-- ã‚³ãƒ³ãƒˆãƒ©ã‚¹ãƒˆæ¯”è‡ªå‹•è¨ˆç®—
 package.path = package.path:gsub("(.-)(%?.-);.+", "%0;%1script\\%2")
 local CRC = require("contrast_ratio_cal")
 local contrast = CRC.contrast_ratio_cal(crc_ct_col1, crc_ct_col2)
@@ -53,7 +53,7 @@ local contrast = CRC.contrast_ratio_cal(crc_ct_col1, crc_ct_col2)
 if obj.check0 then
 	obj.setoption("drawtarget", "tempbuffer", obj.getpixel())
 	obj.draw()
-	obj.load("figure", "‰~", 0xffffff, crc_anchor_size)
+	obj.load("figure", "å††", 0xffffff, crc_anchor_size)
 	obj.draw((dA[1] + 0.5) * obj.zoom, (dA[2] + 0.5) * obj.zoom, 0, 1, crc_anchor_alpha)
 	obj.draw((dA[3] + 0.5) * obj.zoom, (dA[4] + 0.5) * obj.zoom, 0, 1, crc_anchor_alpha)
 

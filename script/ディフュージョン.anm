@@ -1,46 +1,46 @@
 --[[
-	�f�B�t���[�W����.anm / ver.1.2.1
+	ディフュージョン.anm / ver.1.2.1
 	Copyright (c) 2022 CaffemochaY
 
-	LuaJIT���K�{ �iLuaJIT 2.1.0-beta3 �����j
+	LuaJITが必須 （LuaJIT 2.1.0-beta3 推奨）
 
-	- 臒l���w�肵�A���̎w�肵�����l�ȏ�̋P�x�̌����g�U������
-	- ���̐F����ۂ����܂܊G�̋�C���_�炩���ł���
+	- 閾値を指定し、その指定した数値以上の輝度の光を拡散させる
+	- 元の色味を保ったまま絵の空気を柔らかくできる
 
 	- parameter
-		- �P�x�Œ� / �ō� : �g�U���������n�C���C�g�����̋P�x�̍Œ�A�ō����w�肷��
-			- �P�x�Œ��艺�̋P�x�� `0` , �P�x�ō�����̋P�x�� `1` �ɕ␳����
-		- �P�x��� : ����ȏ�̋P�x�̕������g�U�����Ȃ��悤�ɂ���
-			- �P�x����ȏ�̋P�x�̕����� `alpha` �� `0` �ɂ���
-		- alpha : �n�C���C�g�����̓����x�{��(%)
-			- alpha_Insert : `obj.track3` �������R�Ɏw��ł��铧���x�{��
-				- `100` �ȏ���w�肷��ƁA�ʏ�����Z���ł���
-		- without_original : ���摜��\�����邩�ǂ��� �i`1` �ŕ\�����Ȃ��j
-		- �ڂ���, �F���␳ �e��p�����[�^
+		- 輝度最低 / 最高 : 拡散させたいハイライト部分の輝度の最低、最高を指定する
+			- 輝度最低より下の輝度は `0` , 輝度最高より上の輝度は `1` に補正する
+		- 輝度上限 : それ以上の輝度の部分を拡散させないようにする
+			- 輝度上限以上の輝度の部分の `alpha` を `0` にする
+		- alpha : ハイライト部分の透明度倍率(%)
+			- alpha_Insert : `obj.track3` よりも自由に指定できる透明度倍率
+				- `100` 以上を指定すると、通常よりも濃くできる
+		- without_original : 元画像を表示するかどうか （`1` で表示しない）
+		- ぼかし, 色調補正 各種パラメータ
 
-	- ����
-		- `�������[�h(0-12)` �̂����A`10` , `11` , `12` �͂��܂������Ȃ��ꍇ������܂�
-			- �ڍׂ� `lua.txt` �����ĉ�����
-		- �������[�h�͕ς��Ȃ������ǂ��Ǝv����
-			- �ς���Ƃ�����A`0` , `1` , `4` , `5` , `6` , `8` �ӂ�
-			- �f�t�H���g�� `6`
-		- `_dp1~10,13~16` ��global�ϐ��Ŏg�p���Ă��܂�
+	- 注意
+		- `合成モード(0-12)` のうち、`10` , `11` , `12` はうまくいかない場合があります
+			- 詳細は `lua.txt` を見て下さい
+		- 合成モードは変えない方が良いと思われる
+			- 変えるとしたら、`0` , `1` , `4` , `5` , `6` , `8` 辺り
+			- デフォルトは `6`
+		- `_dp1~10,13~16` をglobal変数で使用しています
 
 	- changelog
 		- ver.1.1
-			- 0���Z�̃p�^�[�����l�����Ă��Ȃ��������ߊY�������̏C��
+			- 0除算のパターンを考慮していなかったため該当部分の修正
 		- ver.1.2
-			- �P�x�����ݒ�o����悤�ɂ���
-				- ����т��ɂ����Ȃ�悤�ɐݒ�o����悤�ɂȂ����͂�
+			- 輝度上限を設定出来るようにした
+				- 白飛びしにくくなるように設定出来るようになったはず
 		- ver.1.2.1
-			- �o�[�W�����\�L��3���ɕύX
+			- バージョン表記を3桁に変更
 ]]
 
---track0:�P�x�Œ�,0,255,200,1
---track1:�P�x�ō�,0,255,240,1
---track2:�ڂ���,0,100,33,1
+--track0:輝度最低,0,255,200,1
+--track1:輝度最高,0,255,240,1
+--track2:ぼかし,0,100,33,1
 --track3:alpha,0,100,100
---dialog:�ڂ����c����,_dp1=0;�ڂ������̋���,_dp2=0;�ڂ����T�C�Y�Œ�/chk,_dp3=0;���邳,_dp4=100;�R���g���X�g,_dp5=100;�F��,_dp6=0;�P�x,_dp7=100;�ʓx,_dp8=100;�O�a����/chk,_dp9=0;�P�x���,_dp10=256;blur_range_insert,_dp13=nil;alpha_insert,_dp14=nil;without_original/chk,_dp15=0;�������[�h(0-12),_dp16=6;
+--dialog:ぼかし縦横比,_dp1=0;ぼかし光の強さ,_dp2=0;ぼかしサイズ固定/chk,_dp3=0;明るさ,_dp4=100;コントラスト,_dp5=100;色相,_dp6=0;輝度,_dp7=100;彩度,_dp8=100;飽和する/chk,_dp9=0;輝度上限,_dp10=256;blur_range_insert,_dp13=nil;alpha_insert,_dp14=nil;without_original/chk,_dp15=0;合成モード(0-12),_dp16=6;
 
 local blur_aspect, blur_light, blur_fsize, orionf, blmode = _dp1 or 0, _dp2 or 0, _dp3, _dp15, _dp16 or 6
 local s_brightness, s_contrast, s_hue, s_luminance, s_chroma, s_saturation = _dp4 or 100, _dp5 or 100, _dp6 or 0, _dp7 or 100, _dp8 or 100, _dp9
@@ -51,9 +51,9 @@ if (highestlumin < highlumin) then highlumin = highestlumin end
 
 _dp1, _dp2, _dp3, _dp4, _dp5, _dp6, _dp7, _dp8, _dp9, _dp10, _dp13, _dp14, _dp15, _dp16 = nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil
 
-if (type(jit) ~= "table") then -- LuaJIT�𓱓����Ă��邩�̔���
+if (type(jit) ~= "table") then -- LuaJITを導入しているかの判定
 	obj.setfont("MS UI Gothic", 34, 2)
-	obj.load("text", "LuaJIT�𓱓����Ă�������")
+	obj.load("text", "LuaJITを導入してください")
 	obj.draw()
 else
 	if (alpha ~= 0 and blur_range ~= 0) then
@@ -72,14 +72,14 @@ else
 				local function resize(tw, th)
 					local cw, ch = obj.getpixel()
 					if (tw < cw) then
-						obj.effect("�N���b�s���O", "�E", cw - tw)
+						obj.effect("クリッピング", "右", cw - tw)
 					else
-						obj.effect("�̈�g��", "�E", tw - cw)
+						obj.effect("領域拡張", "右", tw - cw)
 					end
 					if (th < ch) then
-						obj.effect("�N���b�s���O", "��", ch - th)
+						obj.effect("クリッピング", "下", ch - th)
 					else
-						obj.effect("�̈�g��", "��", th - ch)
+						obj.effect("領域拡張", "下", th - ch)
 					end
 				end
 				local c = cache[src]
@@ -90,7 +90,7 @@ else
 
 		copybuffer("cache:ori", "obj")
 
-		-- �P�x�𓧖��x�ɕϊ�
+		-- 輝度を透明度に変換
 		for y = 0, h - 1 do
 			for x = 0, w - 1 do
 				local p = x + y * w
@@ -107,8 +107,8 @@ else
 		end
 
 		obj.putpixeldata(data)
-		obj.effect("�ڂ���", "�͈�", blur_range, "�c����", blur_aspect, "���̋���", blur_light, "�T�C�Y�Œ�", blur_fsize)
-		obj.effect("�F���␳", "���邳", s_brightness, "���׽�", s_contrast, "�F��", s_hue, "�P�x", s_luminance, "�ʓx", s_chroma, "�O�a����", s_saturation)
+		obj.effect("ぼかし", "範囲", blur_range, "縦横比", blur_aspect, "光の強さ", blur_light, "サイズ固定", blur_fsize)
+		obj.effect("色調補正", "明るさ", s_brightness, "ｺﾝﾄﾗｽﾄ", s_contrast, "色相", s_hue, "輝度", s_luminance, "彩度", s_chroma, "飽和する", s_saturation)
 
 		if (orionf == 0) then
 			copybuffer("cache:dif", "obj")

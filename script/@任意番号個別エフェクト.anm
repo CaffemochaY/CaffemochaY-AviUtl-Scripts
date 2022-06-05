@@ -1,63 +1,59 @@
 --[==[
-	”CˆÓ”Ô†ŒÂ•ÊƒGƒtƒFƒNƒg.anm / ver.1.2.1
+	ä»»æ„ç•ªå·å€‹åˆ¥ã‚¨ãƒ•ã‚§ã‚¯ãƒˆ.anm / ver.1.2.1
 	Copyright (c) 2022 CaffemochaY
 
 	- parameter
-		- ŠJŽn”Ô† / I—¹”Ô† : ƒGƒtƒFƒNƒg‚ð‚©‚¯‚½‚¢ `index` ‚ðŽw’è‚·‚é
-			- index_table : "table" ‚ÅƒGƒtƒFƒNƒg‚ð‚©‚¯‚½‚¢ `index` ‚ð•¡””ÍˆÍŽw’è‚·‚é
-				- `index` ‚Í `0` ƒXƒ^[ƒg
+		- é–‹å§‹ç•ªå· / çµ‚äº†ç•ªå· : ã‚¨ãƒ•ã‚§ã‚¯ãƒˆã‚’ã‹ã‘ãŸã„ `index` ã‚’æŒ‡å®šã™ã‚‹
+			- index_table : "table" ã§ã‚¨ãƒ•ã‚§ã‚¯ãƒˆã‚’ã‹ã‘ãŸã„ `index` ã‚’è¤‡æ•°ç¯„å›²æŒ‡å®šã™ã‚‹
+				- `index` ã¯ `0` ã‚¹ã‚¿ãƒ¼ãƒˆ
 
-		- ŠÖ””Å
-			- Effect_insert : ŠÖ”‚È‚Ç‚ÅƒGƒtƒFƒNƒg‚ðŽw’è‚·‚é ( `obj.effect` , `function` ‚È‚Ç)
-		- ƒeƒ“ƒvƒŒ[ƒg”Å
-			- _name : ƒGƒtƒFƒNƒg‚Ì–¼‘O
-			- track0~7 : ƒgƒ‰ƒbƒNƒo[ (3,4,5,6,7 ‚Í "table" ‚ÅŽw’è)
-			- color1,2 : F
-			- check0~4 : ƒ`ƒFƒbƒN‚Ì’l‚ð 0,1 ‚ÅŽw’è (1,2,3,4 ‚Í "table" ‚ÅŽw’è)
-			- mode : ‡¬ƒ‚[ƒh‚È‚Ç‚Ì `.exo` ‚Å `mode` ‚Ì’l‚ðŽw’è
-			- type : }Œ`‚ÌŽí—Þ‚È‚Ç‚Ì `.exo` ‚Å `type` ‚Ì’l‚ðŽw’è
-			- name/file : ƒAƒjƒ[ƒVƒ‡ƒ“Œø‰Ê‚Ì–¼Ì‚âƒtƒ@ƒCƒ‹‚ÌƒpƒX‚È‚Ç‚ðŽw’è
-			- color_yc1,2 : YCbCr ‚ÌŠeŽí’l‚ð "table" ‚ÅƒGƒtƒFƒNƒg‚ðŽw’è (”’l‚Å‚à‰Â)
-			- seed/•ÏŒ`•û–@ : ƒmƒCƒY‚Ì `seed` ‚ðŽw’è / ƒfƒBƒXƒvƒŒƒCƒXƒƒ“ƒgƒ}ƒbƒv‚Ì•ÏŒ`•û–@‚ðŽw’è
-			- param : ƒAƒjƒ[ƒVƒ‡ƒ“Œø‰Ê‚Ìƒ_ƒCƒAƒƒOƒpƒ‰ƒ[ƒ^‚ðŽw’è
+		- é–¢æ•°ç‰ˆ
+			- Effect_insert : é–¢æ•°ãªã©ã§ã‚¨ãƒ•ã‚§ã‚¯ãƒˆã‚’æŒ‡å®šã™ã‚‹ ( `obj.effect` , `function` ãªã©)
+		- ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆç‰ˆ
+			- _name : ã‚¨ãƒ•ã‚§ã‚¯ãƒˆã®åå‰
+			- track0~7 : ãƒˆãƒ©ãƒƒã‚¯ãƒãƒ¼ (3,4,5,6,7 ã¯ "table" ã§æŒ‡å®š)
+			- color1,2 : è‰²
+			- check0~4 : ãƒã‚§ãƒƒã‚¯ã®å€¤ã‚’ 0,1 ã§æŒ‡å®š (1,2,3,4 ã¯ "table" ã§æŒ‡å®š)
+			- mode : åˆæˆãƒ¢ãƒ¼ãƒ‰ãªã©ã® `.exo` ã§ `mode` ã®å€¤ã‚’æŒ‡å®š
+			- type : å›³å½¢ã®ç¨®é¡žãªã©ã® `.exo` ã§ `type` ã®å€¤ã‚’æŒ‡å®š
+			- name/file : ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³åŠ¹æžœã®åç§°ã‚„ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹ãªã©ã‚’æŒ‡å®š
+			- color_yc1,2 : YCbCr ã®å„ç¨®å€¤ã‚’ "table" ã§ã‚¨ãƒ•ã‚§ã‚¯ãƒˆã‚’æŒ‡å®š (æ•°å€¤ã§ã‚‚å¯)
+			- seed/å¤‰å½¢æ–¹æ³• : ãƒŽã‚¤ã‚ºã® `seed` ã‚’æŒ‡å®š / ãƒ‡ã‚£ã‚¹ãƒ—ãƒ¬ã‚¤ã‚¹ãƒ¡ãƒ³ãƒˆãƒžãƒƒãƒ—ã®å¤‰å½¢æ–¹æ³•ã‚’æŒ‡å®š
+			- param : ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³åŠ¹æžœã®ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’æŒ‡å®š
 
-	- ’ˆÓ
-		- `Effect_insert()` ‚Ì‰‚ß‚Ì `]]` ‚ÍÁ‚³‚È‚¢‚æ‚¤‚É
-		- `Effect_insert` ‚ÍA ƒXƒNƒŠƒvƒg§Œä‚Å `Effect_insert` ‚ÅŠÖ”‚ð’è‹`‚µ‚Ä‘ã“ü‚·‚é‚ÆAstack overflow ‚É‚È‚é
-		- "table" ‚Ì—“‚Í "table" ‚Å’l‚ðŽw’è‚·‚é‚±‚Æ
+	- æ³¨æ„
+		- `Effect_insert()` ã®åˆã‚ã® `]]` ã¯æ¶ˆã•ãªã„ã‚ˆã†ã«
+		- `Effect_insert` ã¯ã€ ã‚¹ã‚¯ãƒªãƒ—ãƒˆåˆ¶å¾¡ã§ `Effect_insert` ã§é–¢æ•°ã‚’å®šç¾©ã—ã¦ä»£å…¥ã™ã‚‹ã¨ã€stack overflow ã«ãªã‚‹
+		- "table" ã®æ¬„ã¯ "table" ã§å€¤ã‚’æŒ‡å®šã™ã‚‹ã“ã¨
 
 	- changelog
 		- ver.1.1
-			- `stack overflow` ‚É‚Â‚¢‚Ä’Ç‹L
+			- `stack overflow` ã«ã¤ã„ã¦è¿½è¨˜
 		- ver.1.2
-			- Ý’èƒ_ƒCƒAƒƒO‚Ì”Ô†‚ªŒë‚Á‚Ä‚¢‚½‚Ì‚ÅC³
+			- è¨­å®šãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã®ç•ªå·ãŒèª¤ã£ã¦ã„ãŸã®ã§ä¿®æ­£
 		- ver.1.2.1
-			- ƒo[ƒWƒ‡ƒ“•\‹L‚ð3Œ…‚É•ÏX
+			- ãƒãƒ¼ã‚¸ãƒ§ãƒ³è¡¨è¨˜ã‚’3æ¡ã«å¤‰æ›´
 ]==]
 
-@ŠÖ””Å
+@é–¢æ•°ç‰ˆ
 
---track0:ŠJŽn”Ô†,0,10000,0,1
---track1:I—¹”Ô†,0,10000,0,1
---dialog:Effect_insert,function Effect_insert()--[[=]]obj.effect("‰Žæ‚è","ƒTƒCƒY",5,"‚Ú‚©‚µ",10,"color",0xff0000);index_table,end _Dp0={};
+--track0:é–‹å§‹ç•ªå·,0,10000,0,1
+--track1:çµ‚äº†ç•ªå·,0,10000,0,1
+--dialog:Effect_insert,function Effect_insert()--[[=]]obj.effect("ç¸å–ã‚Š","ã‚µã‚¤ã‚º",5,"ã¼ã‹ã—",10,"color",0xff0000);index_table,end _Dp0={};
 
 local sae_table = _Dp0 or {}
 sae_table[1], sae_table[2] = math.floor(sae_table[1] or obj.track0), math.floor(sae_table[2] or obj.track1)
-for i = 3 , #sae_table do sae_table[i] = math.floor(sae_table[i]) end
+for i = 3, #sae_table do sae_table[i] = math.floor(sae_table[i]) end
 
-for i = 1, math.floor(#sae_table / 2) do
-	if obj.index >= sae_table[2 * i - 1] and obj.index <= sae_table[2 * i] then
-		Effect_insert()
-	end
-end
+for i = 1, math.floor(#sae_table / 2) do if obj.index >= sae_table[2 * i - 1] and obj.index <= sae_table[2 * i] then Effect_insert() end end
 
 _Dp0, Effect_insert = nil, nil
 
-@ƒeƒ“ƒvƒŒ[ƒg”Å
+@ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆç‰ˆ
 
---track0:ŠJŽn”Ô†,0,10000,0,1
---track1:I—¹”Ô†,0,10000,0,1
---dialog:index_table,_Dp0={};_name,_Dp1="";track0,_Dp2=nil;track1,_Dp3=nil;track2,_Dp4=nil;track3~7,_Dp5={};color1/col,_Dp6=0x000000;color2/col,_Dp7=0xffffff;check0/chk,_Dp8=0;check1~4,_Dp9={};mode,_Dpa=nil;type,_Dpb=nil;name/file,_Dpc="";color_yc,_Dpd={};seed/•ÏŒ`•û–@,_Dpe=nil;param,_Dpf="";
+--track0:é–‹å§‹ç•ªå·,0,10000,0,1
+--track1:çµ‚äº†ç•ªå·,0,10000,0,1
+--dialog:index_table,_Dp0={};_name,_Dp1="";track0,_Dp2=nil;track1,_Dp3=nil;track2,_Dp4=nil;track3~7,_Dp5={};color1/col,_Dp6=0x000000;color2/col,_Dp7=0xffffff;check0/chk,_Dp8=0;check1~4,_Dp9={};mode,_Dpa=nil;type,_Dpb=nil;name/file,_Dpc="";color_yc,_Dpd={};seed/å¤‰å½¢æ–¹æ³•,_Dpe=nil;param,_Dpf="";
 
 local _name = _Dp1 or ""
 local track0, track1, track2 = _Dp2 or 0, _Dp3 or 0, _Dp4 or 0

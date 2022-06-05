@@ -6,7 +6,7 @@
 
 	- changelog
 		- ver.1.0.1
-			- バージョン表記を3桁に変更
+			- 繝舌�ｼ繧ｸ繝ｧ繝ｳ陦ｨ險倥ｒ3譯√↓螟画峩
 ]]
 
 local function contrast_ratio_cal(crc_col1, crc_col2)
