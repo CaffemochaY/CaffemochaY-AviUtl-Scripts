@@ -1,5 +1,5 @@
 --[==[
-	任意番号個別エフェクト.anm / ver.1.2.1
+	任意番号個別エフェクト.anm / ver.1.2.2
 	Copyright (c) 2022 CaffemochaY
 
 	- parameter
@@ -33,6 +33,9 @@
 			- 設定ダイアログの番号が誤っていたので修正
 		- ver.1.2.1
 			- バージョン表記を3桁に変更
+		- ver.1.2.2
+			- 文字コードの正規化
+			- コードのフォーマット
 ]==]
 
 @関数版
@@ -44,9 +47,7 @@
 local sae_table = _Dp0 or {}
 sae_table[1], sae_table[2] = math.floor(sae_table[1] or obj.track0), math.floor(sae_table[2] or obj.track1)
 for i = 3, #sae_table do sae_table[i] = math.floor(sae_table[i]) end
-
 for i = 1, math.floor(#sae_table / 2) do if obj.index >= sae_table[2 * i - 1] and obj.index <= sae_table[2 * i] then Effect_insert() end end
-
 _Dp0, Effect_insert = nil, nil
 
 @テンプレート版

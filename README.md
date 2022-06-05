@@ -26,7 +26,8 @@ markdownみたいな書き方をしているので、コピペしてmarkdownに�
 - [コントラスト比自動計算](#コントラスト比自動計算)
 - [ディフュージョン](#ディフュージョン)
 - [任意番号個別エフェクト](#任意番号個別エフェクト)
-- [マスク画像化](#マスク画像化)
+- [.not-necessary](#notnecessary)
+  - [マスク画像化](#マスク画像化)
 
 ---
 
@@ -47,7 +48,7 @@ markdownみたいな書き方をしているので、コピペしてmarkdownに�
 
     ---
 
-    ソフトフォーカス.anm / ver.2.0.1  
+    ソフトフォーカス.anm / ver.2.0.2  
     Copyright (c) 2022 CaffemochaY
 
     - 立ち絵等の画像を柔らかい雰囲気にします  
@@ -72,6 +73,8 @@ markdownみたいな書き方をしているので、コピペしてmarkdownに�
         - 各種パラメータが `0` の時、パラメータが `0` の一部のエフェクトを無効化し、動作を軽量化した
       - ver.2.0.1
         - バージョン表記を3桁に変更
+      - ver.2.0.2
+        - 文字コードの正規化
 
     </details>
 
@@ -89,7 +92,7 @@ markdownみたいな書き方をしているので、コピペしてmarkdownに�
 
     ---
 
-    グラデーション縁取り＋.anm / ver.2.0.1  
+    グラデーション縁取り＋.anm / ver.2.0.2  
     Copyright (c) 2022 CaffemochaY
 
     グラデーションがかかった縁取りを1オブジェクトで完結させることが出来るようにするスクリプトです  
@@ -110,6 +113,8 @@ markdownみたいな書き方をしているので、コピペしてmarkdownに�
         - 画像データのキャッシュ数を `0` にしても機能するようにした
       - ver.2.0.1
         - バージョン表記を3桁に変更
+      - ver.2.0.2
+        - 文字コードの正規化
 
     </details>
 
@@ -132,7 +137,7 @@ markdownみたいな書き方をしているので、コピペしてmarkdownに�
 
     ---
 
-    コントラスト比自動計算.anm / ver.1.0.1  
+    コントラスト比自動計算.anm / ver.1.0.2  
     Copyright (c) 2022 CaffemochaY
 
     アンカーで2色を取得して、その2つのコントラスト比を自動で計算するスクリプト  
@@ -148,10 +153,12 @@ markdownみたいな書き方をしているので、コピペしてmarkdownに�
     - changelog
       - ver.1.0.1
         - バージョン表記を3桁に変更
+      - ver.1.0.2
+        - 文字コードの正規化
 
     ---
 
-    コントラスト比自動計算.obj / ver.1.0.1  
+    コントラスト比自動計算.obj / ver.1.0.2  
     Copyright (c) 2022 CaffemochaY
 
     ダイアログで2色を指定して、その2つのコントラスト比を自動で計算するスクリプト  
@@ -166,10 +173,12 @@ markdownみたいな書き方をしているので、コピペしてmarkdownに�
     - changelog
       - ver.1.0.1
         - バージョン表記を3桁に変更
+      - ver.1.0.2
+        - 文字コードの正規化
 
     ---
 
-    contrast_ratio_cal.lua / ver.1.0.1  
+    contrast_ratio_cal.lua / ver.1.0.2  
     Copyright (c) 2022 CaffemochaY
 
     sourse : [WCAG 2.0](https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-procedure)
@@ -177,6 +186,8 @@ markdownみたいな書き方をしているので、コピペしてmarkdownに�
     - changelog
       - ver.1.0.1
         - バージョン表記を3桁に変更
+      - ver.1.0.2
+        - 文字コードの正規化
 
     </details>
 
@@ -202,7 +213,7 @@ markdownみたいな書き方をしているので、コピペしてmarkdownに�
 
     ---
 
-    ディフュージョン.anm / ver.1.2.1  
+    ディフュージョン.anm / ver.1.3.0  
     Copyright (c) 2022 CaffemochaY
 
     LuaJITが必須 （LuaJIT 2.1.0-beta3 推奨）
@@ -237,6 +248,9 @@ markdownみたいな書き方をしているので、コピペしてmarkdownに�
           - 白飛びしにくくなるように設定出来るようになったはず
       - ver.1.2.1
         - バージョン表記を3桁に変更
+      - ver.1.3.0
+        - pixel処理のループを改良
+        - 文字コードの正規化
 
     </details>
 
@@ -253,7 +267,7 @@ markdownみたいな書き方をしているので、コピペしてmarkdownに�
 
     ---
 
-    任意番号個別エフェクト.anm / ver.1.2.1  
+    任意番号個別エフェクト.anm / ver.1.2.2  
     Copyright (c) 2022 CaffemochaY
 
     - parameter
@@ -287,10 +301,13 @@ markdownみたいな書き方をしているので、コピペしてmarkdownに�
         - 設定ダイアログの番号が誤っていたので修正
       - ver.1.2.1
         - バージョン表記を3桁に変更
+      - ver.1.2.2
+        - 文字コードの正規化
+        - コードのフォーマット
 
     ---
 
-    aviutl_effect_list.lua / ver.1.0.1  
+    aviutl_effect_list.lua / ver.1.0.2  
     Copyright (c) 2022 CaffemochaY
 
     - parameter
@@ -327,10 +344,14 @@ markdownみたいな書き方をしているので、コピペしてmarkdownに�
       - ver.1.0.1
         - バージョン表記を3桁に変更
         - コメントを少し整理
+      - ver.1.0.2
+        - 文字コードの正規化
 
     </details>
 
-### マスク画像化
+### .not-necessary
+
+#### マスク画像化
 
 - `マスク画像化.anm`
 
@@ -340,10 +361,18 @@ markdownみたいな書き方をしているので、コピペしてmarkdownに�
 
     ---
 
-    マスク画像化.anm / ver.1.0.0  
+    マスク画像化.anm / ver.1.2.1  
     Copyright (c) 2022 CaffemochaY
 
     アルファ or RGBの各要素 をグレースケールに変換する
+
+    - changelog
+      - ver.1.1.0
+        - オブジェクトの生成の方法を変更
+      - ver.1.2.0
+        - pixel処理のループを改良
+      - ver.1.2.1
+        - 文字コードの正規化
 
   </details>
 

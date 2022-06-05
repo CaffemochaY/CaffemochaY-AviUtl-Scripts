@@ -1,5 +1,5 @@
 --[[
-	ディフュージョン.anm / ver.1.2.1
+	ディフュージョン.anm / ver.1.3.0
 	Copyright (c) 2022 CaffemochaY
 
 	LuaJITが必須 （LuaJIT 2.1.0-beta3 推奨）
@@ -34,6 +34,9 @@
 				- 白飛びしにくくなるように設定出来るようになったはず
 		- ver.1.2.1
 			- バージョン表記を3桁に変更
+		- ver.1.3.0
+			- pixel処理のループを改良
+			- 文字コードの正規化
 ]]
 
 --track0:輝度最低,0,255,200,1
@@ -91,18 +94,15 @@ else
 		copybuffer("cache:ori", "obj")
 
 		-- 輝度を透明度に変換
-		for y = 0, h - 1 do
-			for x = 0, w - 1 do
-				local p = x + y * w
-				local lumin = cdata[p].r * 0.2126 + cdata[p].g * 0.7152 + cdata[p].b * 0.0722
+		for i = 0, w * h - 1 do
+			local lumin = cdata[i].r * 0.2126 + cdata[i].g * 0.7152 + cdata[i].b * 0.0722
 
-				if (lumin < lowlumin) then
-					cdata[p].a = 0
-				elseif (lumin < highlumin) then
-					cdata[p].a = cdata[p].a * (lumin - lowlumin) / (highlumin - lowlumin)
-				elseif (lumin > highestlumin) then
-					cdata[p].a = 0
-				end
+			if (lumin < lowlumin) then
+				cdata[i].a = 0
+			elseif (lumin < highlumin) then
+				cdata[i].a = cdata[i].a * (lumin - lowlumin) / (highlumin - lowlumin)
+			elseif (lumin > highestlumin) then
+				cdata[i].a = 0
 			end
 		end
 

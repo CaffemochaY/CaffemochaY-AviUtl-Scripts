@@ -1,5 +1,5 @@
 --[[
-	aviutl_effect_list.lua / ver.1.0.1
+	aviutl_effect_list.lua / ver.1.0.2
 	Copyright (c) 2022 CaffemochaY
 
 	- parameter
@@ -36,6 +36,8 @@
 		- ver.1.0.1
 			- バージョン表記を3桁に変更
 			- コメントを少し整理
+		- ver.1.0.2
+			- 文字コードの正規化
 ]]
 
 --YCbCrの数値変換

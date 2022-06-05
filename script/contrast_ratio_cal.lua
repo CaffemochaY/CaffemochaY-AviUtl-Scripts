@@ -1,5 +1,5 @@
 --[[
-	contrast_ratio_cal.lua / ver.1.0.1
+	contrast_ratio_cal.lua / ver.1.0.2
 	Copyright (c) 2022 CaffemochaY
 
 	sourse : [WCAG 2.0](https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-procedure)
@@ -7,6 +7,8 @@
 	- changelog
 		- ver.1.0.1
 			- バージョン表記を3桁に変更
+		- ver.1.0.2
+			- 文字コードの正規化
 ]]
 
 local function contrast_ratio_cal(crc_col1, crc_col2)
