@@ -36,7 +36,7 @@ developブランチには最新のものがあるので、最新版を使用し�
 - [ディフュージョン](#ディフュージョン)
 - [任意番号個別エフェクト](#任意番号個別エフェクト)
 
-[.not-necessary](#notnecessary)
+[.not-necessary](#not-necessary)
 
 - [マスク画像化](#マスク画像化)
 
