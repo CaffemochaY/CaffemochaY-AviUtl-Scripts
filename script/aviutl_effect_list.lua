@@ -1,44 +1,46 @@
 --[[
-	aviutl_effect_list.lua / ver.1.0
+	aviutl_effect_list.lua / ver.1.0.2
 	Copyright (c) 2022 CaffemochaY
 
-	_name       : "string"
+	- parameter
+		- _name         : "string"
+		- track
+			- track0      : "number"
+			- track1      : "number"
+			- track2      : "number"
+			- track3      : "number"
+			- track4      : "number"
+			- track5      : "number"
+			- track6      : "number"
+			- track7      : "number"
+		- color
+			- color1/col  : "number"
+			- color2/col  : "number"
+		- check
+			- check0/chk  : "number"
+			- check1/chk  : "number"
+			- check2/chk  : "number"
+			- check3/chk  : "number"
+			- check4/chk  : "number"
+		- mode          : "number"
+		- etype         : "number"
+		- name / file   : "string"
+		- color_yc
+			- color_yc1   : "table" or "number"
+			- color_yc2   : "table" or "number"
+		- seed          : "number"
+		- calc          : "number"
+		- param         : "string"
 
-	track0      : "number"
-	track1      : "number"
-	track2      : "number"
-	track3      : "number"
-	track4      : "number"
-	track5      : "number"
-	track6      : "number"
-	track7      : "number"
-
-	color1/col  : "number"
-	color2/col  : "number"
-
-	check0/chk  : "number"
-	check1/chk  : "number"
-	check2/chk  : "number"
-	check3/chk  : "number"
-	check4/chk  : "number"
-
-	mode        : "number"
-
-	etype       : "number"
-
-	name / file : "string"
-
-	color_yc1   : "table" or "number"
-	color_yc2   : "table" or "number"
-
-	seed        : "number"
-
-	calc        : "number"
-
-	param       : "string"
+	- changelog
+		- ver.1.0.1
+			- ãƒãƒ¼ã‚¸ãƒ§ãƒ³è¡¨è¨˜ã‚’3æ¡ã«å¤‰æ›´
+			- ã‚³ãƒ¡ãƒ³ãƒˆã‚’å°‘ã—æ•´ç†
+		- ver.1.0.2
+			- æ–‡å­—ã‚³ãƒ¼ãƒ‰ã®æ­£è¦åŒ–
 ]]
 
---YCbCr‚Ì”’l•ÏŠ·
+--YCbCrã®æ•°å€¤å¤‰æ›
 local function ycbcrconvert(ycbcrcol)
 	local colycre, ycstatus, colyc = 0, 1, {}
 	if type(ycbcrcol) == "table" then
@@ -63,12 +65,12 @@ local function ycbcrconvert(ycbcrcol)
 	return colycre, ycstatus
 end
 
---name‚Ì®Œ`
+--nameã®æ•´å½¢
 local function nameformat(name)
 	local nfe
 	if not name then
 		nfe = nil
-	elseif name == "*tempbuffer" or "tempbuffer" or "‰¼‘zƒoƒbƒtƒ@" then
+	elseif name == "*tempbuffer" or "tempbuffer" or "ä»®æƒ³ãƒãƒƒãƒ•ã‚¡" then
 		nfe = "*tempbuffer"
 	elseif string.sub(name, 1, 5) == "scene" then
 		nfe = ":"..string.sub(name, 6)
@@ -86,415 +88,415 @@ end
 
 --------------------------------------------------
 
---F’²•â³
+--è‰²èª¿è£œæ­£
 local function colorcorrection(track0, track1, track2, track3, track4, check0)
-	obj.effect("F’²•â³", "–¾‚é‚³", track0, "ºİÄ×½Ä", track1, "F‘Š", track2, "‹P“x", track3, "Ê“x", track4, "–O˜a‚·‚é", check0)
+	obj.effect("è‰²èª¿è£œæ­£", "æ˜ã‚‹ã•", track0, "ï½ºï¾ï¾„ï¾—ï½½ï¾„", track1, "è‰²ç›¸", track2, "è¼åº¦", track3, "å½©åº¦", track4, "é£½å’Œã™ã‚‹", check0)
 end
 
---ƒNƒŠƒbƒsƒ“ƒO
+--ã‚¯ãƒªãƒƒãƒ”ãƒ³ã‚°
 local function clipping(track0, track1, track2, track3, check0)
-	obj.effect("ƒNƒŠƒbƒsƒ“ƒO", "ã", track0 "‰º", track1 "¶", track2 "‰E", track3 "’†S‚ÌˆÊ’u‚ğ•ÏX", check0)
+	obj.effect("ã‚¯ãƒªãƒƒãƒ”ãƒ³ã‚°", "ä¸Š", track0 "ä¸‹", track1 "å·¦", track2 "å³", track3 "ä¸­å¿ƒã®ä½ç½®ã‚’å¤‰æ›´", check0)
 end
 
---‚Ú‚©‚µ
+--ã¼ã‹ã—
 local function shadingoff(track0, track1, track2, check0)
-	if track0 ~= 0 then obj.effect("‚Ú‚©‚µ", "”ÍˆÍ", track0, "c‰¡”ä", track1, "Œõ‚Ì‹­‚³", track2, "ƒTƒCƒYŒÅ’è", check0) end
+	if track0 ~= 0 then obj.effect("ã¼ã‹ã—", "ç¯„å›²", track0, "ç¸¦æ¨ªæ¯”", track1, "å…‰ã®å¼·ã•", track2, "ã‚µã‚¤ã‚ºå›ºå®š", check0) end
 end
 
---‹«ŠE‚Ú‚©‚µ
+--å¢ƒç•Œã¼ã‹ã—
 local function bordershadingoff(track0, track1, check0)
-	if track0 ~= 0 then obj.effect("‹«ŠE‚Ú‚©‚µ", "”ÍˆÍ", track0, "c‰¡”ä", track1, "“§–¾“x‚Ì‹«ŠE‚ğ‚Ú‚©‚·", check0) end
+	if track0 ~= 0 then obj.effect("å¢ƒç•Œã¼ã‹ã—", "ç¯„å›²", track0, "ç¸¦æ¨ªæ¯”", track1, "é€æ˜åº¦ã®å¢ƒç•Œã‚’ã¼ã‹ã™", check0) end
 end
 
---ƒ‚ƒUƒCƒN
+--ãƒ¢ã‚¶ã‚¤ã‚¯
 local function mosaic(track0, check0)
-	if track0 ~= 0 then obj.effect("ƒ‚ƒUƒCƒN", "ƒTƒCƒY", track0, "ƒ^ƒCƒ‹•—", check0) end
+	if track0 ~= 0 then obj.effect("ãƒ¢ã‚¶ã‚¤ã‚¯", "ã‚µã‚¤ã‚º", track0, "ã‚¿ã‚¤ãƒ«é¢¨", check0) end
 end
 
---”­Œõ
+--ç™ºå…‰
 local function luminescence(track0, track1, track2, track3, check0, color1)
 	if track0 ~= 0 then
 		local nocol1 = 0
 		if not color1 then color1, nocol1 = 0x0, 1 end
-		obj.effect("”­Œõ", "‹­‚³", track0, "ŠgU", track1, "‚µ‚«‚¢’l", track2, "ŠgU‘¬“x", track3, "ƒTƒCƒYŒÅ’è", check0, "color", color1, "no_color", nocol1)
+		obj.effect("ç™ºå…‰", "å¼·ã•", track0, "æ‹¡æ•£", track1, "ã—ãã„å€¤", track2, "æ‹¡æ•£é€Ÿåº¦", track3, "ã‚µã‚¤ã‚ºå›ºå®š", check0, "color", color1, "no_color", nocol1)
 	end
 end
 
---‘MŒõ
+--é–ƒå…‰
 local function flash(track0, track1, track2, check0, color1, mode)
 	if track0 ~= 0 then
 		local nocol1 = 0
 		if not color1 then color1, nocol1 = 0x0, 1 end
-		obj.effect("‘MŒõ", "‹­‚³", track0, "X", track1, "Y", track2, "ƒTƒCƒYŒÅ’è", check0, "color", color1, "no_color", nocol1, "mode", mode)
+		obj.effect("é–ƒå…‰", "å¼·ã•", track0, "X", track1, "Y", track2, "ã‚µã‚¤ã‚ºå›ºå®š", check0, "color", color1, "no_color", nocol1, "mode", mode)
 	end
 end
 
---ŠgUŒõ
+--æ‹¡æ•£å…‰
 local function diffuselight(track0, track1, check0)
-	if track0 ~= 0 then obj.effect("ŠgUŒõ", "‹­‚³", track0, "ŠgU", track1, "ƒTƒCƒYŒÅ’è", check0) end
+	if track0 ~= 0 then obj.effect("æ‹¡æ•£å…‰", "å¼·ã•", track0, "æ‹¡æ•£", track1, "ã‚µã‚¤ã‚ºå›ºå®š", check0) end
 end
 
---ƒOƒ[
+--ã‚°ãƒ­ãƒ¼
 local function glow(track0, track1, track2, track3, check0, color1, etype)
 	local nocol1 = 0
 	if not color1 then color1, nocol1 = 0x0, 1 end
-	if track0 ~= 0 then obj.effect("ƒOƒ[", "‹­‚³", track0, "ŠgU", track1, "‚µ‚«‚¢’l", track2, "‚Ú‚©‚µ", track3, "Œõ¬•ª‚Ì‚İ", check0, "color", color1, "no_color", nocol1, "type", etype) end
+	if track0 ~= 0 then obj.effect("ã‚°ãƒ­ãƒ¼", "å¼·ã•", track0, "æ‹¡æ•£", track1, "ã—ãã„å€¤", track2, "ã¼ã‹ã—", track3, "å…‰æˆåˆ†ã®ã¿", check0, "color", color1, "no_color", nocol1, "type", etype) end
 end
 
---ƒNƒƒ}ƒL[
+--ã‚¯ãƒ­ãƒã‚­ãƒ¼
 local function chromakey(track0, track1, track2, check0, check1, color_yc1)
 	local colycre1, ycstatus1 = ycbcrconvert(color_yc1)
-	obj.effect("ƒNƒƒ}ƒL[", "F‘Š”ÍˆÍ", track0, "Ê“x”ÍˆÍ", track1, "‹«ŠE•â³", track2, "FÊ•â³", check0, "“§‰ß•â³", check1, "color_yc", colycre1, "status", ycstatus1)
+	obj.effect("ã‚¯ãƒ­ãƒã‚­ãƒ¼", "è‰²ç›¸ç¯„å›²", track0, "å½©åº¦ç¯„å›²", track1, "å¢ƒç•Œè£œæ­£", track2, "è‰²å½©è£œæ­£", check0, "é€éè£œæ­£", check1, "color_yc", colycre1, "status", ycstatus1)
 end
 
---ƒJƒ‰[ƒL[
+--ã‚«ãƒ©ãƒ¼ã‚­ãƒ¼
 local function colorkey(track0, track1, track2, color_yc1)
 	local colycre1, ycstatus1 = ycbcrconvert(color_yc1)
-	obj.effect("ƒJƒ‰[ƒL[", "‹P“x”ÍˆÍ", track0, "F·”ÍˆÍ", track1, "‹«ŠE•â³", track2, "color_yc", colycre1, "status", ycstatus1)
+	obj.effect("ã‚«ãƒ©ãƒ¼ã‚­ãƒ¼", "è¼åº¦ç¯„å›²", track0, "è‰²å·®ç¯„å›²", track1, "å¢ƒç•Œè£œæ­£", track2, "color_yc", colycre1, "status", ycstatus1)
 end
 
---ƒ‹ƒ~ƒiƒ“ƒXƒL[
+--ãƒ«ãƒŸãƒŠãƒ³ã‚¹ã‚­ãƒ¼
 local function luminancekey(track0, track1, etype)
-	obj.effect("ƒ‹ƒ~ƒiƒ“ƒXƒL[", "Šî€‹P“x", track0 "‚Ú‚©‚µ", track1 "type", etype)
+	obj.effect("ãƒ«ãƒŸãƒŠãƒ³ã‚¹ã‚­ãƒ¼", "åŸºæº–è¼åº¦", track0 "ã¼ã‹ã—", track1 "type", etype)
 end
 
---ƒ‰ƒCƒg
+--ãƒ©ã‚¤ãƒˆ
 local function light(track0, track1, track2, check0, color1)
-	if track0 ~= 0 then obj.effect("ƒ‰ƒCƒg", "‹­‚³", track0, "ŠgU", track1, "”ä—¦", track2, "‹tŒõ", check0, "color", color1) end
+	if track0 ~= 0 then obj.effect("ãƒ©ã‚¤ãƒˆ", "å¼·ã•", track0, "æ‹¡æ•£", track1, "æ¯”ç‡", track2, "é€†å…‰", check0, "color", color1) end
 end
 
---ƒVƒƒƒh[
+--ã‚·ãƒ£ãƒ‰ãƒ¼
 local function shadow(track0, track1, track2, track3, check0, color1, name)
-	if track2 ~= 0 then obj.effect("ƒVƒƒƒh[", "X", track0, "Y", track1, "”Z‚³", track2, "ŠgU", track3, "‰e‚ğ•ÊƒIƒuƒWƒFƒNƒg‚Å•`‰æ", check0, "color", color1, "file", name) end
+	if track2 ~= 0 then obj.effect("ã‚·ãƒ£ãƒ‰ãƒ¼", "X", track0, "Y", track1, "æ¿ƒã•", track2, "æ‹¡æ•£", track3, "å½±ã‚’åˆ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã§æç”»", check0, "color", color1, "file", name) end
 end
 
---‰æ‚è
+--ç¸å–ã‚Š
 local function bordering(track0, track1, color1, name)
-	if track0 ~= 0 then obj.effect("‰æ‚è", "ƒTƒCƒY", track0, "‚Ú‚©‚µ", track1, "color", color1, "file", name) end
+	if track0 ~= 0 then obj.effect("ç¸å–ã‚Š", "ã‚µã‚¤ã‚º", track0, "ã¼ã‹ã—", track1, "color", color1, "file", name) end
 end
 
---“ÊƒGƒbƒW
+--å‡¸ã‚¨ãƒƒã‚¸
 local function convexedge(track0, track1, track2)
-	if track0 ~= 0 then obj.effect("“ÊƒGƒbƒW", "•", track0, "‚‚³", track1, "Šp“x", track2) end
+	if track0 ~= 0 then obj.effect("å‡¸ã‚¨ãƒƒã‚¸", "å¹…", track0, "é«˜ã•", track1, "è§’åº¦", track2) end
 end
 
---ƒGƒbƒW’Šo
+--ã‚¨ãƒƒã‚¸æŠ½å‡º
 local function edgeextraction(track0, track1, check0, check1, color1)
-	if track0 ~= 0 then obj.effect("ƒGƒbƒW’Šo", "‹­‚³", track0, "‚µ‚«‚¢’l", track1, "‹P“xƒGƒbƒW‚ğ’Šo", check0, "“§–¾“xƒGƒbƒW‚ğ’Šo", check1, "color", color1) end
+	if track0 ~= 0 then obj.effect("ã‚¨ãƒƒã‚¸æŠ½å‡º", "å¼·ã•", track0, "ã—ãã„å€¤", track1, "è¼åº¦ã‚¨ãƒƒã‚¸ã‚’æŠ½å‡º", check0, "é€æ˜åº¦ã‚¨ãƒƒã‚¸ã‚’æŠ½å‡º", check1, "color", color1) end
 end
 
---ƒVƒƒ[ƒv
+--ã‚·ãƒ£ãƒ¼ãƒ—
 local function sharp(track0, track1)
-	if track0 ~= 0 then obj.effect("ƒVƒƒ[ƒv", "‹­‚³", track0, "”ÍˆÍ", track1) end
+	if track0 ~= 0 then obj.effect("ã‚·ãƒ£ãƒ¼ãƒ—", "å¼·ã•", track0, "ç¯„å›²", track1) end
 end
 
---ƒtƒF[ƒh
+--ãƒ•ã‚§ãƒ¼ãƒ‰
 local function fade(track0, track1)
-	obj.effect("ƒtƒF[ƒh", "ƒCƒ“", track0, "ƒAƒEƒg", track1)
+	obj.effect("ãƒ•ã‚§ãƒ¼ãƒ‰", "ã‚¤ãƒ³", track0, "ã‚¢ã‚¦ãƒˆ", track1)
 end
 
---ƒƒCƒv
+--ãƒ¯ã‚¤ãƒ—
 local function wipe(track0, track1, track2, check0, check1, etype, name)
-	obj.effect("ƒƒCƒv", "ƒCƒ“", track0, "ƒAƒEƒg", track1, "‚Ú‚©‚µ", track2, "”½“](ƒCƒ“)", check0, "”½“](ƒAƒEƒg)", check1, "type", etype, "name", name)
+	obj.effect("ãƒ¯ã‚¤ãƒ—", "ã‚¤ãƒ³", track0, "ã‚¢ã‚¦ãƒˆ", track1, "ã¼ã‹ã—", track2, "åè»¢(ã‚¤ãƒ³)", check0, "åè»¢(ã‚¢ã‚¦ãƒˆ)", check1, "type", etype, "name", name)
 end
 
---ƒ}ƒXƒN
-	--ƒGƒtƒFƒNƒg‚Ìƒ}ƒXƒN‚ÅƒV[ƒ“‚ğˆê“xw’è‚µ‚È‚¢‚Æobj.effect‚Ìƒ}ƒXƒN‚ÅƒV[ƒ“‚ª“Ç‚ß‚Ä‚¢‚È‚¢‚Á‚Û‚¢‚Ì‚Å’ˆÓ
+--ãƒã‚¹ã‚¯
+	--ã‚¨ãƒ•ã‚§ã‚¯ãƒˆã®ãƒã‚¹ã‚¯ã§ã‚·ãƒ¼ãƒ³ã‚’ä¸€åº¦æŒ‡å®šã—ãªã„ã¨obj.effectã®ãƒã‚¹ã‚¯ã§ã‚·ãƒ¼ãƒ³ãŒèª­ã‚ã¦ã„ãªã„ã£ã½ã„ã®ã§æ³¨æ„
 local function mask(track0, track1, track2, track3, track4, track5, check0, check1, etype, name, mode)
 	local nfe = nameformat(name)
-	obj.effect("ƒ}ƒXƒN", "X", track0, "Y", track1, "‰ñ“]", track2, "ƒTƒCƒY", track3, "c‰¡”ä", track4, "‚Ú‚©‚µ", track5, "ƒ}ƒXƒN‚Ì”½“]", check0, "Œ³‚ÌƒTƒCƒY‚É‡‚í‚¹‚é", check1, "type", etype, "name", nfe, "mode", mode)
+	obj.effect("ãƒã‚¹ã‚¯", "X", track0, "Y", track1, "å›è»¢", track2, "ã‚µã‚¤ã‚º", track3, "ç¸¦æ¨ªæ¯”", track4, "ã¼ã‹ã—", track5, "ãƒã‚¹ã‚¯ã®åè»¢", check0, "å…ƒã®ã‚µã‚¤ã‚ºã«åˆã‚ã›ã‚‹", check1, "type", etype, "name", nfe, "mode", mode)
 end
 
---Î‚ßƒNƒŠƒbƒsƒ“ƒO
+--æ–œã‚ã‚¯ãƒªãƒƒãƒ”ãƒ³ã‚°
 local function obliqueclip(track0, track1, track2, track3, track4)
-	obj.effect("Î‚ßƒNƒŠƒbƒsƒ“ƒO", "’†SX", track0, "’†SY", track1, "Šp“x", track2, "‚Ú‚©‚µ", track3, "•", track4)
+	obj.effect("æ–œã‚ã‚¯ãƒªãƒƒãƒ”ãƒ³ã‚°", "ä¸­å¿ƒX", track0, "ä¸­å¿ƒY", track1, "è§’åº¦", track2, "ã¼ã‹ã—", track3, "å¹…", track4)
 end
 
---•úËƒuƒ‰[
+--æ”¾å°„ãƒ–ãƒ©ãƒ¼
 local function radiationblur(track0, track1, track2, check0)
-	if track0 ~= 0 then obj.effect("•úËƒuƒ‰[", "”ÍˆÍ", track0, "X", track1, "Y", track2, "ƒTƒCƒYŒÅ’è", check0) end
+	if track0 ~= 0 then obj.effect("æ”¾å°„ãƒ–ãƒ©ãƒ¼", "ç¯„å›²", track0, "X", track1, "Y", track2, "ã‚µã‚¤ã‚ºå›ºå®š", check0) end
 end
 
---•ûŒüƒuƒ‰[
+--æ–¹å‘ãƒ–ãƒ©ãƒ¼
 local function directionblur(track0, track1, check0)
-	if track0 ~= 0 then obj.effect("•ûŒüƒuƒ‰[", "”ÍˆÍ", track0, "Šp“x", track1, "ƒTƒCƒYŒÅ’è", check0) end
+	if track0 ~= 0 then obj.effect("æ–¹å‘ãƒ–ãƒ©ãƒ¼", "ç¯„å›²", track0, "è§’åº¦", track1, "ã‚µã‚¤ã‚ºå›ºå®š", check0) end
 end
 
---ƒŒƒ“ƒYƒuƒ‰[
+--ãƒ¬ãƒ³ã‚ºãƒ–ãƒ©ãƒ¼
 local function lensblur(track0, track1, check0)
-	if track0 ~= 0 then obj.effect("ƒŒƒ“ƒYƒuƒ‰[", "”ÍˆÍ", track0, "Œõ‚Ì‹­‚³", track1, "ƒTƒCƒYŒÅ’è", check0) end
+	if track0 ~= 0 then obj.effect("ãƒ¬ãƒ³ã‚ºãƒ–ãƒ©ãƒ¼", "ç¯„å›²", track0, "å…‰ã®å¼·ã•", track1, "ã‚µã‚¤ã‚ºå›ºå®š", check0) end
 end
 
---ƒ‚[ƒVƒ‡ƒ“ƒuƒ‰[
-	--“®‚©‚È‚¢H / ƒIƒtƒXƒNƒŠ[ƒ“•`‰æ‚ğ1‚É‚·‚é‚ÆÅ‰‚ÆÅŒã‚ÌƒtƒŒ[ƒ€‚Ì‚İ‚ªŒ©‚¦‚é
+--ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³ãƒ–ãƒ©ãƒ¼
+	--å‹•ã‹ãªã„ï¼Ÿ / ã‚ªãƒ•ã‚¹ã‚¯ãƒªãƒ¼ãƒ³æç”»ã‚’1ã«ã™ã‚‹ã¨æœ€åˆã¨æœ€å¾Œã®ãƒ•ãƒ¬ãƒ¼ãƒ ã®ã¿ãŒè¦‹ãˆã‚‹
 --[[
 local function motionblur(track0, track1, check0, check1, check2)
-	obj.effect("ƒ‚[ƒVƒ‡ƒ“ƒuƒ‰[", "ŠÔŠu", track0, "•ª‰ğ”\", track1, "c‘œ", check0, "ƒIƒtƒXƒNƒŠ[ƒ“•`‰æ", check1, "o—Í‚É•ª‰ğ”\‚ğã‚°‚é", check2)
+	obj.effect("ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³ãƒ–ãƒ©ãƒ¼", "é–“éš”", track0, "åˆ†è§£èƒ½", track1, "æ®‹åƒ", check0, "ã‚ªãƒ•ã‚¹ã‚¯ãƒªãƒ¼ãƒ³æç”»", check1, "å‡ºåŠ›æ™‚ã«åˆ†è§£èƒ½ã‚’ä¸Šã’ã‚‹", check2)
 end
 --]]
 
---À•W
+--åº§æ¨™
 local function coordinate(track0, track1, track2)
-	obj.effect("À•W", "X", track0, "Y", track1, "Z", track2)
+	obj.effect("åº§æ¨™", "X", track0, "Y", track1, "Z", track2)
 end
 
---Šg‘å—¦
+--æ‹¡å¤§ç‡
 local function zoomrate(track0, track1, track2)
-	obj.effect("À•W", "Šg‘å—¦", track0, "X", track1, "Y", track2)
+	obj.effect("åº§æ¨™", "æ‹¡å¤§ç‡", track0, "X", track1, "Y", track2)
 end
 
---“§–¾“x
+--é€æ˜åº¦
 local function transparency(track0)
-	obj.effect("À•W", "“§–¾“x", track0)
+	obj.effect("åº§æ¨™", "é€æ˜åº¦", track0)
 end
 
---‰ñ“]
+--å›è»¢
 local function turning(track0, track1, track2)
-	obj.effect("‰ñ“]", "X", track0, "Y", track1, "Z", track2)
+	obj.effect("å›è»¢", "X", track0, "Y", track1, "Z", track2)
 end
 
---—ÌˆæŠg’£
+--é ˜åŸŸæ‹¡å¼µ
 local function areaextension(track0, track1, track2, track3 ,check0)
-	obj.effect("—ÌˆæŠg’£", "ã", track0, "‰º", track1, "¶", track2, "‰E", track3, "“h‚è‚Â‚Ô‚µ", check0)
+	obj.effect("é ˜åŸŸæ‹¡å¼µ", "ä¸Š", track0, "ä¸‹", track1, "å·¦", track2, "å³", track3, "å¡—ã‚Šã¤ã¶ã—", check0)
 end
 
---ƒŠƒTƒCƒY
+--ãƒªã‚µã‚¤ã‚º
 local function resize(track0, track1, track2, check0, check1)
-	obj.effect("ƒŠƒTƒCƒY", "Šg‘å—¦", track0, "X", track1, "Y", track2, "•âŠÔ‚È‚µ", check0, "ƒhƒbƒg”‚ÅƒTƒCƒYw’è", check1)
+	obj.effect("ãƒªã‚µã‚¤ã‚º", "æ‹¡å¤§ç‡", track0, "X", track1, "Y", track2, "è£œé–“ãªã—", check0, "ãƒ‰ãƒƒãƒˆæ•°ã§ã‚µã‚¤ã‚ºæŒ‡å®š", check1)
 end
 
---ƒ[ƒe[ƒVƒ‡ƒ“
+--ãƒ­ãƒ¼ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³
 local function rotation(track0)
-	obj.effect("ƒ[ƒe[ƒVƒ‡ƒ“", "90“x‰ñ“]", track0)
+	obj.effect("ãƒ­ãƒ¼ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³", "90åº¦å›è»¢", track0)
 end
 
---”½“]
+--åè»¢
 local function inversion(check0, check1, check2, check3, check4)
-	obj.effect("”½“]", "ã‰º”½“]", check0, "¶‰E”½“]", check1, "‹P“x”½“]", check2, "F‘Š”½“]", check3, "“§–¾“x”½“]", check4)
+	obj.effect("åè»¢", "ä¸Šä¸‹åè»¢", check0, "å·¦å³åè»¢", check1, "è¼åº¦åè»¢", check2, "è‰²ç›¸åè»¢", check3, "é€æ˜åº¦åè»¢", check4)
 end
 
---U“®
+--æŒ¯å‹•
 local function vibration(track0, track1, track2, track3, check0, check1)
-	obj.effect("U“®", "X", track0, "Y", track1, "Z", track2, "üŠú", track3, "ƒ‰ƒ“ƒ_ƒ€‚É‹­‚³‚ğ•Ï‚¦‚é", check0, "•¡G‚ÉU“®", check1)
+	obj.effect("æŒ¯å‹•", "X", track0, "Y", track1, "Z", track2, "å‘¨æœŸ", track3, "ãƒ©ãƒ³ãƒ€ãƒ ã«å¼·ã•ã‚’å¤‰ãˆã‚‹", check0, "è¤‡é›‘ã«æŒ¯å‹•", check1)
 end
 
---ƒ~ƒ‰[
+--ãƒŸãƒ©ãƒ¼
 local function mirror(track0, track1, track2, check0, etype)
-	obj.effect("ƒ~ƒ‰[", "“§–¾“x", track0, "Œ¸Š", track1, "‹«–Ú’²®", track2, "’†S‚ÌˆÊ’u‚ğ•ÏX", check0, "type", etype)
+	obj.effect("ãƒŸãƒ©ãƒ¼", "é€æ˜åº¦", track0, "æ¸›è¡°", track1, "å¢ƒç›®èª¿æ•´", track2, "ä¸­å¿ƒã®ä½ç½®ã‚’å¤‰æ›´", check0, "type", etype)
 end
 
---ƒ‰ƒXƒ^[
+--ãƒ©ã‚¹ã‚¿ãƒ¼
 local function raster(track0, track1, track2, check0, check1)
-	obj.effect("ƒ‰ƒXƒ^[", "‰¡•", track0, "‚‚³", track1, "üŠú", track2, "cƒ‰ƒXƒ^[", check0, "ƒ‰ƒ“ƒ_ƒ€U•", check1)
+	obj.effect("ãƒ©ã‚¹ã‚¿ãƒ¼", "æ¨ªå¹…", track0, "é«˜ã•", track1, "å‘¨æœŸ", track2, "ç¸¦ãƒ©ã‚¹ã‚¿ãƒ¼", check0, "ãƒ©ãƒ³ãƒ€ãƒ æŒ¯å¹…", check1)
 end
 
---‰æ‘œƒ‹[ƒv
+--ç”»åƒãƒ«ãƒ¼ãƒ—
 local function imageloop(track0, track1, track2, track3, check0)
-	obj.effect("‰æ‘œƒ‹[ƒv", "‰¡‰ñ”", track0, "c‰ñ”", track1, "‘¬“xX", track2, "‘¬“xY", track3, "ŒÂ•ÊƒIƒuƒWƒFƒNƒg", check0)
+	obj.effect("ç”»åƒãƒ«ãƒ¼ãƒ—", "æ¨ªå›æ•°", track0, "ç¸¦å›æ•°", track1, "é€Ÿåº¦X", track2, "é€Ÿåº¦Y", track3, "å€‹åˆ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ", check0)
 end
 
---‹ÉÀ•W•ÏŠ·
+--æ¥µåº§æ¨™å¤‰æ›
 local function polarcoordconv(track0, track1, track2, track3)
-	obj.effect("‹ÉÀ•W•ÏŠ·", "’†S•", track0, "Šg‘å—¦", track1, "‰ñ“]", track2, "‰QŠª", track3)
+	obj.effect("æ¥µåº§æ¨™å¤‰æ›", "ä¸­å¿ƒå¹…", track0, "æ‹¡å¤§ç‡", track1, "å›è»¢", track2, "æ¸¦å·»", track3)
 end
 
---ƒfƒBƒXƒvƒŒƒCƒXƒƒ“ƒgƒ}ƒbƒv
-	--ƒGƒtƒFƒNƒg‚ÌƒfƒBƒXƒvƒŒƒCƒXƒƒ“ƒgƒ}ƒbƒv‚ÅƒV[ƒ“‚ğˆê“xw’è‚µ‚È‚¢‚Æobj.effect‚Ìƒ}ƒXƒN‚ÅƒV[ƒ“‚ª“Ç‚ß‚Ä‚¢‚È‚¢‚Á‚Û‚¢‚Ì‚Å’ˆÓ
+--ãƒ‡ã‚£ã‚¹ãƒ—ãƒ¬ã‚¤ã‚¹ãƒ¡ãƒ³ãƒˆãƒãƒƒãƒ—
+	--ã‚¨ãƒ•ã‚§ã‚¯ãƒˆã®ãƒ‡ã‚£ã‚¹ãƒ—ãƒ¬ã‚¤ã‚¹ãƒ¡ãƒ³ãƒˆãƒãƒƒãƒ—ã§ã‚·ãƒ¼ãƒ³ã‚’ä¸€åº¦æŒ‡å®šã—ãªã„ã¨obj.effectã®ãƒã‚¹ã‚¯ã§ã‚·ãƒ¼ãƒ³ãŒèª­ã‚ã¦ã„ãªã„ã£ã½ã„ã®ã§æ³¨æ„
 local function displacementmap(track0, track1, track2, track3, track4, track5, track6, track7, check0, etype, name, mode, calc)
 	local nfe = nameformat(name)
-	obj.effect("ƒfƒBƒXƒvƒŒƒCƒXƒƒ“ƒgƒ}ƒbƒv", "param0", track0, "param1", track1, "X", track2, "Y", track3, "‰ñ“]", track4, "ƒTƒCƒY", track5, "c‰¡”ä", track6, "‚Ú‚©‚µ", track7, "Œ³‚ÌƒTƒCƒY‚É‡‚í‚¹‚é", check0, "type", etype, "name", nfe, "mode", mode, "calc", calc)
+	obj.effect("ãƒ‡ã‚£ã‚¹ãƒ—ãƒ¬ã‚¤ã‚¹ãƒ¡ãƒ³ãƒˆãƒãƒƒãƒ—", "param0", track0, "param1", track1, "X", track2, "Y", track3, "å›è»¢", track4, "ã‚µã‚¤ã‚º", track5, "ç¸¦æ¨ªæ¯”", track6, "ã¼ã‹ã—", track7, "å…ƒã®ã‚µã‚¤ã‚ºã«åˆã‚ã›ã‚‹", check0, "type", etype, "name", nfe, "mode", mode, "calc", calc)
 end
 
---ƒmƒCƒY
+--ãƒã‚¤ã‚º
 local function noise(track0, track1, track2, track3, track4, track5, track6, etype, mode, seed)
-	if track0 ~= 0 then obj.effect("ƒmƒCƒY", "‹­‚³", track0, "‘¬“xX", track1, "‘¬“xY", track2, "•Ï‰»‘¬“x", track3, "üŠúX", track4, "üŠúY", track5, "‚µ‚«‚¢’l", track6, "type", etype, "mode", mode, "seed", seed) end
+	if track0 ~= 0 then obj.effect("ãƒã‚¤ã‚º", "å¼·ã•", track0, "é€Ÿåº¦X", track1, "é€Ÿåº¦Y", track2, "å¤‰åŒ–é€Ÿåº¦", track3, "å‘¨æœŸX", track4, "å‘¨æœŸY", track5, "ã—ãã„å€¤", track6, "type", etype, "mode", mode, "seed", seed) end
 end
 
---F‚¸‚ê
+--è‰²ãšã‚Œ
 local function colorshift(track0, track1, track2, etype)
-	if track0 ~= 0 and track2 ~= 0 then obj.effect("F‚¸‚ê", "‚¸‚ê•", track0, "Šp“x", track1, "‹­‚³", track2, "type", etype) end
+	if track0 ~= 0 and track2 ~= 0 then obj.effect("è‰²ãšã‚Œ", "ãšã‚Œå¹…", track0, "è§’åº¦", track1, "å¼·ã•", track2, "type", etype) end
 end
 
---’PF‰»
+--å˜è‰²åŒ–
 local function monochroma(track0, check0, color1)
 	if not color1 then color1 = 0x0 end
-	obj.effect("’PF‰»", "‹­‚³", track0, "‹P“x‚ğ•Û‚·‚é", check0, "color", color1)
+	obj.effect("å˜è‰²åŒ–", "å¼·ã•", track0, "è¼åº¦ã‚’ä¿æŒã™ã‚‹", check0, "color", color1)
 end
 
---ƒOƒ‰ƒf[ƒVƒ‡ƒ“
+--ã‚°ãƒ©ãƒ‡ãƒ¼ã‚·ãƒ§ãƒ³
 local function gradation(track0, track1, track2, track3, track4, mode, color1, color2 ,etype)
 	local nocol1, nocol2 = 0, 0
 	if not color1 then color1, nocol1 = 0x0, 1 end
 	if not color2 then color2, nocol2 = 0x0, 1 end
-	if track0 ~= 0 then obj.effect("ƒOƒ‰ƒf[ƒVƒ‡ƒ“", "‹­‚³", track0, "’†SX", track1, "’†SY", track2, "Šp“x", track3, "•", track4, "blend", mode, "color", color1, "no_color", nocol1, "color2", color2, "no_color2", nocol2, "type", etype) end
+	if track0 ~= 0 then obj.effect("ã‚°ãƒ©ãƒ‡ãƒ¼ã‚·ãƒ§ãƒ³", "å¼·ã•", track0, "ä¸­å¿ƒX", track1, "ä¸­å¿ƒY", track2, "è§’åº¦", track3, "å¹…", track4, "blend", mode, "color", color1, "no_color", nocol1, "color2", color2, "no_color2", nocol2, "type", etype) end
 end
 
---Šg’£Fİ’è
+--æ‹¡å¼µè‰²è¨­å®š
 --[[
 local function advancecolset(track0, track1, track2, check0)
-	obj.effect("Šg’£Fİ’è", "R", track0, "G", track1, "B", track2, "RGBÌHSV", check0)
+	obj.effect("æ‹¡å¼µè‰²è¨­å®š", "R", track0, "G", track1, "B", track2, "RGBâ‡”HSV", check0)
 end
 --]]
 
---“Á’èFˆæ•ÏŠ·
+--ç‰¹å®šè‰²åŸŸå¤‰æ›
 local function specolspaceconv(track0, track1, track2, color_yc1, color_yc2)
 	local colycre1, ycstatus1 = ycbcrconvert(color_yc1)
 	local colycre2, ycstatus2 = ycbcrconvert(color_yc2)
-	obj.effect("“Á’èFˆæ•ÏŠ·", "F‘Š”ÍˆÍ", track0, "Ê“x”ÍˆÍ", track1, "‹«ŠE•â³", track2, "color_yc", colycre1, "status", ycstatus1, "color_yc2", colycre2, "status2", ycstatus2)
+	obj.effect("ç‰¹å®šè‰²åŸŸå¤‰æ›", "è‰²ç›¸ç¯„å›²", track0, "å½©åº¦ç¯„å›²", track1, "å¢ƒç•Œè£œæ­£", track2, "color_yc", colycre1, "status", ycstatus1, "color_yc2", colycre2, "status2", ycstatus2)
 end
 
---ƒAƒjƒ[ƒVƒ‡ƒ“Œø‰Ê
+--ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³åŠ¹æœ
 local function animationeffect(track0, track1, track2, track3, check0, name, param)
-	obj.effect("ƒAƒjƒ[ƒVƒ‡ƒ“Œø‰Ê", "track0", track0, "track1", track1, "track2", track2, "track3", track3, "check0", check0, "name", name, "param", param)
+	obj.effect("ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³åŠ¹æœ", "track0", track0, "track1", track1, "track2", track2, "track3", track3, "check0", check0, "name", name, "param", param)
 end
 
---“®‰æƒtƒ@ƒCƒ‹‡¬
+--å‹•ç”»ãƒ•ã‚¡ã‚¤ãƒ«åˆæˆ
 local function videocomposition(track0, track1, track2, track3, track4, check0, check1, check2, file, mode)
 	local nfe = nameformat(file)
-	obj.effect("“®‰æƒtƒ@ƒCƒ‹‡¬", "Ä¶ˆÊ’u", track0, "Ä¶‘¬“x", track1, "X", track2, "Y", track3, "Šg‘å—¦", track4, "ƒ‹[ƒvÄ¶", check0, "“®‰æƒtƒ@ƒCƒ‹‚Ì“¯Šú", check1, "ƒ‹[ƒv‰æ‘œ", check2, "file", nfe, "mode", mode)
+	obj.effect("å‹•ç”»ãƒ•ã‚¡ã‚¤ãƒ«åˆæˆ", "å†ç”Ÿä½ç½®", track0, "å†ç”Ÿé€Ÿåº¦", track1, "X", track2, "Y", track3, "æ‹¡å¤§ç‡", track4, "ãƒ«ãƒ¼ãƒ—å†ç”Ÿ", check0, "å‹•ç”»ãƒ•ã‚¡ã‚¤ãƒ«ã®åŒæœŸ", check1, "ãƒ«ãƒ¼ãƒ—ç”»åƒ", check2, "file", nfe, "mode", mode)
 end
 
---‰æ‘œƒtƒ@ƒCƒ‹‡¬
+--ç”»åƒãƒ•ã‚¡ã‚¤ãƒ«åˆæˆ
 local function pictcomposition(track0, track1, track2, check0, mode, file)
 	local nfe = nameformat(file)
-	obj.effect("“®‰æƒtƒ@ƒCƒ‹‡¬", "X", track0, "Y", track1, "Šg‘å—¦", track2, "ƒ‹[ƒv‰æ‘œ", check0, "file", nfe, "mode", mode, "file", nfe)
+	obj.effect("å‹•ç”»ãƒ•ã‚¡ã‚¤ãƒ«åˆæˆ", "X", track0, "Y", track1, "æ‹¡å¤§ç‡", track2, "ãƒ«ãƒ¼ãƒ—ç”»åƒ", check0, "file", nfe, "mode", mode, "file", nfe)
 end
 
---ƒCƒ“ƒ^[ƒŒ[ƒX‰ğœ
+--ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ¬ãƒ¼ã‚¹è§£é™¤
 local function deinterlacing(etype)
-	obj.effect("ƒ“ƒ^[ƒŒ[ƒX‰ğœ", "type", etype)
+	obj.effect("ãƒ³ã‚¿ãƒ¼ãƒ¬ãƒ¼ã‚¹è§£é™¤", "type", etype)
 end
 
---ƒJƒƒ‰§ŒäƒIƒvƒVƒ‡ƒ“
+--ã‚«ãƒ¡ãƒ©åˆ¶å¾¡ã‚ªãƒ—ã‚·ãƒ§ãƒ³
 local function camctrloption(check0, check1, check2, check3)
-	obj.effect("ƒJƒƒ‰§ŒäƒIƒvƒVƒ‡ƒ“", "ƒJƒƒ‰‚Ì•û‚ğŒü‚­", check0, "ƒJƒƒ‰‚Ì•û‚ğŒü‚­(c‰¡•ûŒü‚Ì‚İ)", check1, "ƒJƒƒ‰‚Ì•û‚ğŒü‚­(‰¡•ûŒü‚Ì‚İ)", check2, "ƒVƒƒƒh[‚Ì‘ÎÛ‚©‚çŠO‚·", check3)
+	obj.effect("ã‚«ãƒ¡ãƒ©åˆ¶å¾¡ã‚ªãƒ—ã‚·ãƒ§ãƒ³", "ã‚«ãƒ¡ãƒ©ã®æ–¹ã‚’å‘ã", check0, "ã‚«ãƒ¡ãƒ©ã®æ–¹ã‚’å‘ã(ç¸¦æ¨ªæ–¹å‘ã®ã¿)", check1, "ã‚«ãƒ¡ãƒ©ã®æ–¹ã‚’å‘ã(æ¨ªæ–¹å‘ã®ã¿)", check2, "ã‚·ãƒ£ãƒ‰ãƒ¼ã®å¯¾è±¡ã‹ã‚‰å¤–ã™", check3)
 end
 
---ƒIƒtƒXƒNƒŠ[ƒ“•`‰æ
+--ã‚ªãƒ•ã‚¹ã‚¯ãƒªãƒ¼ãƒ³æç”»
 local function offscreen()
-	obj.effect("ƒIƒtƒXƒNƒŠ[ƒ“•`‰æ")
+	obj.effect("ã‚ªãƒ•ã‚¹ã‚¯ãƒªãƒ¼ãƒ³æç”»")
 end
 
---ƒIƒuƒWƒFƒNƒg•ªŠ„
+--ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆåˆ†å‰²
 local function objsplit(track0, track1)
-	obj.effect("ƒIƒuƒWƒFƒNƒg•ªŠ„", "‰¡•ªŠ„”", track0, "c•ªŠ„”", track1)
+	obj.effect("ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆåˆ†å‰²", "æ¨ªåˆ†å‰²æ•°", track0, "ç¸¦åˆ†å‰²æ•°", track1)
 end
 
 --------------------------------------------------
 
---•ªŠò
+--åˆ†å²
 local function auleffectlist(_name, track0, track1, track2, track3, track4, track5, track6, track7, color1, color2, check0, check1, check2, check3, check4, mode, etype, name, color_yc1, color_yc2, seed, calc, param)
-	if _name == "F’²•â³" then colorcorrection(track0, track1, track2, track3, track4, check0)
-	elseif _name == "ƒNƒŠƒbƒsƒ“ƒO" then clipping(track0, track1, track2, track3, check0)
-	elseif _name == "‚Ú‚©‚µ" then shadingoff(track0, track1, track2, check0)
-	elseif _name == "‹«ŠE‚Ú‚©‚µ" then bordershadingoff(track0, track1, check0)
-	elseif _name == "ƒ‚ƒUƒCƒN" then mosaic(track0, check0)
-	elseif _name == "”­Œõ" then luminescence(track0, track1, track2, track3, check0, color1)
-	elseif _name == "‘MŒõ" then flash(track0, track1, track2, check0, color1, mode)
-	elseif _name == "ŠgUŒõ" then diffuselight(track0, track1, check0)
-	elseif _name == "ƒOƒ[" then glow(track0, track1, track2, track3, check0, color1, etype)
-	elseif _name == "ƒNƒƒ}ƒL[" then chromakey(track0, track1, track2, check0, check1, color_yc1)
-	elseif _name == "ƒJƒ‰[ƒL[" then colorkey(track0, track1, track2, color_yc1)
-	elseif _name == "ƒ‹ƒ~ƒiƒ“ƒXƒL[" then luminancekey(track0, track1, etype)
-	elseif _name == "ƒ‰ƒCƒg" then light(track0, track1, track2, check0, color1)
-	elseif _name == "ƒVƒƒƒh[" then shadow(track0, track1, track2, track3, check0, color1, name)
-	elseif _name == "‰æ‚è" then bordering(track0, track1, color1, name)
-	elseif _name == "“ÊƒGƒbƒW" then convexedge(track0, track1, track2)
-	elseif _name == "ƒGƒbƒW’Šo" then edgeextraction(track0, track1, check0, check1, color1)
-	elseif _name == "ƒVƒƒ[ƒv" then sharp(track0, track1)
-	elseif _name == "ƒtƒF[ƒh" then fade(track0, track1)
-	elseif _name == "ƒƒCƒv" then wipe(track0, track1, track2, check0, check1, etype, name)
-	elseif _name == "ƒ}ƒXƒN" then mask(track0, track1, track2, track3, track4, track5, check0, check1, etype, name, mode)
-	elseif _name == "Î‚ßƒNƒŠƒbƒsƒ“ƒO" then obliqueclip(track0, track1, track2, track3, track4)
-	elseif _name == "•úËƒuƒ‰[" then radiationblur(track0, track1, track2, check0)
-	elseif _name == "•ûŒüƒuƒ‰[" then directionblur(track0, track1, check0)
-	elseif _name == "ƒŒƒ“ƒYƒuƒ‰[" then lensblur(track0, track1, check0)
-	-- elseif _name == "ƒ‚[ƒVƒ‡ƒ“ƒuƒ‰[" then motionblur(track0, track1, check0, check1, check2)
-	elseif _name == "À•W" then coordinate(track0, track1, track2)
-	elseif _name == "Šg‘å—¦" then zoomrate(track0, track1, track2)
-	elseif _name == "“§–¾“x" then transparency(track0)
-	elseif _name == "‰ñ“]" then turning(track0, track1, track2)
-	elseif _name == "—ÌˆæŠg’£" then areaextension(track0, track1, track2, track3 ,check0)
-	elseif _name == "ƒŠƒTƒCƒY" then resize(track0, track1, track2, check0, check1)
-	elseif _name == "ƒ[ƒe[ƒVƒ‡ƒ“" then rotation(track0)
-	elseif _name == "”½“]" then inversion(check0, check1, check2, check3, check4)
-	elseif _name == "U“®" then vibration(track0, track1, track2, track3, check0, check1)
-	elseif _name == "ƒ~ƒ‰[" then mirror(track0, track1, track2, check0, etype)
-	elseif _name == "ƒ‰ƒXƒ^[" then raster(track0, track1, track2, check0, check1)
-	elseif _name == "‰æ‘œƒ‹[ƒv" then imageloop(track0, track1, track2, track3, check0)
-	elseif _name == "‹ÉÀ•W•ÏŠ·" then polarcoordconv(track0, track1, track2, track3)
-	elseif _name == "ƒfƒBƒXƒvƒŒƒCƒXƒƒ“ƒgƒ}ƒbƒv" then displacementmap(track0, track1, track2, track3, track4, track5, track6, track7, check0, etype, name, mode, calc)
-	elseif _name == "ƒmƒCƒY" then noise(track0, track1, track2, track3, track4, track5, track6, etype, mode, seed)
-	elseif _name == "F‚¸‚ê" then colorshift(track0, track1, track2, etype)
-	elseif _name == "’PF‰»" then monochroma(track0, check0, color1)
-	elseif _name == "ƒOƒ‰ƒf[ƒVƒ‡ƒ“" then gradation(track0, track1, track2, track3, track4, mode, color1, color2 ,etype)
-	-- elseif _name == "Šg’£Fİ’è" then advancecolset(track0, track1, track2, check0)
-	elseif _name == "“Á’èFˆæ•ÏŠ·" then specolspaceconv(track0, track1, track2, color_yc1, color_yc2)
-	elseif _name == "ƒAƒjƒ[ƒVƒ‡ƒ“Œø‰Ê" then animationeffect(track0, track1, track2, track3, check0, name, param)
-	elseif _name == "“®‰æƒtƒ@ƒCƒ‹‡¬" then videocomposition(track0, track1, track2, track3, track4, check0, check1, check2, name, mode)
-	elseif _name == "‰æ‘œƒtƒ@ƒCƒ‹‡¬" then pictcomposition(track0, track1, track2, check0, mode, name)
-	elseif _name == "ƒCƒ“ƒ^[ƒŒ[ƒX‰ğœ" then deinterlacing(etype)
-	elseif _name == "ƒJƒƒ‰§ŒäƒIƒvƒVƒ‡ƒ“" then camctrloption(check0, check1, check2, check3)
-	elseif _name == "ƒIƒtƒXƒNƒŠ[ƒ“•`‰æ" then offscreen()
-	elseif _name == "ƒIƒuƒWƒFƒNƒg•ªŠ„" then objsplit(track0, track1)
+	if _name == "è‰²èª¿è£œæ­£" then colorcorrection(track0, track1, track2, track3, track4, check0)
+	elseif _name == "ã‚¯ãƒªãƒƒãƒ”ãƒ³ã‚°" then clipping(track0, track1, track2, track3, check0)
+	elseif _name == "ã¼ã‹ã—" then shadingoff(track0, track1, track2, check0)
+	elseif _name == "å¢ƒç•Œã¼ã‹ã—" then bordershadingoff(track0, track1, check0)
+	elseif _name == "ãƒ¢ã‚¶ã‚¤ã‚¯" then mosaic(track0, check0)
+	elseif _name == "ç™ºå…‰" then luminescence(track0, track1, track2, track3, check0, color1)
+	elseif _name == "é–ƒå…‰" then flash(track0, track1, track2, check0, color1, mode)
+	elseif _name == "æ‹¡æ•£å…‰" then diffuselight(track0, track1, check0)
+	elseif _name == "ã‚°ãƒ­ãƒ¼" then glow(track0, track1, track2, track3, check0, color1, etype)
+	elseif _name == "ã‚¯ãƒ­ãƒã‚­ãƒ¼" then chromakey(track0, track1, track2, check0, check1, color_yc1)
+	elseif _name == "ã‚«ãƒ©ãƒ¼ã‚­ãƒ¼" then colorkey(track0, track1, track2, color_yc1)
+	elseif _name == "ãƒ«ãƒŸãƒŠãƒ³ã‚¹ã‚­ãƒ¼" then luminancekey(track0, track1, etype)
+	elseif _name == "ãƒ©ã‚¤ãƒˆ" then light(track0, track1, track2, check0, color1)
+	elseif _name == "ã‚·ãƒ£ãƒ‰ãƒ¼" then shadow(track0, track1, track2, track3, check0, color1, name)
+	elseif _name == "ç¸å–ã‚Š" then bordering(track0, track1, color1, name)
+	elseif _name == "å‡¸ã‚¨ãƒƒã‚¸" then convexedge(track0, track1, track2)
+	elseif _name == "ã‚¨ãƒƒã‚¸æŠ½å‡º" then edgeextraction(track0, track1, check0, check1, color1)
+	elseif _name == "ã‚·ãƒ£ãƒ¼ãƒ—" then sharp(track0, track1)
+	elseif _name == "ãƒ•ã‚§ãƒ¼ãƒ‰" then fade(track0, track1)
+	elseif _name == "ãƒ¯ã‚¤ãƒ—" then wipe(track0, track1, track2, check0, check1, etype, name)
+	elseif _name == "ãƒã‚¹ã‚¯" then mask(track0, track1, track2, track3, track4, track5, check0, check1, etype, name, mode)
+	elseif _name == "æ–œã‚ã‚¯ãƒªãƒƒãƒ”ãƒ³ã‚°" then obliqueclip(track0, track1, track2, track3, track4)
+	elseif _name == "æ”¾å°„ãƒ–ãƒ©ãƒ¼" then radiationblur(track0, track1, track2, check0)
+	elseif _name == "æ–¹å‘ãƒ–ãƒ©ãƒ¼" then directionblur(track0, track1, check0)
+	elseif _name == "ãƒ¬ãƒ³ã‚ºãƒ–ãƒ©ãƒ¼" then lensblur(track0, track1, check0)
+	-- elseif _name == "ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³ãƒ–ãƒ©ãƒ¼" then motionblur(track0, track1, check0, check1, check2)
+	elseif _name == "åº§æ¨™" then coordinate(track0, track1, track2)
+	elseif _name == "æ‹¡å¤§ç‡" then zoomrate(track0, track1, track2)
+	elseif _name == "é€æ˜åº¦" then transparency(track0)
+	elseif _name == "å›è»¢" then turning(track0, track1, track2)
+	elseif _name == "é ˜åŸŸæ‹¡å¼µ" then areaextension(track0, track1, track2, track3 ,check0)
+	elseif _name == "ãƒªã‚µã‚¤ã‚º" then resize(track0, track1, track2, check0, check1)
+	elseif _name == "ãƒ­ãƒ¼ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³" then rotation(track0)
+	elseif _name == "åè»¢" then inversion(check0, check1, check2, check3, check4)
+	elseif _name == "æŒ¯å‹•" then vibration(track0, track1, track2, track3, check0, check1)
+	elseif _name == "ãƒŸãƒ©ãƒ¼" then mirror(track0, track1, track2, check0, etype)
+	elseif _name == "ãƒ©ã‚¹ã‚¿ãƒ¼" then raster(track0, track1, track2, check0, check1)
+	elseif _name == "ç”»åƒãƒ«ãƒ¼ãƒ—" then imageloop(track0, track1, track2, track3, check0)
+	elseif _name == "æ¥µåº§æ¨™å¤‰æ›" then polarcoordconv(track0, track1, track2, track3)
+	elseif _name == "ãƒ‡ã‚£ã‚¹ãƒ—ãƒ¬ã‚¤ã‚¹ãƒ¡ãƒ³ãƒˆãƒãƒƒãƒ—" then displacementmap(track0, track1, track2, track3, track4, track5, track6, track7, check0, etype, name, mode, calc)
+	elseif _name == "ãƒã‚¤ã‚º" then noise(track0, track1, track2, track3, track4, track5, track6, etype, mode, seed)
+	elseif _name == "è‰²ãšã‚Œ" then colorshift(track0, track1, track2, etype)
+	elseif _name == "å˜è‰²åŒ–" then monochroma(track0, check0, color1)
+	elseif _name == "ã‚°ãƒ©ãƒ‡ãƒ¼ã‚·ãƒ§ãƒ³" then gradation(track0, track1, track2, track3, track4, mode, color1, color2 ,etype)
+	-- elseif _name == "æ‹¡å¼µè‰²è¨­å®š" then advancecolset(track0, track1, track2, check0)
+	elseif _name == "ç‰¹å®šè‰²åŸŸå¤‰æ›" then specolspaceconv(track0, track1, track2, color_yc1, color_yc2)
+	elseif _name == "ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³åŠ¹æœ" then animationeffect(track0, track1, track2, track3, check0, name, param)
+	elseif _name == "å‹•ç”»ãƒ•ã‚¡ã‚¤ãƒ«åˆæˆ" then videocomposition(track0, track1, track2, track3, track4, check0, check1, check2, name, mode)
+	elseif _name == "ç”»åƒãƒ•ã‚¡ã‚¤ãƒ«åˆæˆ" then pictcomposition(track0, track1, track2, check0, mode, name)
+	elseif _name == "ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ¬ãƒ¼ã‚¹è§£é™¤" then deinterlacing(etype)
+	elseif _name == "ã‚«ãƒ¡ãƒ©åˆ¶å¾¡ã‚ªãƒ—ã‚·ãƒ§ãƒ³" then camctrloption(check0, check1, check2, check3)
+	elseif _name == "ã‚ªãƒ•ã‚¹ã‚¯ãƒªãƒ¼ãƒ³æç”»" then offscreen()
+	elseif _name == "ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆåˆ†å‰²" then objsplit(track0, track1)
 	end
 end
 
---ŠÖ”‘ã“ü
+--é–¢æ•°ä»£å…¥
 local AULEL = {}
-AULEL.colorcorrection = colorcorrection   -- F’²•â³
-AULEL.clipping = clipping                 -- ƒNƒŠƒbƒsƒ“ƒO
-AULEL.shadingoff = shadingoff             -- ‚Ú‚©‚µ
-AULEL.bordershadingoff = bordershadingoff -- ‹«ŠE‚Ú‚©‚µ
-AULEL.mosaic = mosaic                     -- ƒ‚ƒUƒCƒN
-AULEL.luminescence = luminescence         -- ”­Œõ
-AULEL.flash = flash                       -- ‘MŒõ
-AULEL.diffuselight = diffuselight         -- ŠgUŒõ
-AULEL.glow = glow                         -- ƒOƒ[
-AULEL.chromakey = chromakey               -- ƒNƒƒ}ƒL[
-AULEL.colorkey = colorkey                 -- ƒJƒ‰[ƒL[
-AULEL.luminancekey = luminancekey         -- ƒ‹ƒ~ƒiƒ“ƒXƒL[
-AULEL.light = light                       -- ƒ‰ƒCƒg
-AULEL.shadow = shadow                     -- ƒVƒƒƒh[
-AULEL.bordering = bordering               -- ‰æ‚è
-AULEL.convexedge = convexedge             -- “ÊƒGƒbƒW
-AULEL.edgeextraction = edgeextraction     -- ƒGƒbƒW’Šo
-AULEL.sharp = sharp                       -- ƒVƒƒ[ƒv
-AULEL.fade = fade                         -- ƒtƒF[ƒh
-AULEL.wipe = wipe                         -- ƒƒCƒv
-AULEL.mask = mask                         -- ƒ}ƒXƒN
-AULEL.obliqueclip = obliqueclip           -- Î‚ßƒNƒŠƒbƒsƒ“ƒO
-AULEL.radiationblur = radiationblur       -- •úËƒuƒ‰[
-AULEL.directionblur = directionblur       -- •ûŒüƒuƒ‰[
-AULEL.lensblur = lensblur                 -- ƒŒƒ“ƒYƒuƒ‰[
--- AULEL.motionblur = motionblur             -- ƒ‚[ƒVƒ‡ƒ“ƒuƒ‰[
-AULEL.coordinate = coordinate             -- À•W
-AULEL.zoomrate = zoomrate                 -- Šg‘å—¦
-AULEL.transparency = transparency         -- “§–¾“x
-AULEL.turning = turning                   -- ‰ñ“]
-AULEL.areaextension = areaextension       -- —ÌˆæŠg’£
-AULEL.resize = resize                     -- ƒŠƒTƒCƒY
-AULEL.rotation = rotation                 -- ƒ[ƒe[ƒVƒ‡ƒ“
-AULEL.inversion = inversion               -- ”½“]
-AULEL.vibration = vibration               -- U“®
-AULEL.mirror = mirror                     -- ƒ~ƒ‰[
-AULEL.raster = raster                     -- ƒ‰ƒXƒ^[
-AULEL.imageloop = imageloop               -- ‰æ‘œƒ‹[ƒv
-AULEL.polarcoordconv = polarcoordconv     -- ‹ÉÀ•W•ÏŠ·
-AULEL.displacementmap = displacementmap   -- ƒfƒBƒXƒvƒŒƒCƒXƒƒ“ƒgƒ}ƒbƒv
-AULEL.noise = noise                       -- ƒmƒCƒY
-AULEL.colorshift = colorshift             -- F‚¸‚ê
-AULEL.monochroma = monochroma             -- ’PF‰»
-AULEL.gradation = gradation               -- ƒOƒ‰ƒf[ƒVƒ‡ƒ“
--- AULEL.advancecolset = advancecolset       -- Šg’£Fİ’è
-AULEL.specolspaceconv = specolspaceconv   -- “Á’èFˆæ•ÏŠ·
-AULEL.animationeffect = animationeffect   -- ƒAƒjƒ[ƒVƒ‡ƒ“Œø‰Ê
-AULEL.videocomposition = videocomposition -- “®‰æƒtƒ@ƒCƒ‹‡¬
-AULEL.pictcomposition = pictcomposition   -- ‰æ‘œƒtƒ@ƒCƒ‹‡¬
-AULEL.deinterlacing = deinterlacing       -- ƒCƒ“ƒ^[ƒŒ[ƒX‰ğœ
-AULEL.camctrloption = camctrloption       -- ƒJƒƒ‰§ŒäƒIƒvƒVƒ‡ƒ“
-AULEL.offscreen = offscreen               -- ƒIƒtƒXƒNƒŠ[ƒ“•`‰æ
-AULEL.objsplit = objsplit                 -- ƒIƒuƒWƒFƒNƒg•ªŠ„
-AULEL.auleffectlist = auleffectlist       -- •ªŠò
+AULEL.colorcorrection = colorcorrection   -- è‰²èª¿è£œæ­£
+AULEL.clipping = clipping                 -- ã‚¯ãƒªãƒƒãƒ”ãƒ³ã‚°
+AULEL.shadingoff = shadingoff             -- ã¼ã‹ã—
+AULEL.bordershadingoff = bordershadingoff -- å¢ƒç•Œã¼ã‹ã—
+AULEL.mosaic = mosaic                     -- ãƒ¢ã‚¶ã‚¤ã‚¯
+AULEL.luminescence = luminescence         -- ç™ºå…‰
+AULEL.flash = flash                       -- é–ƒå…‰
+AULEL.diffuselight = diffuselight         -- æ‹¡æ•£å…‰
+AULEL.glow = glow                         -- ã‚°ãƒ­ãƒ¼
+AULEL.chromakey = chromakey               -- ã‚¯ãƒ­ãƒã‚­ãƒ¼
+AULEL.colorkey = colorkey                 -- ã‚«ãƒ©ãƒ¼ã‚­ãƒ¼
+AULEL.luminancekey = luminancekey         -- ãƒ«ãƒŸãƒŠãƒ³ã‚¹ã‚­ãƒ¼
+AULEL.light = light                       -- ãƒ©ã‚¤ãƒˆ
+AULEL.shadow = shadow                     -- ã‚·ãƒ£ãƒ‰ãƒ¼
+AULEL.bordering = bordering               -- ç¸å–ã‚Š
+AULEL.convexedge = convexedge             -- å‡¸ã‚¨ãƒƒã‚¸
+AULEL.edgeextraction = edgeextraction     -- ã‚¨ãƒƒã‚¸æŠ½å‡º
+AULEL.sharp = sharp                       -- ã‚·ãƒ£ãƒ¼ãƒ—
+AULEL.fade = fade                         -- ãƒ•ã‚§ãƒ¼ãƒ‰
+AULEL.wipe = wipe                         -- ãƒ¯ã‚¤ãƒ—
+AULEL.mask = mask                         -- ãƒã‚¹ã‚¯
+AULEL.obliqueclip = obliqueclip           -- æ–œã‚ã‚¯ãƒªãƒƒãƒ”ãƒ³ã‚°
+AULEL.radiationblur = radiationblur       -- æ”¾å°„ãƒ–ãƒ©ãƒ¼
+AULEL.directionblur = directionblur       -- æ–¹å‘ãƒ–ãƒ©ãƒ¼
+AULEL.lensblur = lensblur                 -- ãƒ¬ãƒ³ã‚ºãƒ–ãƒ©ãƒ¼
+-- AULEL.motionblur = motionblur             -- ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³ãƒ–ãƒ©ãƒ¼
+AULEL.coordinate = coordinate             -- åº§æ¨™
+AULEL.zoomrate = zoomrate                 -- æ‹¡å¤§ç‡
+AULEL.transparency = transparency         -- é€æ˜åº¦
+AULEL.turning = turning                   -- å›è»¢
+AULEL.areaextension = areaextension       -- é ˜åŸŸæ‹¡å¼µ
+AULEL.resize = resize                     -- ãƒªã‚µã‚¤ã‚º
+AULEL.rotation = rotation                 -- ãƒ­ãƒ¼ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³
+AULEL.inversion = inversion               -- åè»¢
+AULEL.vibration = vibration               -- æŒ¯å‹•
+AULEL.mirror = mirror                     -- ãƒŸãƒ©ãƒ¼
+AULEL.raster = raster                     -- ãƒ©ã‚¹ã‚¿ãƒ¼
+AULEL.imageloop = imageloop               -- ç”»åƒãƒ«ãƒ¼ãƒ—
+AULEL.polarcoordconv = polarcoordconv     -- æ¥µåº§æ¨™å¤‰æ›
+AULEL.displacementmap = displacementmap   -- ãƒ‡ã‚£ã‚¹ãƒ—ãƒ¬ã‚¤ã‚¹ãƒ¡ãƒ³ãƒˆãƒãƒƒãƒ—
+AULEL.noise = noise                       -- ãƒã‚¤ã‚º
+AULEL.colorshift = colorshift             -- è‰²ãšã‚Œ
+AULEL.monochroma = monochroma             -- å˜è‰²åŒ–
+AULEL.gradation = gradation               -- ã‚°ãƒ©ãƒ‡ãƒ¼ã‚·ãƒ§ãƒ³
+-- AULEL.advancecolset = advancecolset       -- æ‹¡å¼µè‰²è¨­å®š
+AULEL.specolspaceconv = specolspaceconv   -- ç‰¹å®šè‰²åŸŸå¤‰æ›
+AULEL.animationeffect = animationeffect   -- ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³åŠ¹æœ
+AULEL.videocomposition = videocomposition -- å‹•ç”»ãƒ•ã‚¡ã‚¤ãƒ«åˆæˆ
+AULEL.pictcomposition = pictcomposition   -- ç”»åƒãƒ•ã‚¡ã‚¤ãƒ«åˆæˆ
+AULEL.deinterlacing = deinterlacing       -- ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ¬ãƒ¼ã‚¹è§£é™¤
+AULEL.camctrloption = camctrloption       -- ã‚«ãƒ¡ãƒ©åˆ¶å¾¡ã‚ªãƒ—ã‚·ãƒ§ãƒ³
+AULEL.offscreen = offscreen               -- ã‚ªãƒ•ã‚¹ã‚¯ãƒªãƒ¼ãƒ³æç”»
+AULEL.objsplit = objsplit                 -- ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆåˆ†å‰²
+AULEL.auleffectlist = auleffectlist       -- åˆ†å²
 
 return AULEL

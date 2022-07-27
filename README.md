@@ -6,26 +6,32 @@
 
 右上の `Code` の `Download ZIP` または **[ここ](https://github.com/CaffemochaY/CaffemochaY-AviUtl-Scripts/archive/refs/heads/main.zip)** からDLして、 `script` フォルダの中身をスクリプトが機能する場所に置いてください
 
-`script/.old` フォルダ内のファイルは、大きなアップデートがあったスクリプトの過去バージョンです  
-もし、アップデート後のスクリプトが正常に動作しない時は試してみてください
+developブランチには最新のものがあるので、最新版を使用したい場合はdevelopブランチの方からDLして導入してください
+
+### フォルダ概要
+
+- `alias_how-to-use` フォルダには、使用例エイリアスが入っています  
+  エイリアスを認識できるディレクトリに配置するか、D&Dで使用してください
+
+- `script/.old` フォルダには、大きなアップデートがあったスクリプトの過去バージョンが入ってます  
+  もし、アップデート後のスクリプトが正常に動作しない時は試してみてください
 
 ## 各種スクリプトの説明
 
 スクリプトファイルの先頭にコメントで説明文が記載してあります  
-markdownみたいな書き方をしているので、コピペしてmarkdownにして見るといいかもしれません
+使い方・注意書き・更新点などはここに書いてあります
 
-`スクリプト内説明` をクリックして展開すると、スクリプトファイル内に記載している説明が見れるようになります  
-使い方、注意書き、更新点などはここに書いてあります
+`スクリプト内説明` をクリックして展開すると、スクリプトファイル内に記載している説明が見れるようになってます
 
----
-
-## リスト
+## List
 
 - [ソフトフォーカス](#ソフトフォーカス)
 - [グラデーション縁取り＋](#グラデーション縁取り)
 - [コントラスト比自動計算](#コントラスト比自動計算)
 - [ディフュージョン](#ディフュージョン)
 - [任意番号個別エフェクト](#任意番号個別エフェクト)
+- [マスク画像化](#マスク画像化)
+- [斜めブラインドシャドー](#斜めブラインドシャドー)
 
 ---
 
@@ -46,7 +52,7 @@ markdownみたいな書き方をしているので、コピペしてmarkdownに�
 
     ---
 
-    ソフトフォーカス.anm / ver.2  
+    ソフトフォーカス.anm / ver.2.0.2  
     Copyright (c) 2022 CaffemochaY
 
     - 立ち絵等の画像を柔らかい雰囲気にします  
@@ -69,6 +75,10 @@ markdownみたいな書き方をしているので、コピペしてmarkdownに�
         - obj.copybufferを使わないようにした
         - 画像データのキャッシュ数を `0` にしても機能するようにした
         - 各種パラメータが `0` の時、パラメータが `0` の一部のエフェクトを無効化し、動作を軽量化した
+      - ver.2.0.1
+        - バージョン表記を3桁に変更
+      - ver.2.0.2
+        - 文字コードの正規化
 
     </details>
 
@@ -86,7 +96,7 @@ markdownみたいな書き方をしているので、コピペしてmarkdownに�
 
     ---
 
-    グラデーション縁取り＋.anm / ver.2  
+    グラデーション縁取り＋.anm / ver.2.0.2  
     Copyright (c) 2022 CaffemochaY
 
     グラデーションがかかった縁取りを1オブジェクトで完結させることが出来るようにするスクリプトです  
@@ -105,6 +115,10 @@ markdownみたいな書き方をしているので、コピペしてmarkdownに�
       - ver.2
         - obj.copybufferを使わないようにした
         - 画像データのキャッシュ数を `0` にしても機能するようにした
+      - ver.2.0.1
+        - バージョン表記を3桁に変更
+      - ver.2.0.2
+        - 文字コードの正規化
 
     </details>
 
@@ -127,7 +141,7 @@ markdownみたいな書き方をしているので、コピペしてmarkdownに�
 
     ---
 
-    コントラスト比自動計算.anm / ver.1  
+    コントラスト比自動計算.anm / ver.1.0.2  
     Copyright (c) 2022 CaffemochaY
 
     アンカーで2色を取得して、その2つのコントラスト比を自動で計算するスクリプト  
@@ -140,9 +154,15 @@ markdownみたいな書き方をしているので、コピペしてmarkdownに�
       - info : アンカー, コントラスト比の表示を設定
       - debug_print : debug_printに値を返すかの指定
 
+    - changelog
+      - ver.1.0.1
+        - バージョン表記を3桁に変更
+      - ver.1.0.2
+        - 文字コードの正規化
+
     ---
 
-    コントラスト比自動計算.obj / ver.1  
+    コントラスト比自動計算.obj / ver.1.0.2  
     Copyright (c) 2022 CaffemochaY
 
     ダイアログで2色を指定して、その2つのコントラスト比を自動で計算するスクリプト  
@@ -153,6 +173,25 @@ markdownみたいな書き方をしているので、コピペしてmarkdownに�
       - 文字サイズ, フォント名, 文字装飾 : テキストのパラメータ
       - 背景margin : 文字の範囲から、どれだけ余白をとるかの指定
       - debug_print : debug_printに値を返すかの指定
+
+    - changelog
+      - ver.1.0.1
+        - バージョン表記を3桁に変更
+      - ver.1.0.2
+        - 文字コードの正規化
+
+    ---
+
+    contrast_ratio_cal.lua / ver.1.0.2  
+    Copyright (c) 2022 CaffemochaY
+
+    sourse : [WCAG 2.0](https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-procedure)
+
+    - changelog
+      - ver.1.0.1
+        - バージョン表記を3桁に変更
+      - ver.1.0.2
+        - 文字コードの正規化
 
     </details>
 
@@ -178,7 +217,7 @@ markdownみたいな書き方をしているので、コピペしてmarkdownに�
 
     ---
 
-    ディフュージョン.anm / ver.1.2  
+    ディフュージョン.anm / ver.1.3.0  
     Copyright (c) 2022 CaffemochaY
 
     LuaJITが必須 （LuaJIT 2.1.0-beta3 推奨）
@@ -211,6 +250,11 @@ markdownみたいな書き方をしているので、コピペしてmarkdownに�
       - ver.1.2
         - 輝度上限を設定出来るようにした
           - 白飛びしにくくなるように設定出来るようになったはず
+      - ver.1.2.1
+        - バージョン表記を3桁に変更
+      - ver.1.3.0
+        - pixel処理のループを改良
+        - 文字コードの正規化
 
     </details>
 
@@ -227,7 +271,7 @@ markdownみたいな書き方をしているので、コピペしてmarkdownに�
 
     ---
 
-    任意番号個別エフェクト.anm / ver.1.2  
+    任意番号個別エフェクト.anm / ver.1.2.2  
     Copyright (c) 2022 CaffemochaY
 
     - parameter
@@ -254,9 +298,120 @@ markdownみたいな書き方をしているので、コピペしてmarkdownに�
       - `Effect_insert` は、 スクリプト制御で `Effect_insert` で関数を定義して代入すると、stack overflow になる
       - "table" の欄は "table" で値を指定すること
 
+    - changelog
+      - ver.1.1
+        - `stack overflow` について追記
+      - ver.1.2
+        - 設定ダイアログの番号が誤っていたので修正
+      - ver.1.2.1
+        - バージョン表記を3桁に変更
+      - ver.1.2.2
+        - 文字コードの正規化
+        - コードのフォーマット
+
+    ---
+
+    aviutl_effect_list.lua / ver.1.0.2  
+    Copyright (c) 2022 CaffemochaY
+
+    - parameter
+      - _name         : "string"
+      - track
+        - track0      : "number"
+        - track1      : "number"
+        - track2      : "number"
+        - track3      : "number"
+        - track4      : "number"
+        - track5      : "number"
+        - track6      : "number"
+        - track7      : "number"
+      - color
+        - color1/col  : "number"
+        - color2/col  : "number"
+      - check
+        - check0/chk  : "number"
+        - check1/chk  : "number"
+        - check2/chk  : "number"
+        - check3/chk  : "number"
+        - check4/chk  : "number"
+      - mode          : "number"
+      - etype         : "number"
+      - name / file   : "string"
+      - color_yc
+        - color_yc1   : "table" or "number"
+        - color_yc2   : "table" or "number"
+      - seed          : "number"
+      - calc          : "number"
+      - param         : "string"
+
+    - changelog
+      - ver.1.0.1
+        - バージョン表記を3桁に変更
+        - コメントを少し整理
+      - ver.1.0.2
+        - 文字コードの正規化
+
     </details>
 
----
+### マスク画像化
+
+- `マスク画像化.anm`
+
+  - アルファ or RGBの各要素 をグレースケールに変換する
+
+  - <details><summary>スクリプト内説明</summary>
+
+    ---
+
+    マスク画像化.anm / ver.1.2.1  
+    Copyright (c) 2022 CaffemochaY
+
+    アルファ or RGBの各要素 をグレースケールに変換する
+
+    - changelog
+      - ver.1.1.0
+        - オブジェクトの生成の方法を変更
+      - ver.1.2.0
+        - pixel処理のループを改良
+      - ver.1.2.1
+        - 文字コードの正規化
+
+  </details>
+
+  ---
+
+### 斜めブラインドシャドー
+
+- `斜めブラインドシャドー.anm`
+
+  - ブラインドがかかった影をつけることができる
+
+  - <details><summary>スクリプト内説明</summary>
+
+    ---
+
+    斜めブラインドシャドー.anm / ver.1.0.0
+    Copyright (c) 2022 CaffemochaY
+
+    Timさんの[斜めブラインド(改)](https://tim3.web.fc2.com/sidx.htm#DiaSha)が必須
+
+    - parameter
+      - alpha : 影の透明度
+      - ratio : ブラインドの適応割合
+      - width : ブラインドの幅
+      - angle : ブラインドの角度
+      - X : 影のX座標
+      - Y : 影のY座標
+      - 基準 : ブラインドの基準座標
+      - 時間差[%] : ブラインドの幅のずれ
+      - ぼかし : 影のぼかし度合い
+      - 背景色 : 影のベースになる色
+      - 斜線色 : 影のブラインドがかかった方の色
+      - insert : trackパラメータに別の式の挿入ができるやつ
+
+  </details>
+
+  ---
 
 ## License
 
