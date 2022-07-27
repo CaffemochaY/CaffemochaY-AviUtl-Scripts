@@ -1,5 +1,5 @@
 --[[
-	マップ画像化.anm / ver.1.3.0
+	マップ画像化.anm / ver.1.4.0
 	Copyright (c) 2022 CaffemochaY
 
 	LuaJITが必須 （LuaJIT 2.1.0-beta3 推奨）
@@ -15,6 +15,8 @@
 			- 文字コードの正規化
 		- ver.1.3.0
 			- ファイル名 / スクリプト名を変更
+		- ver.1.4.0
+			- 整数型のところに小数が入っていたので修正
 ]]
 
 --track0:mode,0,3,0,1
@@ -33,19 +35,19 @@ end
 if mmode == 1 then
 	function pixelprocess(p)
 		local pa, pci = bit.rshift(p, 24), bit.band(bit.rshift(p, 16), 255)
-		if adep then pci = pci * pa / 255 end
+		if adep then pci = math.floor(pci * pa / 255) end
 		return bit.lshift(pci, 16) + bit.lshift(pci, 8) + pci + 0xff000000
 	end
 elseif mmode == 2 then
 	function pixelprocess(p)
 		local pa, pci = bit.rshift(p, 24), bit.band(bit.rshift(p, 8), 255)
-		if adep then pci = pci * pa / 255 end
+		if adep then pci = math.floor(pci * pa / 255) end
 		return bit.lshift(pci, 16) + bit.lshift(pci, 8) + pci + 0xff000000
 	end
 elseif mmode == 3 then
 	function pixelprocess(p)
 		local pa, pci = bit.rshift(p, 24), bit.band(p, 255)
-		if adep then pci = pci * pa / 255 end
+		if adep then pci = math.floor(pci * pa / 255) end
 		return bit.lshift(pci, 16) + bit.lshift(pci, 8) + pci + 0xff000000
 	end
 end

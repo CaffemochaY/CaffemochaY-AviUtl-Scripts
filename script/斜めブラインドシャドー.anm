@@ -1,0 +1,66 @@
+--[[
+	斜めブラインドシャドー.anm / ver.1.0.0
+	Copyright (c) 2022 CaffemochaY
+
+	Timさんの[斜めブラインド(改)](https://tim3.web.fc2.com/sidx.htm#DiaSha)が必須
+
+	- parameter
+		- alpha : 影の透明度
+		- ratio : ブラインドの適応割合
+		- width : ブラインドの幅
+		- angle : ブラインドの角度
+		- X : 影のX座標
+		- Y : 影のY座標
+		- 基準 : ブラインドの基準座標
+		- 時間差[%] : ブラインドの幅のずれ
+		- ぼかし : 影のぼかし度合い
+		- 背景色 : 影のベースになる色
+		- 斜線色 : 影のブラインドがかかった方の色
+		- insert : trackパラメータに別の式の挿入ができるやつ
+]]
+
+--track0:alpha,0,100,100
+--track1:ratio,0,100,50
+--track2:width,5,2000,10
+--track3:angle,-3600,3600,60
+--dialog:X,_1=10;Y,_2=10;基準,_3=0;時間差[%],_4=0;ぼかし,_5=0;背景色/col,_C=0xbbd716;斜線色/col,_D=0x46b6e3;insert,_0={};
+
+_0 = _0 or {}
+
+local alpha, track0, track1, track2 = (_0[1] or obj.track0) / 100, _0[2] or obj.track1, _0[3] or obj.track2, _0[4] or obj.track3
+
+local x, y, track3, ts, blur = _1 or 0, _2 or 0, _3 or 0, _4 or 0, _5 or 0
+local bcol, scol = _C or 0, _D or 0
+
+local w, h = obj.getpixel()
+local tw, th = w + math.abs(x), h + math.abs(y)
+local xh, yh = x * 0.5, y * 0.5
+
+obj.setoption("drawtarget", "tempbuffer", tw, th)
+obj.copybuffer("cache:ori", "obj")
+
+-- 影背景描画
+obj.effect("単色化", "color", bcol, "輝度を保持する", 0)
+obj.draw(x * 0.5, y * 0.5, 0)
+
+-- 影斜線描画
+obj.effect("単色化", "color", scol, "輝度を保持する", 0)
+obj.effect("アニメーション効果", "name", "斜めブラインド(改)", "track0", track0, "track1", track1, "track2", track2, "track3", track3, "param", "local TS=" .. ts .. ";chk=0")
+
+obj.draw(x * 0.5, y * 0.5, 0)
+
+-- まとめて透明度を調整
+obj.copybuffer("obj", "tmp")
+obj.setoption("drawtarget", "tempbuffer", tw, th)
+obj.effect("ぼかし", "範囲", blur)
+obj.draw(0, 0, 0, 1, alpha)
+
+-- 元オブジェクトを描画
+obj.copybuffer("obj", "cache:ori")
+obj.draw(-xh, -yh)
+
+obj.copybuffer("obj", "tmp")
+obj.cx = obj.cx - xh
+obj.cy = obj.cy - yh
+
+_0, _1, _2, _3, _4, _5, _C, _D = nil, nil, nil, nil, nil, nil, nil, nil
